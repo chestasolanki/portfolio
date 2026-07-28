@@ -2,6 +2,7 @@ import React from 'react';
 import PageTransitionSection from './PageTransitionSection';
 import { MotionTitle } from './MotionText';
 import { motion } from 'framer-motion';
+import CinematicDeveloperBackground from './CinematicDeveloperBackground';
 
 export default function Projects() {
   const projectList = [
@@ -22,8 +23,11 @@ export default function Projects() {
   ];
 
   return (
-    <PageTransitionSection id="projects" className="section-spacing">
-      <div className="container">
+    <PageTransitionSection id="projects" className="section-spacing" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Cinematic Background Layer */}
+      <CinematicDeveloperBackground />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div style={{ marginBottom: '32px' }}>
@@ -54,58 +58,34 @@ export default function Projects() {
                   borderRadius: 'var(--radius-lg)'
                 }}
               >
-                <div>
-                  <div style={{ marginBottom: '14px' }}>
-                    <h3 className="card-title" style={{ fontSize: '24px' }}>
-                      {project.title}
-                    </h3>
-                    <div className="card-subtitle" style={{ fontSize: '15px', marginTop: '3px' }}>
-                      {project.subtitle}
-                    </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  <div>
+                    <h3 className="card-title" style={{ fontSize: '24px' }}>{project.title}</h3>
+                    <div className="card-subtitle" style={{ fontSize: '15px' }}>{project.subtitle}</div>
                   </div>
 
-                  <p style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: '14.5px',
-                    lineHeight: '1.7',
-                    marginBottom: '20px',
-                    fontWeight: '400'
-                  }}>
+                  <p style={{ fontSize: '14.5px', lineHeight: '1.7', color: 'var(--text-secondary)' }}>
                     {project.description}
                   </p>
 
-                  {/* Tools Used */}
-                  <div>
-                    <div style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '12px',
-                      color: 'var(--text-muted)',
-                      marginBottom: '10px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.12em'
-                    }}>
-                      Tools Used:
-                    </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                      {project.tools.map((tool, tIdx) => (
-                        <span
-                          key={tIdx}
-                          style={{
-                            fontSize: '12.5px',
-                            fontFamily: 'var(--font-mono)',
-                            background: 'rgba(56, 189, 248, 0.12)',
-                            color: '#38bdf8',
-                            padding: '5px 14px',
-                            borderRadius: 'var(--radius-pill)',
-                            border: '1px solid var(--border-glass)'
-                          }}
-                        >
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '6px' }}>
+                    {project.tools.map((tool, tIdx) => (
+                      <span
+                        key={tIdx}
+                        style={{
+                          fontSize: '12.5px',
+                          fontFamily: 'var(--font-mono)',
+                          padding: '4px 12px',
+                          borderRadius: 'var(--radius-pill)',
+                          background: 'rgba(56, 189, 248, 0.12)',
+                          color: '#38bdf8',
+                          border: '1px solid var(--border-glass)'
+                        }}
+                      >
+                        {tool}
+                      </span>
+                    ))}
                   </div>
-
                 </div>
               </div>
             </motion.div>

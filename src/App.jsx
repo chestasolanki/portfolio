@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Experience from './components/Experience';
@@ -7,6 +11,8 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ResumeModal from './components/ResumeModal';
 import DrawingCanvas from './components/DrawingCanvas';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -21,37 +27,55 @@ export default function App() {
     localStorage.setItem('cs_portfolio_theme', theme);
   }, [theme]);
 
+  // Initialize Lenis Ultra-Smooth Slow Presentation Scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 2.2,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.75,
+      touchMultiplier: 1.2
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove(lenis.raf);
+    };
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (
-    <div className="portfolio-app" data-theme={theme}>
-      {/* Layer 2: Interactive Custom Drawing Cursor Canvas */}
+    <div className="app-container">
+      {/* Interactive Light Blue Drawing Canvas */}
       <DrawingCanvas />
 
-      {/* Layer 3: Sticky Navbar */}
-      <Navbar
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
-      
-      {/* Layer 1: Main Content Sections in Exact User Sequence: Experience -> Skills -> Projects */}
-      <main style={{ position: 'relative', zIndex: 1 }}>
+      {/* Floating Glass Pill Navbar */}
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+
+      {/* Page Sections */}
+      <main>
         <Hero />
         <Experience />
         <Skills />
         <Projects />
+        <Contact onOpenResume={() => setIsResumeOpen(true)} />
       </main>
 
-      {/* Contact Section */}
-      <Contact onOpenResume={() => setIsResumeOpen(true)} />
-
-      {/* Layer 4: Interactive Resume Document Modal */}
-      <ResumeModal
-        isOpen={isResumeOpen}
-        onClose={() => setIsResumeOpen(false)}
-      />
+      {/* Resume Viewer Modal Drawer */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </div>
   );
 }

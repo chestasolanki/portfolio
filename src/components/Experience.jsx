@@ -1,11 +1,11 @@
 import React from 'react';
-import { Calendar, CheckCircle2 } from 'lucide-react';
-import PageTransitionSection from './PageTransitionSection';
-import { MotionTitle } from './MotionText';
+import { Calendar, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import PageTransitionSection from './PageTransitionSection';
+import CinematicDeveloperBackground from './CinematicDeveloperBackground';
 
 export default function Experience() {
-  const points = [
+  const timelinePoints = [
     'Developed and maintained a production-ready web application using React.js, Node.js, Express.js, and REST APIs.',
     'Built responsive, reusable UI components and implemented modern frontend best practices.',
     'Designed and integrated backend APIs, authentication, and database operations to support core business features.',
@@ -16,162 +16,297 @@ export default function Experience() {
   const educationList = [
     {
       school: 'GL Bajaj Institute of Technology and Management',
-      degree: 'Bachelor of Technology (B.Tech) - Information Technology',
+      degree: 'B.Tech — Information Technology',
       score: '8.13 CGPA',
       period: '2022 – 2026'
     },
     {
       school: 'Senior Secondary School (Class XII)',
-      degree: 'Central Board of Secondary Education (CBSE)',
+      degree: 'Central Board of Secondary Education',
       score: '88.6%',
       period: '2022'
     },
     {
       school: 'Secondary School (Class X)',
-      degree: 'Central Board of Secondary Education (CBSE)',
+      degree: 'Central Board of Secondary Education',
       score: '87.8%',
       period: '2020'
     }
   ];
 
   return (
-    <PageTransitionSection id="experience" className="section-spacing">
-      <div className="container">
+    <PageTransitionSection
+      id="experience"
+      className="section-spacing"
+      style={{
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
+      {/* Reusable Cinematic Developer Background (Hidden in Light Mode) */}
+      <CinematicDeveloperBackground />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
-        {/* Equal-Height 2-Column Grid Layout */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '32px',
-          alignItems: 'stretch',
-          '@media (min-width: 992px)': { gridTemplateColumns: '1fr 1fr' }
-        }} className="exp-edu-grid">
+        {/* Section Header with Minimal 20px Gap */}
+        <div style={{ marginBottom: '24px' }}>
+          <div className="section-tag">
+            <span>CAREER &amp; ACADEMICS</span>
+          </div>
+          <h2 className="section-title" style={{ margin: 0 }}>
+            Experience &amp; Background
+          </h2>
+        </div>
+
+        {/* 70% / 30% Asymmetric Grid Layout */}
+        <div className="exp-70-30-grid">
           
-          {/* Left: Work Experience Column */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ minHeight: '68px', marginBottom: '8px' }}>
-              <div className="section-tag">
-                <span>WORK EXPERIENCE</span>
-              </div>
-              <h2 className="section-title">
-                <MotionTitle>Work Experience</MotionTitle>
-              </h2>
+          {/* Left Column (70%): Work Experience Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <div className="section-tag" style={{ marginBottom: '8px' }}>
+              <span>WORK EXPERIENCE</span>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
-            >
-              <div className="glass-card" style={{
-                padding: '28px 30px',
-                borderLeft: '4px solid #38bdf8',
+            <div
+              className="premium-glass-card"
+              style={{
+                padding: '36px 38px',
                 borderRadius: 'var(--radius-lg)',
+                border: '1px solid var(--border-glass)',
+                position: 'relative',
+                overflow: 'hidden',
                 flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}>
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '14px', marginBottom: '20px' }}>
-                    <div>
-                      <h3 className="card-title" style={{ fontSize: '23px' }}>
-                        Software Developer Intern
-                      </h3>
-                      <div className="company-name" style={{ marginTop: '3px', fontSize: '16px' }}>
-                        Limetta
-                      </div>
-                    </div>
+                justifyContent: 'space-between',
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+            >
+              {/* Top Accent Line */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '2px',
+                background: 'linear-gradient(90deg, #38bdf8 0%, #0284c7 60%, transparent 100%)'
+              }} />
 
-                    <div className="date-badge" style={{ padding: '5px 14px', fontSize: '13px' }}>
-                      <Calendar size={13} />
-                      <span>June 2026 – Present</span>
+              <div>
+                {/* Header Information */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '28px' }}>
+                  <div>
+                    <h3 style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(28px, 3.2vw, 38px)',
+                      fontWeight: '600',
+                      color: 'var(--text-primary)',
+                      lineHeight: '1.1',
+                      marginBottom: '6px'
+                    }}>
+                      Software Developer Intern
+                    </h3>
+                    <div style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '22px',
+                      fontWeight: '700',
+                      color: 'var(--accent-purple)',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase'
+                    }}>
+                      LIMETTA
                     </div>
                   </div>
 
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                    {points.map((pt, idx) => (
-                      <motion.li
+                  <div className="date-badge" style={{ padding: '6px 16px', fontSize: '13px' }}>
+                    <Calendar size={14} />
+                    <span>June 2026 — Present</span>
+                  </div>
+                </div>
+
+                {/* Vertical Timeline */}
+                <div style={{ position: 'relative', paddingLeft: '28px', marginTop: '12px' }}>
+                  
+                  {/* Continuous Vertical Timeline Line */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '8px',
+                    bottom: '12px',
+                    left: '8px',
+                    width: '2px',
+                    background: 'linear-gradient(180deg, var(--accent-purple) 0%, rgba(56, 189, 248, 0.15) 100%)'
+                  }} />
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                    {timelinePoints.map((point, idx) => (
+                      <motion.div
                         key={idx}
-                        initial={{ opacity: 0, x: -15 }}
+                        initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: idx * 0.06 }}
-                        style={{ display: 'flex', alignItems: 'flex-start', gap: '11px', fontSize: '14.5px', color: 'var(--text-secondary)', lineHeight: '1.65' }}
+                        transition={{ duration: 0.5, delay: idx * 0.08 }}
+                        style={{ position: 'relative' }}
                       >
-                        <CheckCircle2 size={15} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '3px' }} />
-                        <span>{pt}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+                        {/* Timeline Glowing Node Bullet */}
+                        <div style={{
+                          position: 'absolute',
+                          top: '6px',
+                          left: '-28px',
+                          transform: 'translateX(-50%)',
+                          width: '10px',
+                          height: '10px',
+                          borderRadius: '50%',
+                          background: 'var(--accent-purple)',
+                          boxShadow: '0 0 10px var(--accent-purple)',
+                          border: '2px solid var(--bg-surface)'
+                        }} />
 
-          {/* Right: Academic Background Column */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ minHeight: '68px', marginBottom: '8px' }}>
-              <div className="section-tag">
-                <span>ACADEMIC</span>
+                        <p style={{
+                          fontSize: '16px',
+                          color: 'var(--text-secondary)',
+                          lineHeight: '1.65',
+                          margin: 0,
+                          fontWeight: '400'
+                        }}>
+                          {point}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                </div>
+
               </div>
-              <h2 className="section-title">
-                <MotionTitle>Academic Background</MotionTitle>
-              </h2>
+
+            </div>
+          </motion.div>
+
+          {/* Right Column (30%): Academic Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}
+          >
+            <div className="section-tag" style={{ marginBottom: '8px', position: 'relative', zIndex: 1 }}>
+              <span>ACADEMIC BACKGROUND</span>
             </div>
 
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px', justifyContent: 'space-between' }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '16px',
+              flex: 1,
+              justifyContent: 'space-between',
+              position: 'relative',
+              zIndex: 1
+            }}>
               {educationList.map((edu, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-20px' }}
-                  transition={{ duration: 0.7, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+                  whileHover={{ y: -4, borderColor: 'var(--border-glass-hover)' }}
+                  className="premium-glass-card"
+                  style={{
+                    padding: '22px 24px',
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-glass)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
                 >
-                  <div className="glass-card" style={{ padding: '20px 24px', borderRadius: 'var(--radius-md)', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                      <span className="date-badge" style={{ padding: '4px 12px', fontSize: '12px' }}>
-                        {edu.period}
-                      </span>
-                      <span style={{
-                        fontSize: '12.5px',
-                        fontWeight: '700',
-                        fontFamily: 'var(--font-body)',
-                        background: 'rgba(56, 189, 248, 0.18)',
-                        color: '#38bdf8',
-                        padding: '4px 12px',
-                        borderRadius: 'var(--radius-pill)',
-                        border: '1px solid var(--border-glass)'
-                      }}>
-                        {edu.score}
-                      </span>
+                  {/* Subtle Accent Edge */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    width: '3px',
+                    background: idx === 0 ? 'var(--accent-purple)' : 'var(--border-glass)'
+                  }} />
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                      <GraduationCap size={15} style={{ color: 'var(--accent-purple)' }} />
+                      <span>{edu.period}</span>
                     </div>
 
-                    <h3 className="card-title" style={{ fontSize: '19px', margin: '4px 0' }}>
-                      {edu.school}
-                    </h3>
+                    <span style={{
+                      fontSize: '12.5px',
+                      fontWeight: '700',
+                      fontFamily: 'var(--font-mono)',
+                      background: 'rgba(56, 189, 248, 0.16)',
+                      color: 'var(--accent-purple)',
+                      padding: '3px 10px',
+                      borderRadius: 'var(--radius-pill)'
+                    }}>
+                      {edu.score}
+                    </span>
+                  </div>
 
-                    <div style={{ fontSize: '14px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>
-                      {edu.degree}
-                    </div>
+                  <h4 style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '20px',
+                    fontWeight: '600',
+                    color: 'var(--text-primary)',
+                    lineHeight: '1.25',
+                    marginBottom: '4px'
+                  }}>
+                    {edu.school}
+                  </h4>
+
+                  <div style={{ fontSize: '13.5px', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                    {edu.degree}
                   </div>
                 </motion.div>
               ))}
             </div>
-          </div>
+
+          </motion.div>
 
         </div>
 
       </div>
 
       <style>{`
+        @keyframes diagonalCloudFlow {
+          0% { transform: translate(0, 0) scale(0.95); }
+          100% { transform: translate(60px, 40px) scale(1.08); }
+        }
+        @keyframes diagonalCloudFlowReverse {
+          0% { transform: translate(0, 0) scale(1.05); }
+          100% { transform: translate(-50px, -35px) scale(0.92); }
+        }
+        @keyframes dataPacketDrift {
+          0% { transform: translate(0, 0); opacity: 0; }
+          20% { opacity: 0.85; }
+          80% { opacity: 0.85; }
+          100% { transform: translate(140px, -200px); opacity: 0; }
+        }
+        .exp-70-30-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 32px;
+          align-items: stretch;
+        }
+        .premium-glass-card {
+          background: var(--bg-card);
+        }
+        .premium-glass-card:hover {
+          transform: translateY(-6px) !important;
+          border-color: var(--border-glass-hover) !important;
+          box-shadow: var(--glow-card-hover) !important;
+        }
         @media (min-width: 992px) {
-          .exp-edu-grid {
-            grid-template-columns: 1.15fr 0.85fr !important;
+          .exp-70-30-grid {
+            grid-template-columns: 2.2fr 1fr !important;
           }
         }
       `}</style>

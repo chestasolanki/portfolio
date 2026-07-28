@@ -4,67 +4,61 @@ import { Sun, Moon } from 'lucide-react';
 export default function Navbar({ theme, toggleTheme }) {
   return (
     <nav style={{
-      position: 'sticky',
-      top: 0,
+      position: 'fixed',
+      top: '18px',
+      left: '50%',
+      transform: 'translateX(-50%)',
       zIndex: 100,
-      backgroundColor: 'var(--navbar-bg)',
-      backdropFilter: 'blur(16px)',
-      WebkitBackdropFilter: 'blur(16px)',
-      borderBottom: '1px solid var(--border-glass)',
+      width: 'min(900px, 92vw)',
+      background: 'var(--navbar-bg)',
+      backdropFilter: 'blur(18px)',
+      WebkitBackdropFilter: 'blur(18px)',
+      border: '1px solid var(--navbar-border)',
+      borderTop: '1px solid var(--border-glass-top)',
+      borderRadius: '9999px',
+      boxShadow: '0 15px 35px rgba(0, 0, 0, 0.15)',
+      padding: '8px 24px',
       transition: 'all var(--transition-normal)'
     }}>
-      <div className="container" style={{
+      <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '76px'
+        height: '46px'
       }}>
         {/* Brand Logo */}
-        <a href="#hero" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <a href="#hero" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '10px',
-            background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-violet))',
+            width: '34px',
+            height: '34px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: '#ffffff',
             fontWeight: '800',
             fontFamily: 'var(--font-serif)',
-            fontSize: '1.2rem',
-            boxShadow: '0 0 15px var(--glow-primary)'
+            fontSize: '1rem',
+            boxShadow: '0 0 14px rgba(56, 189, 248, 0.4)'
           }}>
             CS
           </div>
-          <div>
-            <span className="font-serif" style={{
-              fontWeight: '700',
-              fontSize: '1.2rem',
-              color: 'var(--text-primary)',
-              letterSpacing: '-0.01em',
-              display: 'block',
-              lineHeight: 1
-            }}>
-              CHESTA SOLANKI
-            </span>
-            <span style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.68rem',
-              color: 'var(--accent-purple)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase'
-            }}>
-              FULL-STACK DEVELOPER
-            </span>
-          </div>
+          <span className="font-serif" style={{
+            fontWeight: '700',
+            fontSize: '1.1rem',
+            color: 'var(--navbar-text)',
+            letterSpacing: '-0.01em'
+          }}>
+            CHESTA
+          </span>
         </a>
 
-        {/* Navigation Anchor Links in Exact Sequence: Experience -> Skills -> Projects -> Contact */}
+        {/* Floating Nav Items */}
         <div style={{
-          display: 'none',
+          display: 'flex',
           alignItems: 'center',
-          gap: '32px'
+          gap: '28px'
         }} className="desktop-nav">
           <a href="#experience" className="nav-link">Experience</a>
           <a href="#skills" className="nav-link">Skills</a>
@@ -72,18 +66,17 @@ export default function Navbar({ theme, toggleTheme }) {
           <a href="#contact" className="nav-link">Contact</a>
         </div>
 
-        {/* Action Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          {/* Theme Toggle Button */}
+        {/* Theme Toggle Button */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
             style={{
-              width: '40px',
-              height: '40px',
+              width: '34px',
+              height: '34px',
               borderRadius: '50%',
-              background: 'var(--bg-card)',
+              background: 'rgba(2, 132, 199, 0.1)',
               border: '1px solid var(--border-glass)',
               color: 'var(--accent-purple)',
               display: 'flex',
@@ -93,7 +86,7 @@ export default function Navbar({ theme, toggleTheme }) {
               transition: 'all var(--transition-fast)'
             }}
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
         </div>
       </div>
@@ -103,8 +96,8 @@ export default function Navbar({ theme, toggleTheme }) {
           color: var(--text-secondary);
           text-decoration: none;
           font-family: var(--font-body);
-          font-weight: 600;
-          font-size: 0.92rem;
+          font-weight: 500;
+          font-size: 0.9rem;
           transition: color var(--transition-fast);
           position: relative;
         }
@@ -115,18 +108,20 @@ export default function Navbar({ theme, toggleTheme }) {
           content: '';
           position: absolute;
           bottom: -4px;
-          left: 0;
+          left: 50%;
+          transform: translateX(-50%);
           width: 0%;
           height: 2px;
           background: var(--accent-purple);
           transition: width var(--transition-fast);
+          border-radius: 2px;
         }
         .nav-link:hover::after {
-          width: 100%;
+          width: 80%;
         }
-        @media (min-width: 768px) {
+        @media (max-width: 767px) {
           .desktop-nav {
-            display: flex !important;
+            display: none !important;
           }
         }
       `}</style>

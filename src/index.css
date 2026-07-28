@@ -1,48 +1,51 @@
 /* ==========================================================================
-   CHESTA SOLANKI — BALANCED PREMIUM TYPOGRAPHY & CARD SYSTEM
-   Base Scale: 15px | Headings: 30-38px | Card Titles: 23px | Body: 15px
+   CHESTA SOLANKI — APPLE KEYNOTE DUAL THEME DESIGN SYSTEM (DARK & LIGHT)
+   Dark Theme: Pure Pitch Black (#000000) + Luminous Light Blue
+   Light Theme: Crisp White (#ffffff) + Dark Navy (#0f172a) & Sky Blue
    ========================================================================== */
 
 :root {
-  /* Dark Mode: Pitch Obsidian Black + Electric Light Blue & Liquid Glass */
-  --bg-main: #030712;
-  --bg-surface: #0b1329;
+  /* Dark Mode: Pure Pitch Black (#000000) */
+  --bg-main: #000000;
+  --bg-surface: #070a12;
   
-  --bg-card: linear-gradient(135deg, rgba(11, 19, 41, 0.75) 0%, rgba(56, 189, 248, 0.06) 50%, rgba(14, 165, 233, 0.08) 100%);
-  --bg-card-hover: linear-gradient(135deg, rgba(15, 25, 52, 0.85) 0%, rgba(56, 189, 248, 0.14) 50%, rgba(125, 211, 252, 0.18) 100%);
-  --bg-card-solid: #0f172a;
+  --bg-card: linear-gradient(135deg, rgba(10, 15, 28, 0.85) 0%, rgba(56, 189, 248, 0.06) 50%, rgba(14, 165, 233, 0.08) 100%);
+  --bg-card-hover: linear-gradient(135deg, rgba(15, 24, 45, 0.95) 0%, rgba(56, 189, 248, 0.14) 50%, rgba(125, 211, 252, 0.18) 100%);
+  --bg-card-solid: #0d1322;
 
   --accent-purple: #38bdf8; /* Primary Luminous Light Blue Accent */
   --accent-violet: #0284c7;
   --accent-magenta: #7dd3fc;
   --accent-lavender: #e0f2fe;
-  --accent-cyan: #38bdf8;
+  --accent-cyan: #06b6d4;
   
   --text-primary: #ffffff;
-  --text-secondary: #cbd5e1;
-  --text-muted: #7dd3fc;
+  --text-secondary: #94a3b8;
+  --text-muted: #38bdf8;
   --text-dim: #64748b;
 
-  --border-glass: rgba(56, 189, 248, 0.3);
-  --border-glass-top: rgba(255, 255, 255, 0.6);
-  --border-glass-hover: rgba(56, 189, 248, 0.75);
+  --border-glass: rgba(56, 189, 248, 0.25);
+  --border-glass-top: rgba(255, 255, 255, 0.4);
+  --border-glass-hover: rgba(56, 189, 248, 0.6);
   --border-subtle: rgba(255, 255, 255, 0.08);
 
-  --glow-primary: rgba(56, 189, 248, 0.45);
-  --glow-secondary: rgba(125, 211, 252, 0.3);
-  --glow-card: 0 20px 50px rgba(0, 0, 0, 0.88), inset 0 1px 1px rgba(255, 255, 255, 0.28);
-  --glow-card-hover: 0 25px 65px rgba(56, 189, 248, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  --glow-primary: rgba(56, 189, 248, 0.25);
+  --glow-secondary: rgba(125, 211, 252, 0.2);
+  --glow-card: 0 20px 50px rgba(0, 0, 0, 0.95), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  --glow-card-hover: 0 25px 65px rgba(56, 189, 248, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.35);
 
-  --navbar-bg: rgba(3, 7, 18, 0.85);
+  --navbar-bg: rgba(8, 12, 24, 0.78);
+  --navbar-border: rgba(56, 189, 248, 0.28);
+  --navbar-text: #ffffff;
 
-  /* Premium Typography Tokens */
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-body: 'Manrope', sans-serif;
+  /* High-Contrast Font Pairing Tokens */
+  --font-serif: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --radius-lg: 22px;
-  --radius-md: 15px;
-  --radius-sm: 9px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
   --radius-pill: 9999px;
 
   --transition-fast: 0.2s ease;
@@ -51,10 +54,10 @@
 }
 
 [data-theme="light"] {
-  --bg-main: #f0f9ff;
+  --bg-main: #ffffff;
   --bg-surface: #ffffff;
   
-  --bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(224, 242, 254, 0.88) 100%);
+  --bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 249, 255, 0.92) 100%);
   --bg-card-hover: #ffffff;
   --bg-card-solid: #ffffff;
 
@@ -65,13 +68,58 @@
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
-  --text-muted: #64748b;
+  --text-muted: #0284c7;
+  --text-dim: #64748b;
 
-  --border-glass: rgba(2, 132, 199, 0.2);
-  --border-glass-top: rgba(255, 255, 255, 0.9);
-  --border-glass-hover: rgba(2, 132, 199, 0.5);
+  --border-glass: rgba(2, 132, 199, 0.22);
+  --border-glass-top: rgba(255, 255, 255, 0.95);
+  --border-glass-hover: rgba(2, 132, 199, 0.55);
+  --border-subtle: rgba(2, 132, 199, 0.12);
 
-  --navbar-bg: rgba(240, 249, 255, 0.92);
+  --glow-primary: rgba(2, 132, 199, 0.15);
+  --glow-secondary: rgba(2, 132, 199, 0.1);
+  --glow-card: 0 15px 40px rgba(15, 23, 42, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  --glow-card-hover: 0 20px 50px rgba(2, 132, 199, 0.2), inset 0 1px 2px rgba(255, 255, 255, 1);
+
+  --navbar-bg: rgba(255, 255, 255, 0.88);
+  --navbar-border: rgba(2, 132, 199, 0.25);
+  --navbar-text: #0f172a;
+}
+
+/* ==========================================================================
+   EXPLICIT LIGHT MODE BACKGROUND REMOVAL FOR EXPERIENCE SECTION & OTHERS
+   ========================================================================== */
+[data-theme="light"] #experience {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] #experience .cinematic-cloud-blue,
+[data-theme="light"] #experience .cinematic-cloud-purple {
+  display: none !important;
+}
+
+[data-theme="light"] .cinematic-bg-wrapper {
+  display: none !important;
+}
+
+[data-theme="light"] .blob-top-left,
+[data-theme="light"] .blob-bottom-right,
+[data-theme="light"] .blob-center-cyan,
+[data-theme="light"] .giant-gradient-orb {
+  display: none !important;
+}
+
+/* Keep Hero Volumetric Mist Cloud Soft & Active in Light Mode */
+[data-theme="light"] #hero .volumetric-mist-cloud-behind-name {
+  opacity: 0.35 !important;
+  filter: blur(140px) !important;
+  display: block !important;
+}
+
+[data-theme="light"] #hero .volumetric-mist-wave-secondary {
+  opacity: 0.25 !important;
+  display: block !important;
 }
 
 /* ==========================================================================
@@ -84,225 +132,264 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 15px;
 }
 
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
-  background-color: var(--bg-main);
+  background-color: var(--bg-main) !important;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
   min-height: 100vh;
   position: relative;
 }
 
-/* Ambient Electric Light Blue Lighting Orbs */
-body::before {
-  content: '';
-  position: fixed;
-  top: -10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 750px;
-  height: 750px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.12) 45%, transparent 75%);
-  filter: blur(140px);
+/* ==========================================================================
+   3 PRECISE GRADIENT BLOBS (DARK MODE ONLY)
+   ========================================================================== */
+.blob-top-left {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(2, 132, 199, 0.15) 50%, transparent 75%);
+  filter: blur(150px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.85;
+  animation: blobFloat1 18s ease-in-out infinite alternate;
+}
+
+.blob-bottom-right {
+  position: absolute;
+  bottom: -5%;
+  right: -5%;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(109, 40, 217, 0.12) 50%, transparent 75%);
+  filter: blur(160px);
+  pointer-events: none;
+  z-index: 0;
+  animation: blobFloat2 22s ease-in-out infinite alternate;
+}
+
+@keyframes blobFloat1 {
+  0% { transform: translate(0, 0) scale(0.95); }
+  100% { transform: translate(40px, 30px) scale(1.08); }
+}
+
+@keyframes blobFloat2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, -40px) scale(0.92); }
 }
 
 /* ==========================================================================
-   BALANCED ENHANCED TYPOGRAPHY
+   CLASH DISPLAY HEADINGS & TYPOGRAPHY
    ========================================================================== */
+.font-serif {
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
 
-/* Section Labels: 12.5px Manrope, 600 weight, 0.22em letter-spacing */
+.giant-hero-title {
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(80px, 13vw, 160px);
+  font-weight: 500 !important;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.hero-name-shine {
+  color: var(--text-primary);
+  text-shadow: 0 0 45px rgba(56, 189, 248, 0.45);
+  position: relative;
+  display: inline-block;
+  font-weight: 500 !important;
+}
+
+[data-theme="light"] .hero-name-shine {
+  text-shadow: 0 0 25px rgba(2, 132, 199, 0.35) !important;
+}
+
 .section-tag {
   font-family: var(--font-body);
   font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: var(--accent-purple);
   display: flex;
   align-items: center;
   gap: 9px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .section-tag::before {
   content: '</>';
   font-family: var(--font-mono);
   font-size: 12.5px;
-  color: #38bdf8;
+  color: var(--accent-purple);
 }
 
-/* Main Section Headings: Cormorant Garamond, clamp(1.85rem, 3.2vw, 2.4rem) (30–38px), 500 weight */
 .section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
-  font-weight: 500;
-  line-height: 1.1;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.05;
   letter-spacing: -0.015em;
   color: var(--text-primary);
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
-/* Card Titles: Cormorant Garamond, 23px, 600 weight, White */
 .card-title {
-  font-family: var(--font-serif);
-  font-size: 23px;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 24px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
-/* Company Names & Subtitles: Manrope, 16px, 500 weight */
 .company-name, .card-subtitle {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 500;
-  color: #38bdf8;
+  color: var(--accent-purple);
   line-height: 1.35;
 }
 
-/* Body Text: Manrope, 15px, 400 weight, 1.7 line-height */
 p, .body-text {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--text-secondary);
 }
 
-/* Date Badges & Status Pills: Manrope, 13px, 500 weight, 5px 14px padding */
 .date-badge, .glass-pill {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.03em;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.14);
+  color: var(--accent-purple);
+  background: rgba(56, 189, 248, 0.12);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-pill);
-  padding: 5px 14px;
+  padding: 5px 15px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
 }
 
+[data-theme="light"] .date-badge,
+[data-theme="light"] .glass-pill {
+  background: rgba(2, 132, 199, 0.1) !important;
+  color: #0284c7 !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+}
+
 /* ==========================================================================
-   GLASS CARDS & BUTTONS
+   REFINED LUXURY BUTTONS
    ========================================================================== */
-.glass-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border-glass);
-  border-top: 1px solid var(--border-glass-top);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glow-card);
-  transition: transform var(--transition-bounce), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
-  opacity: 0.7;
-}
-
-.glass-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-glass-hover);
-  border-top-color: rgba(255, 255, 255, 0.8);
-  box-shadow: var(--glow-card-hover);
-  transform: translateY(-4px);
-}
-
-/* Compact Buttons */
 .btn-primary {
-  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 50%, #7dd3fc 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
   color: #ffffff;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 13.5px;
   letter-spacing: 0.02em;
-  padding: 10px 24px;
+  padding: 9px 22px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  gap: 7px;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
   transition: transform var(--transition-bounce), box-shadow var(--transition-fast);
   text-decoration: none;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.45);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 14.5px;
+  font-weight: 500;
+  font-size: 13.5px;
   letter-spacing: 0.02em;
-  padding: 10px 22px;
+  padding: 9px 20px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-glass);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  transition: transform var(--transition-bounce), border-color var(--transition-fast);
+  gap: 7px;
+  backdrop-filter: blur(6px);
+  transition: transform var(--transition-bounce), border-color var(--transition-fast), color var(--transition-fast);
   text-decoration: none;
 }
 
 .btn-secondary:hover {
-  background: rgba(56, 189, 248, 0.22);
-  border-color: #38bdf8;
-  color: #38bdf8;
+  background: rgba(2, 132, 199, 0.08);
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
   transform: translateY(-2px);
 }
 
-/* Container & Section Spacing */
+[data-theme="light"] .premium-glass-card,
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(2, 132, 199, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="light"] .premium-glass-card:hover,
+[data-theme="light"] .glass-card:hover {
+  background: #ffffff !important;
+  border-color: rgba(2, 132, 199, 0.6) !important;
+  box-shadow: 0 15px 40px rgba(2, 132, 199, 0.2) !important;
+}
+
 .container {
-  max-width: 1180px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 26px;
+  padding: 0 28px;
   position: relative;
   z-index: 1;
 }
 
 .section-spacing {
-  padding: 72px 0;
+  padding: 96px 0;
+  position: relative;
 }
 
-/* Modal */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 18, 0.92);
+  background: rgba(0, 0, 0, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
@@ -326,9 +413,9 @@ p, .body-text {
 }
 
 .pulse-dot {
-  width: 7.5px;
-  height: 7.5px;
-  background-color: #38bdf8;
+  width: 7px;
+  height: 7px;
+  background-color: var(--accent-purple);
   border-radius: 50%;
   display: inline-block;
   box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
@@ -338,5 +425,5 @@ p, .body-text {
 @keyframes pulse {
   0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
   70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(56, 189, 248, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
 }

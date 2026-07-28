@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Phone, Send, Copy, Check, ArrowUpRight, Heart } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, InstagramIcon } from './Icons';
 import RevealOnScroll from './RevealOnScroll';
+import CinematicDeveloperBackground from './CinematicDeveloperBackground';
 
 export default function Contact({ onOpenResume }) {
   const [copiedField, setCopiedField] = useState(null);
@@ -13,15 +14,18 @@ export default function Contact({ onOpenResume }) {
   };
 
   return (
-    <footer id="contact" className="section-spacing" style={{ position: 'relative', borderTop: '1px solid var(--border-glass)' }}>
-      <div className="container">
+    <footer id="contact" className="section-spacing" style={{ position: 'relative', overflow: 'hidden', borderTop: '1px solid var(--border-glass)' }}>
+      {/* Cinematic Background Layer */}
+      <CinematicDeveloperBackground />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
         {/* Massive CTA Card matching reference image: "Let's talk about your project" */}
         <RevealOnScroll>
           <div className="glass-card" style={{
             padding: 'clamp(32px, 6vw, 64px)',
             borderRadius: 'var(--radius-lg)',
-            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%)',
+            background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%)',
             marginBottom: '60px',
             textAlign: 'center',
             position: 'relative',
@@ -40,7 +44,7 @@ export default function Contact({ onOpenResume }) {
               marginBottom: '20px'
             }}>
               Let's talk about<br />
-              <span style={{ color: '#10b981', textShadow: '0 0 25px rgba(16, 185, 129, 0.4)' }}>your project & opportunities</span>
+              <span style={{ color: '#38bdf8', textShadow: '0 0 25px rgba(56, 189, 248, 0.4)' }}>your project &amp; opportunities</span>
             </h2>
 
             <p style={{
@@ -58,22 +62,25 @@ export default function Contact({ onOpenResume }) {
               <a
                 href="mailto:chestasolanki664@gmail.com"
                 className="btn-primary"
-                style={{
-                  padding: '14px 32px',
-                  fontSize: '1rem',
-                  background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
-                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.35)'
-                }}
+                style={{ padding: '14px 32px', fontSize: '1rem' }}
               >
                 <Mail size={18} />
-                <span>Contact us</span>
-                <Send size={16} />
+                <span>Send Email</span>
+              </a>
+
+              <a
+                href="tel:+917455042260"
+                className="btn-secondary"
+                style={{ padding: '14px 28px', fontSize: '1rem' }}
+              >
+                <Phone size={18} />
+                <span>Call Me</span>
               </a>
 
               <button
                 onClick={onOpenResume}
                 className="btn-secondary"
-                style={{ padding: '14px 28px', fontSize: '1rem' }}
+                style={{ padding: '14px 28px', fontSize: '1rem', background: 'rgba(56, 189, 248, 0.15)', borderColor: '#38bdf8' }}
               >
                 <span>Watch Resume</span>
                 <ArrowUpRight size={18} />
@@ -82,128 +89,183 @@ export default function Contact({ onOpenResume }) {
           </div>
         </RevealOnScroll>
 
-        {/* Contact Links Grid */}
+        {/* Detailed Contact Cards Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '20px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '24px',
           marginBottom: '60px'
         }}>
-          
-          {/* Email Box */}
-          <RevealOnScroll delay={0}>
-            <div className="glass-card" style={{ padding: '24px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#10b981' }}>
-                  <Mail size={20} />
-                  <span style={{ fontWeight: '700', fontSize: '0.85rem', fontFamily: 'var(--font-mono)' }}>EMAIL</span>
-                </div>
-                <button
-                  onClick={() => copyToClipboard('chestasolanki664@gmail.com', 'email')}
-                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
-                  title="Copy email"
-                >
-                  {copiedField === 'email' ? <Check size={16} style={{ color: '#10b981' }} /> : <Copy size={16} />}
-                </button>
+          {/* Direct Email Card */}
+          <div className="glass-card" style={{ padding: '28px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(56, 189, 248, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8' }}>
+                <Mail size={20} />
               </div>
-              <a
-                href="mailto:chestasolanki664@gmail.com"
-                style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '700', fontSize: '0.90rem', wordBreak: 'break-all' }}
-              >
-                chestasolanki664@gmail.com
-              </a>
+              <div>
+                <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Direct Email</div>
+                <div style={{ fontWeight: '700', fontSize: '1rem', color: 'var(--text-primary)' }}>chestasolanki664@gmail.com</div>
+              </div>
             </div>
-          </RevealOnScroll>
+            <button
+              onClick={() => copyToClipboard('chestasolanki664@gmail.com', 'email')}
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: 'var(--radius-sm)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid var(--border-glass)',
+                color: 'var(--text-primary)',
+                fontSize: '0.88rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                transition: 'all var(--transition-fast)'
+              }}
+            >
+              {copiedField === 'email' ? <Check size={16} style={{ color: '#38bdf8' }} /> : <Copy size={16} />}
+              <span>{copiedField === 'email' ? 'Email Copied!' : 'Copy Email Address'}</span>
+            </button>
+          </div>
 
-          {/* Phone Box */}
-          <RevealOnScroll delay={100}>
-            <div className="glass-card" style={{ padding: '24px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#06b6d4' }}>
-                  <Phone size={20} />
-                  <span style={{ fontWeight: '700', fontSize: '0.85rem', fontFamily: 'var(--font-mono)' }}>PHONE</span>
-                </div>
-                <button
-                  onClick={() => copyToClipboard('+91-7455042260', 'phone')}
-                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
-                  title="Copy phone"
-                >
-                  {copiedField === 'phone' ? <Check size={16} style={{ color: '#10b981' }} /> : <Copy size={16} />}
-                </button>
+          {/* Phone Contact Card */}
+          <div className="glass-card" style={{ padding: '28px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(56, 189, 248, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8' }}>
+                <Phone size={20} />
               </div>
-              <a
-                href="tel:+917455042260"
-                style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '700', fontSize: '0.9rem' }}
-              >
-                +91-7455042260
-              </a>
+              <div>
+                <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Phone Contact</div>
+                <div style={{ fontWeight: '700', fontSize: '1rem', color: 'var(--text-primary)' }}>+91-7455042260</div>
+              </div>
             </div>
-          </RevealOnScroll>
+            <button
+              onClick={() => copyToClipboard('+917455042260', 'phone')}
+              style={{
+                width: '100%',
+                padding: '10px',
+                borderRadius: 'var(--radius-sm)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid var(--border-glass)',
+                color: 'var(--text-primary)',
+                fontSize: '0.88rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                transition: 'all var(--transition-fast)'
+              }}
+            >
+              {copiedField === 'phone' ? <Check size={16} style={{ color: '#38bdf8' }} /> : <Copy size={16} />}
+              <span>{copiedField === 'phone' ? 'Phone Copied!' : 'Copy Phone Number'}</span>
+            </button>
+          </div>
 
-          {/* LinkedIn Box */}
-          <RevealOnScroll delay={200}>
-            <div className="glass-card" style={{ padding: '24px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#0a66c2' }}>
-                  <LinkedinIcon size={20} />
-                  <span style={{ fontWeight: '700', fontSize: '0.85rem', fontFamily: 'var(--font-mono)' }}>LINKEDIN</span>
-                </div>
-                <ArrowUpRight size={16} style={{ color: 'var(--text-muted)' }} />
-              </div>
+          {/* Social Profiles Card (LinkedIn, GitHub, Instagram) */}
+          <div className="glass-card" style={{ padding: '28px' }}>
+            <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '12px' }}>Professional Profiles</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               <a
                 href="https://linkedin.com/in/chestasolanki1/"
                 target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '700', fontSize: '0.90rem' }}
+                rel="noreferrer"
+                style={{
+                  flex: 1,
+                  minWidth: '100px',
+                  padding: '10px 12px',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid var(--border-glass)',
+                  color: 'var(--text-primary)',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  fontWeight: '600',
+                  fontSize: '0.88rem'
+                }}
               >
-                linkedin.com/in/chestasolanki1
+                <LinkedinIcon size={16} />
+                <span>LinkedIn</span>
               </a>
-            </div>
-          </RevealOnScroll>
 
-          {/* GitHub Box */}
-          <RevealOnScroll delay={300}>
-            <div className="glass-card" style={{ padding: '24px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)' }}>
-                  <GithubIcon size={20} />
-                  <span style={{ fontWeight: '700', fontSize: '0.85rem', fontFamily: 'var(--font-mono)' }}>GITHUB</span>
-                </div>
-                <ArrowUpRight size={16} style={{ color: 'var(--text-muted)' }} />
-              </div>
               <a
                 href="https://github.com/chestasolanki"
                 target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: '700', fontSize: '0.90rem' }}
+                rel="noreferrer"
+                style={{
+                  flex: 1,
+                  minWidth: '100px',
+                  padding: '10px 12px',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid var(--border-glass)',
+                  color: 'var(--text-primary)',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  fontWeight: '600',
+                  fontSize: '0.88rem'
+                }}
               >
-                github.com/chestasolanki
+                <GithubIcon size={16} />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href="https://instagram.com/chesta.24"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  flex: 1,
+                  minWidth: '100px',
+                  padding: '10px 12px',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid var(--border-glass)',
+                  color: 'var(--text-primary)',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  fontWeight: '600',
+                  fontSize: '0.88rem'
+                }}
+              >
+                <InstagramIcon size={16} color="#e1306c" />
+                <span>Instagram</span>
               </a>
             </div>
-          </RevealOnScroll>
-
+          </div>
         </div>
 
-        {/* Bottom Credits */}
+        {/* Footer Sub-Bar */}
         <div style={{
           display: 'flex',
-          justify: 'space-between',
-          alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '16px',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           paddingTop: '32px',
-          borderTop: '1px solid var(--border-subtle)',
-          color: 'var(--text-muted)',
-          fontSize: '0.85rem'
+          borderTop: '1px solid var(--border-glass)',
+          fontSize: '0.88rem',
+          color: 'var(--text-muted)'
         }}>
           <div>
-            © {new Date().getFullYear()} <strong>Chesta Solanki</strong>
+            © {new Date().getFullYear()} <strong style={{ color: 'var(--text-primary)' }}>CHESTA SOLANKI</strong>. Built with React &amp; Tailwind CSS.
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span>Crafted with</span>
-            <Heart size={14} style={{ color: '#10b981', fill: '#10b981' }} />
-            <span>using React & Modern CSS</span>
+            <span>Designed &amp; Developed with</span>
+            <Heart size={14} style={{ color: '#ef4444', fill: '#ef4444' }} />
           </div>
         </div>
 

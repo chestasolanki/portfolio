@@ -4,6 +4,7 @@ import { MotionTitle } from './MotionText';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Layout, Server, Database, Brain, Wrench, BookOpen, Award, CheckCircle2 } from 'lucide-react';
 import InteractiveTechCube from './InteractiveTechCube';
+import CinematicDeveloperBackground from './CinematicDeveloperBackground';
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState('languages');
@@ -65,6 +66,21 @@ export default function Skills() {
 
   const certifications = [
     {
+      title: 'AWS – Machine Learning Foundations',
+      issuer: 'Amazon Web Services (AWS)',
+      date: '2024'
+    },
+    {
+      title: 'Palo Alto – Cloud Security Automation, Network Security, Operations & Configurations',
+      issuer: 'Palo Alto Networks',
+      date: '2024'
+    },
+    {
+      title: 'Red Hat – Red Hat System Administration',
+      issuer: 'Red Hat',
+      date: '2024'
+    },
+    {
       title: 'Supervised Machine Learning: Regression and Classification',
       issuer: 'Coursera / DeepLearning.AI',
       date: '2024'
@@ -77,8 +93,11 @@ export default function Skills() {
   ];
 
   return (
-    <PageTransitionSection id="skills" className="section-spacing">
-      <div className="container">
+    <PageTransitionSection id="skills" className="section-spacing" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Cinematic Background Layer */}
+      <CinematicDeveloperBackground />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
         <div style={{ marginBottom: '36px' }}>
@@ -87,7 +106,7 @@ export default function Skills() {
           </div>
           <div>
             <h2 className="section-title" style={{ margin: 0 }}>
-              <MotionTitle>Technical Skills </MotionTitle>
+              <MotionTitle>Technical Skills</MotionTitle>
             </h2>
           </div>
         </div>
@@ -119,7 +138,7 @@ export default function Skills() {
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id)}
                   style={{
-                    background: isActive ? 'linear-gradient(135deg, var(--accent-purple), var(--accent-violet))' : 'transparent',
+                    background: isActive ? 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)' : 'transparent',
                     color: isActive ? '#ffffff' : 'var(--text-secondary)',
                     border: 'none',
                     borderRadius: 'var(--radius-sm)',
@@ -132,7 +151,7 @@ export default function Skills() {
                     alignItems: 'center',
                     gap: '8px',
                     transition: 'all var(--transition-fast)',
-                    boxShadow: isActive ? '0 4px 15px rgba(168, 85, 247, 0.4)' : 'none'
+                    boxShadow: isActive ? '0 4px 15px rgba(56, 189, 248, 0.4)' : 'none'
                   }}
                 >
                   <IconComp size={15} />
@@ -172,8 +191,8 @@ export default function Skills() {
                     <span style={{
                       fontSize: '0.72rem',
                       fontFamily: 'var(--font-mono)',
-                      color: 'var(--accent-purple)',
-                      background: 'rgba(168, 85, 247, 0.12)',
+                      color: '#38bdf8',
+                      background: 'rgba(56, 189, 248, 0.12)',
                       padding: '2px 8px',
                       borderRadius: 'var(--radius-pill)',
                       border: '1px solid var(--border-glass)'
@@ -191,23 +210,23 @@ export default function Skills() {
 
           {/* Certifications Card Footer */}
           <div style={{ marginTop: '36px' }}>
-            <div className="glass-card" style={{ padding: '24px 28px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                <Award size={18} style={{ color: 'var(--accent-purple)' }} />
-                <span className="font-serif" style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-primary)' }}>
-                  Certifications &amp; Coding Benchmarks
+            <div className="glass-card" style={{ padding: '28px 32px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+                <Award size={22} style={{ color: '#38bdf8' }} />
+                <span className="font-serif" style={{ fontSize: '1.3rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+                  Certifications &amp; Professional Credentials
                 </span>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
                 {certifications.map((cert, cIdx) => (
-                  <div key={cIdx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                    <CheckCircle2 size={16} style={{ color: 'var(--accent-purple)', marginTop: '3px', flexShrink: 0 }} />
+                  <div key={cIdx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                    <CheckCircle2 size={18} style={{ color: '#38bdf8', marginTop: '3px', flexShrink: 0 }} />
                     <div>
-                      <div style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+                      <div style={{ fontSize: '0.94rem', fontWeight: '700', color: 'var(--text-primary)', lineHeight: '1.4' }}>
                         {cert.title}
                       </div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                      <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                         {cert.issuer} • {cert.date}
                       </div>
                     </div>
