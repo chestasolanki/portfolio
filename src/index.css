@@ -1,6 +1,6 @@
 /* ==========================================================================
-   CHESTA SOLANKI — CREATIVE DEVELOPER LUXURY DARK & LIGHT BLUE GLASS UI
-   Theme: Pitch Black (#030712) + Luminous Light Blue (#38bdf8) + Electric Cyan (#06b6d4)
+   CHESTA SOLANKI — BALANCED PREMIUM TYPOGRAPHY & CARD SYSTEM
+   Base Scale: 15px | Headings: 30-38px | Card Titles: 23px | Body: 15px
    ========================================================================== */
 
 :root {
@@ -40,9 +40,9 @@
   --font-body: 'Manrope', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-sm: 8px;
+  --radius-lg: 22px;
+  --radius-md: 15px;
+  --radius-sm: 9px;
   --radius-pill: 9999px;
 
   --transition-fast: 0.2s ease;
@@ -85,16 +85,16 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 body {
   background-color: var(--bg-main);
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.7;
   overflow-x: hidden;
   transition: background-color var(--transition-normal), color var(--transition-normal);
   min-height: 100vh;
@@ -108,8 +108,8 @@ body::before {
   top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
-  height: 700px;
+  width: 750px;
+  height: 750px;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.12) 45%, transparent 75%);
   filter: blur(140px);
   pointer-events: none;
@@ -118,83 +118,83 @@ body::before {
 }
 
 /* ==========================================================================
-   COMPACT ELEGANT TYPOGRAPHY
+   BALANCED ENHANCED TYPOGRAPHY
    ========================================================================== */
 
-/* Section Labels: 11.5px Manrope, 600 weight, 0.22em letter-spacing */
+/* Section Labels: 12.5px Manrope, 600 weight, 0.22em letter-spacing */
 .section-tag {
   font-family: var(--font-body);
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #38bdf8;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 9px;
+  margin-bottom: 10px;
 }
 
 .section-tag::before {
   content: '</>';
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: #38bdf8;
 }
 
-/* Main Section Headings: Cormorant Garamond, clamp(1.5rem, 2.5vw, 2rem) (24–32px), 500 weight */
+/* Main Section Headings: Cormorant Garamond, clamp(1.85rem, 3.2vw, 2.4rem) (30–38px), 500 weight */
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.015em;
   color: var(--text-primary);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-/* Card Titles: Cormorant Garamond, 20px, 600 weight, White */
+/* Card Titles: Cormorant Garamond, 23px, 600 weight, White */
 .card-title {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
   color: #ffffff;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
-/* Company Names & Subtitles: Manrope, 14.5px, 500 weight */
+/* Company Names & Subtitles: Manrope, 16px, 500 weight */
 .company-name, .card-subtitle {
   font-family: var(--font-body);
-  font-size: 14.5px;
+  font-size: 16px;
   font-weight: 500;
   color: #38bdf8;
   line-height: 1.35;
 }
 
-/* Body Text: Manrope, 14px, 400 weight, 1.6 line-height */
+/* Body Text: Manrope, 15px, 400 weight, 1.7 line-height */
 p, .body-text {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
-/* Date Badges & Status Pills: Manrope, 12px, 500 weight, 4px 12px padding */
+/* Date Badges & Status Pills: Manrope, 13px, 500 weight, 5px 14px padding */
 .date-badge, .glass-pill {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.03em;
   color: #38bdf8;
   background: rgba(56, 189, 248, 0.14);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-pill);
-  padding: 4px 12px;
+  padding: 5px 14px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
 }
 
 /* ==========================================================================
@@ -238,9 +238,9 @@ p, .body-text {
   color: #ffffff;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 13.5px;
+  font-size: 14.5px;
   letter-spacing: 0.02em;
-  padding: 9px 22px;
+  padding: 10px 24px;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 255, 255, 0.35);
   cursor: pointer;
@@ -262,9 +262,9 @@ p, .body-text {
   color: var(--text-primary);
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 13.5px;
+  font-size: 14.5px;
   letter-spacing: 0.02em;
-  padding: 9px 20px;
+  padding: 10px 22px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-glass);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -287,15 +287,15 @@ p, .body-text {
 
 /* Container & Section Spacing */
 .container {
-  max-width: 1140px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 26px;
   position: relative;
   z-index: 1;
 }
 
 .section-spacing {
-  padding: 64px 0;
+  padding: 72px 0;
 }
 
 /* Modal */
@@ -309,7 +309,7 @@ p, .body-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 22px;
 }
 
 .modal-content {
@@ -318,7 +318,7 @@ p, .body-text {
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 840px;
+  max-width: 860px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95);
@@ -326,8 +326,8 @@ p, .body-text {
 }
 
 .pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 7.5px;
+  height: 7.5px;
   background-color: #38bdf8;
   border-radius: 50%;
   display: inline-block;

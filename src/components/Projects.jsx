@@ -26,7 +26,7 @@ export default function Projects() {
       <div className="container">
         
         {/* Section Header */}
-        <div style={{ marginBottom: '28px' }}>
+        <div style={{ marginBottom: '32px' }}>
           <div className="section-tag">
             <span>FEATURED WORK</span>
           </div>
@@ -38,7 +38,7 @@ export default function Projects() {
         </div>
 
         {/* Projects Cards Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '28px' }}>
           {projectList.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -50,25 +50,25 @@ export default function Projects() {
               <div
                 className="glass-card"
                 style={{
-                  padding: '24px 28px',
+                  padding: '28px 32px',
                   borderRadius: 'var(--radius-lg)'
                 }}
               >
                 <div>
-                  <div style={{ marginBottom: '12px' }}>
-                    <h3 className="card-title" style={{ fontSize: '22px' }}>
+                  <div style={{ marginBottom: '14px' }}>
+                    <h3 className="card-title" style={{ fontSize: '24px' }}>
                       {project.title}
                     </h3>
-                    <div className="card-subtitle" style={{ fontSize: '14px', marginTop: '2px' }}>
+                    <div className="card-subtitle" style={{ fontSize: '15px', marginTop: '3px' }}>
                       {project.subtitle}
                     </div>
                   </div>
 
                   <p style={{
                     color: 'var(--text-secondary)',
-                    fontSize: '13.5px',
-                    lineHeight: '1.65',
-                    marginBottom: '18px',
+                    fontSize: '14.5px',
+                    lineHeight: '1.7',
+                    marginBottom: '20px',
                     fontWeight: '400'
                   }}>
                     {project.description}
@@ -78,24 +78,24 @@ export default function Projects() {
                   <div>
                     <div style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '11px',
+                      fontSize: '12px',
                       color: 'var(--text-muted)',
-                      marginBottom: '8px',
+                      marginBottom: '10px',
                       textTransform: 'uppercase',
                       letterSpacing: '0.12em'
                     }}>
                       Tools Used:
                     </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                       {project.tools.map((tool, tIdx) => (
                         <span
                           key={tIdx}
                           style={{
-                            fontSize: '11.5px',
+                            fontSize: '12.5px',
                             fontFamily: 'var(--font-mono)',
-                            background: 'rgba(168, 85, 247, 0.12)',
-                            color: '#A855F7',
-                            padding: '4px 12px',
+                            background: 'rgba(56, 189, 248, 0.12)',
+                            color: '#38bdf8',
+                            padding: '5px 14px',
                             borderRadius: 'var(--radius-pill)',
                             border: '1px solid var(--border-glass)'
                           }}
