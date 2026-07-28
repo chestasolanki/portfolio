@@ -351,12 +351,6 @@ export default function RobotCompanion() {
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       {/* 3D WebGL Canvas */}
       <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
-
-      {/* Floating "Built with Spline" Badge */}
-      <div className="spline-badge">
-        <span className="spline-badge-icon" />
-        <span>Built with Spline</span>
-      </div>
     </div>
   );
 }
