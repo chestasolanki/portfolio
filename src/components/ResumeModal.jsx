@@ -1,6 +1,5 @@
 import React from 'react';
-import { X, Mail, Phone, Globe, Code2, Download, ExternalLink } from 'lucide-react';
-import { InstagramIcon } from './Icons';
+import { X, Mail, Globe, Code2, Download, ExternalLink } from 'lucide-react';
 
 export default function ResumeModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -99,11 +98,6 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <span>chestasolanki664@gmail.com</span>
               </a>
 
-              <a href="tel:+917455042260" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Phone size={13} style={{ color: '#38bdf8' }} />
-                <span>+91-7455042260</span>
-              </a>
-
               <a href="https://linkedin.com/in/chestasolanki1/" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Globe size={13} style={{ color: '#38bdf8' }} />
                 <span>linkedin.com/in/chestasolanki1/</span>
@@ -112,11 +106,6 @@ export default function ResumeModal({ isOpen, onClose }) {
               <a href="https://github.com/chestasolanki" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Code2 size={13} style={{ color: '#38bdf8' }} />
                 <span>github.com/chestasolanki</span>
-              </a>
-
-              <a href="https://instagram.com/chesta.24" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <InstagramIcon size={13} color="#e1306c" />
-                <span>instagram.com/chesta.24</span>
               </a>
             </div>
           </div>

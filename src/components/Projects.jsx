@@ -1,93 +1,164 @@
 import React from 'react';
-import PageTransitionSection from './PageTransitionSection';
-import { MotionTitle } from './MotionText';
 import { motion } from 'framer-motion';
+import { ExternalLink, Sparkles } from 'lucide-react';
+import { GithubIcon } from './Icons';
+import PageTransitionSection from './PageTransitionSection';
 import CinematicDeveloperBackground from './CinematicDeveloperBackground';
+import TiltCard from './TiltCard';
 
 export default function Projects() {
-  const projectList = [
+  const projectsList = [
     {
-      id: 'craftly',
-      title: 'Craftly',
-      subtitle: 'AI-Powered Website Generation Platform',
-      description: 'Developed an AI-powered website generation platform that transforms natural language prompts into fully functional websites using Large Language Models (LLMs). Implemented prompt engineering, real-time LLM response streaming with Server-Sent Events (SSE), automated code generation, file creation, and live preview deployment to enable an end-to-end AI-driven website generation workflow.',
-      tools: ['LLMs', 'Prompt Engineering', 'Node.js', 'Express.js', 'REST APIs', 'Server-Sent Events (SSE)', 'HTML', 'CSS', 'JavaScript']
+      title: 'Craftly — AI-Powered Website Generation Platform',
+      subtitle: 'Prompt-to-Website Engine',
+      description: 'Built an AI platform that converts natural language prompts into live functional websites. Features real-time SSE streaming for live code execution and interactive code preview.',
+      tags: ['LLMs', 'Prompt Engineering', 'Node.js', 'Express.js', 'REST APIs', 'SSE', 'HTML/CSS/JS'],
+      github: 'https://github.com/chestasolanki/craftly',
+      live: '#',
+      featured: true,
+      metrics: 'Real-time Generation'
     },
     {
-      id: 'prepai',
-      title: 'PrepAI',
-      subtitle: 'AI Interview Preparation Platform',
-      description: 'Built a full-stack AI interview preparation platform using React.js, Node.js, Express.js, and MySQL with authentication, analytics dashboards, company-wise preparation tracking, interview workflows, and performance tracking. Implemented secure backend architecture and optimized database operations for scalable and efficient performance.',
-      tools: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Tailwind CSS']
+      title: 'PrepAI — AI Interview Preparation Platform',
+      subtitle: 'Interactive AI Mock Interviewer',
+      description: 'Created a full-stack AI interview prep application with custom question generation, feedback analytics dashboards, authentication workflows, and performance tracking.',
+      tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Tailwind CSS'],
+      github: 'https://github.com/chestasolanki/prep-ai',
+      live: '#',
+      featured: true,
+      metrics: 'Full-Stack Solution'
     }
   ];
 
   return (
-    <PageTransitionSection id="projects" className="section-spacing" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Cinematic Background Layer */}
+    <PageTransitionSection
+      id="projects"
+      className="section-spacing"
+      style={{ position: 'relative', overflow: 'hidden' }}
+    >
+      {/* Reusable Cinematic Developer Background */}
       <CinematicDeveloperBackground />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '48px' }}>
           <div className="section-tag">
             <span>FEATURED WORK</span>
           </div>
-          <div>
-            <h2 className="section-title" style={{ margin: 0 }}>
-              <MotionTitle>Featured Projects</MotionTitle>
-            </h2>
-          </div>
+          <h2 className="section-title" style={{ margin: 0 }}>
+            Featured Projects
+          </h2>
         </div>
 
-        {/* Projects Cards Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '28px' }}>
-          {projectList.map((project, idx) => (
+        {/* Projects Cards Column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+          {projectsList.map((project, idx) => (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.75, delay: idx * 0.12 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.12 }}
             >
-              <div
-                className="glass-card"
-                style={{
-                  padding: '28px 32px',
-                  borderRadius: 'var(--radius-lg)'
-                }}
-              >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <div>
-                    <h3 className="card-title" style={{ fontSize: '24px' }}>{project.title}</h3>
-                    <div className="card-subtitle" style={{ fontSize: '15px' }}>{project.subtitle}</div>
+              <TiltCard intensity={10}>
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: 'clamp(28px, 4vw, 42px)',
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid var(--border-glass)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                >
+                  {/* Subtle Accent Glow Corner */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: '180px',
+                    height: '180px',
+                    background: 'radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.18) 0%, transparent 70%)',
+                    pointerEvents: 'none'
+                  }} />
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
+                    <div>
+                      <div className="section-tag" style={{ marginBottom: '6px', fontSize: '11px' }}>
+                        <Sparkles size={13} />
+                        <span>{project.subtitle}</span>
+                      </div>
+                      <h3 style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
+                        fontWeight: '600',
+                        color: 'var(--text-primary)',
+                        lineHeight: '1.2'
+                      }}>
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <span style={{
+                      fontSize: '12px',
+                      fontFamily: 'var(--font-mono)',
+                      color: 'var(--accent-purple)',
+                      background: 'rgba(56, 189, 248, 0.12)',
+                      border: '1px solid var(--border-glass)',
+                      padding: '4px 14px',
+                      borderRadius: 'var(--radius-pill)'
+                    }}>
+                      {project.metrics}
+                    </span>
                   </div>
 
-                  <p style={{ fontSize: '14.5px', lineHeight: '1.7', color: 'var(--text-secondary)' }}>
+                  <p style={{
+                    fontSize: '1rem',
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.65',
+                    marginBottom: '24px',
+                    maxWidth: '850px'
+                  }}>
                     {project.description}
                   </p>
 
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '6px' }}>
-                    {project.tools.map((tool, tIdx) => (
+                  {/* Tech Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '28px' }}>
+                    {project.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
                         style={{
-                          fontSize: '12.5px',
+                          fontSize: '12px',
                           fontFamily: 'var(--font-mono)',
+                          color: 'var(--text-primary)',
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid var(--border-glass)',
                           padding: '4px 12px',
-                          borderRadius: 'var(--radius-pill)',
-                          background: 'rgba(56, 189, 248, 0.12)',
-                          color: '#38bdf8',
-                          border: '1px solid var(--border-glass)'
+                          borderRadius: 'var(--radius-pill)'
                         }}
                       >
-                        {tool}
+                        {tag}
                       </span>
                     ))}
                   </div>
+
+                  {/* Action Links */}
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-secondary"
+                      style={{ fontSize: '13px', padding: '8px 18px' }}
+                    >
+                      <GithubIcon size={15} />
+                      <span>Repository</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

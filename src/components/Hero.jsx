@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PageTransitionSection from './PageTransitionSection';
+import RobotCompanion from './RobotCompanion';
 
 export default function Hero() {
   const phrases = [
@@ -41,247 +42,267 @@ export default function Hero() {
       id="hero"
       style={{
         minHeight: '100vh',
-        padding: '140px 0 80px 0',
+        padding: '130px 5vw 80px 5vw',
         position: 'relative',
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center'
+        background: 'var(--bg-main)',
+        overflow: 'hidden',
+        transition: 'background-color 0.35s ease',
       }}
     >
-      {/* 3 PRECISE GRADIENT BLOBS */}
-      <div className="blob-top-left" />
-      <div className="blob-bottom-right" />
-
-      {/* FULLY SPREAD VOLUMETRIC ILLUMINATED MIST CLOUD */}
+      {/* ULTRA BRIGHT ELECTRIC BLUE VOLUMETRIC GLOW BEHIND ROBOT */}
       <div
-        className="volumetric-mist-cloud-behind-name"
+        className="hero-robot-glow"
         style={{
           position: 'absolute',
-          top: '32%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '150vw',
-          height: '750px',
+          top: '50%',
+          right: '2%',
+          transform: 'translateY(-50%)',
+          width: '780px',
+          height: '780px',
           pointerEvents: 'none',
           zIndex: 0,
-          opacity: 0.65,
-          filter: 'blur(180px)',
-          background: 'radial-gradient(ellipse 100% 70% at 50% 45%, rgba(139, 92, 246, 0.4) 0%, rgba(56, 189, 248, 0.45) 30%, rgba(182, 168, 255, 0.35) 55%, rgba(2, 132, 199, 0.2) 80%, transparent 100%)',
-          animation: 'mistSpreadFlow 26s ease-in-out infinite alternate'
+          opacity: 0.92,
+          filter: 'blur(100px)',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.95) 0%, rgba(14, 165, 233, 0.75) 30%, rgba(2, 132, 199, 0.45) 55%, rgba(125, 211, 252, 0.2) 75%, transparent 85%)',
         }}
       />
 
+      {/* INNER INTENSE NEON BLUE CORE GLOW */}
       <div
-        className="volumetric-mist-wave-secondary"
+        className="hero-robot-core-glow"
         style={{
           position: 'absolute',
-          top: '36%',
-          left: '48%',
-          transform: 'translate(-50%, -50%)',
-          width: '130vw',
-          height: '650px',
+          top: '50%',
+          right: '8%',
+          transform: 'translateY(-50%)',
+          width: '460px',
+          height: '460px',
           pointerEvents: 'none',
           zIndex: 0,
-          opacity: 0.5,
-          filter: 'blur(200px)',
-          background: 'radial-gradient(ellipse 90% 60% at 48% 50%, rgba(56, 189, 248, 0.45) 0%, rgba(139, 92, 246, 0.35) 45%, rgba(182, 168, 255, 0.2) 80%, transparent 100%)',
-          animation: 'mistWaveDrift 28s ease-in-out infinite alternate'
+          opacity: 0.85,
+          filter: 'blur(70px)',
+          background: 'radial-gradient(circle, rgba(186, 230, 253, 0.95) 0%, rgba(56, 189, 248, 0.85) 40%, transparent 70%)',
         }}
       />
 
-      {/* SUBTLE FLOATING HERO CONTAINER */}
+      {/* Main Two-Column Row */}
       <div
-        className="container"
+        className="hero-row"
         style={{
           position: 'relative',
           zIndex: 1,
-          maxWidth: '1100px',
+          width: '100%',
+          maxWidth: '1400px',
           margin: '0 auto',
-          animation: 'heroFloatSubtle 9s ease-in-out infinite alternate'
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '40px',
         }}
       >
-        
-        {/* 1. Badge: AVAILABLE FOR OPPORTUNITIES */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          style={{ marginBottom: '28px' }}
-        >
-          <div className="glass-pill" style={{ padding: '7px 20px', fontSize: '13.5px' }}>
-            <span className="pulse-dot" />
-            <span>AVAILABLE FOR OPPORTUNITIES</span>
-          </div>
-        </motion.div>
+        {/* ---------------- LEFT: Text Content ---------------- */}
+        <div style={{ textAlign: 'left', maxWidth: '640px', flex: '1 1 480px' }}>
 
-        {/* 2. GIANT HERO NAME (FOCAL POINT): CHESTA / SOLANKI (Slightly Reduced Font Weight 500) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          style={{ marginBottom: '24px', position: 'relative' }}
-        >
-          <h1 className="giant-hero-title">
-            <span style={{ display: 'block', color: 'var(--text-primary)', fontWeight: '500' }}>CHESTA</span>
-            <span className="hero-name-shine" style={{ display: 'block', color: 'var(--accent-purple)', fontWeight: '500', textShadow: '0 0 35px rgba(56, 189, 248, 0.4)' }}>
-              SOLANKI
-            </span>
-          </h1>
-        </motion.div>
-
-        {/* 3. Role Tag: FULL-STACK ENGINEER */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'clamp(15px, 2.2vw, 22px)',
-            color: 'var(--accent-purple)',
-            letterSpacing: '0.25em',
-            marginBottom: '24px',
-            textTransform: 'uppercase',
-            fontWeight: '600'
-          }}
-        >
-          &gt;_ FULL-STACK ENGINEER
-        </motion.div>
-
-        {/* 4. Terminal Typewriter: > Building Products_ */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '17px',
-            color: '#4ade80',
-            fontWeight: '700',
-            marginBottom: '28px',
-            display: 'inline-block',
-            background: 'rgba(74, 222, 128, 0.08)',
-            padding: '10px 24px',
-            borderRadius: 'var(--radius-pill)',
-            border: '1px solid rgba(74, 222, 128, 0.25)'
-          }}
-        >
-          &gt; {typedText}
-        </motion.div>
-
-        {/* 5. Description Paragraph (MAX 500-550px WIDE) */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35 }}
-          style={{
-            fontSize: '16px',
-            color: 'var(--text-secondary)',
-            maxWidth: '520px',
-            margin: '0 auto 34px auto',
-            lineHeight: '1.75',
-            fontWeight: '400'
-          }}
-        >
-          Building scalable web applications, AI-powered experiences, and modern digital products with a focus on performance, design, and user experience.
-        </motion.p>
-
-        {/* 6. Refined Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginBottom: '36px' }}
-        >
-          <a
-            href="mailto:chestasolanki664@gmail.com"
-            className="btn-primary"
-            style={{ padding: '10px 24px', fontSize: '14px' }}
+          {/* 1. Badge: AVAILABLE FOR OPPORTUNITIES */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            style={{ marginBottom: '24px' }}
           >
-            <span>Get in Touch</span>
-            <ArrowUpRight size={15} />
-          </a>
+            <div className="glass-pill" style={{ padding: '7px 20px', fontSize: '13.5px', display: 'inline-flex' }}>
+              <span className="pulse-dot" />
+              <span>AVAILABLE FOR OPPORTUNITIES</span>
+            </div>
+          </motion.div>
 
-          <a
-            href="#projects"
-            className="btn-secondary"
-            style={{ padding: '10px 22px', fontSize: '14px' }}
+          {/* 2. GIANT HERO NAME: CHESTA SOLANKI */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            style={{ marginBottom: '20px', position: 'relative' }}
           >
-            <span>View Projects</span>
-          </a>
-        </motion.div>
+            <h1 className="giant-hero-title" style={{ textAlign: 'left', lineHeight: '0.98' }}>
+              <span style={{ display: 'block', color: 'var(--text-primary)', fontWeight: '500' }}>CHESTA</span>
+              <span
+                className="hero-name-shine"
+                style={{
+                  display: 'block',
+                  color: 'var(--accent-purple)',
+                  fontWeight: '500',
+                  textShadow: '0 0 45px rgba(56, 189, 248, 0.6)'
+                }}
+              >
+                SOLANKI
+              </span>
+            </h1>
+          </motion.div>
 
-        {/* 7. Metrics Grid Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '16px',
-            marginBottom: '36px'
-          }}
-        >
-          <div style={{ padding: '10px 20px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>250+ </span>
-            <span style={{ fontSize: '13px', color: 'var(--accent-purple)', fontFamily: 'var(--font-mono)' }}>LeetCode</span>
-          </div>
+          {/* 3. Role Tag: FULL-STACK ENGINEER */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'clamp(16px, 2.2vw, 22px)',
+              color: 'var(--accent-purple)',
+              letterSpacing: '0.2em',
+              marginBottom: '20px',
+              textTransform: 'uppercase',
+              fontWeight: '600'
+            }}
+          >
+            &gt;_ FULL-STACK ENGINEER
+          </motion.div>
 
-          <div style={{ padding: '10px 20px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>8.13 </span>
-            <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>CGPA</span>
-          </div>
+          {/* 4. Dynamic Terminal Typewriter */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '16px',
+              color: '#4ade80',
+              fontWeight: '700',
+              marginBottom: '22px',
+              display: 'inline-block',
+              background: 'rgba(74, 222, 128, 0.08)',
+              padding: '9px 20px',
+              borderRadius: 'var(--radius-pill)',
+              border: '1px solid rgba(74, 222, 128, 0.25)'
+            }}
+          >
+            &gt; {typedText}
+          </motion.div>
 
-          <div style={{ padding: '10px 20px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>Full Stack </span>
-            <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>React/Node</span>
-          </div>
+          {/* 5. Description Paragraph */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            style={{
+              fontSize: '16px',
+              color: 'var(--text-secondary)',
+              maxWidth: '520px',
+              marginBottom: '30px',
+              lineHeight: '1.75',
+              fontWeight: '400'
+            }}
+          >
+            Building scalable web applications, AI-powered experiences, and modern digital products with a focus on performance, design, and user experience.
+          </motion.p>
 
-          <div style={{ padding: '10px 20px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
-            <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>AI / ML </span>
-            <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>LLMs</span>
-          </div>
-        </motion.div>
+          {/* 6. Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '32px' }}
+          >
+            <a
+              href="mailto:chestasolanki664@gmail.com"
+              className="btn-primary"
+              style={{ padding: '12px 26px', fontSize: '14.5px' }}
+            >
+              <span>Get in Touch</span>
+              <ArrowUpRight size={16} />
+            </a>
 
-        {/* 8. Scroll Down Indicator */}
-        <motion.a
-          href="#experience"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            display: 'inline-flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '6px',
-            color: 'var(--text-muted)',
-            textDecoration: 'none',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '12px',
-            letterSpacing: '0.12em',
-            marginTop: '8px'
-          }}
-        >
-          <span>SCROLL DOWN FOR DETAILS</span>
-          <ChevronDown size={18} style={{ color: 'var(--accent-purple)' }} />
-        </motion.a>
+            <a
+              href="#projects"
+              className="btn-secondary"
+              style={{ padding: '12px 24px', fontSize: '14.5px' }}
+            >
+              <span>View Projects</span>
+            </a>
+          </motion.div>
 
+          {/* 7. Metrics Grid Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '12px',
+              marginBottom: '24px'
+            }}
+          >
+            <div style={{ padding: '8px 18px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
+              <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>250+ </span>
+              <span style={{ fontSize: '13px', color: 'var(--accent-purple)', fontFamily: 'var(--font-mono)' }}>LeetCode</span>
+            </div>
+
+            <div style={{ padding: '8px 18px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
+              <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>8.13 </span>
+              <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>CGPA</span>
+            </div>
+
+            <div style={{ padding: '8px 18px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
+              <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>Full Stack </span>
+              <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>React/Node</span>
+            </div>
+
+            <div style={{ padding: '8px 18px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-card)', border: '1px solid var(--border-glass)' }}>
+              <span style={{ fontSize: '14.5px', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'var(--font-mono)' }}>AI / ML </span>
+              <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>LLMs</span>
+            </div>
+          </motion.div>
+
+          {/* 8. Scroll Down Indicator */}
+          <motion.a
+            href="#experience"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: 'var(--text-dim)',
+              textDecoration: 'none',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '12px',
+              letterSpacing: '0.12em',
+            }}
+          >
+            <span>SCROLL DOWN FOR DETAILS</span>
+            <ChevronDown size={16} style={{ color: 'var(--accent-purple)' }} />
+          </motion.a>
+        </div>
+
+        {/* ---------------- RIGHT: 3D Robot Companion ---------------- */}
+        <div className="hero-robot-col">
+          <RobotCompanion />
+        </div>
       </div>
 
       <style>{`
-        @keyframes heroFloatSubtle {
-          0% { transform: translateY(0px); }
-          100% { transform: translateY(-10px); }
+        @media (max-width: 960px) {
+          .hero-row {
+            flex-direction: column;
+            text-align: center;
+          }
+          .hero-row > div:first-child {
+            text-align: center !important;
+            max-width: 100% !important;
+          }
+          .hero-robot-col {
+            width: 100% !important;
+            max-width: 360px;
+            height: 420px !important;
+          }
         }
-        @keyframes mistSpreadFlow {
-          0% { transform: translate(-55%, -52%) scale(0.95); }
-          100% { transform: translate(-45%, -48%) scale(1.08); }
-        }
-        @keyframes mistWaveDrift {
-          0% { transform: translate(-45%, -48%) scale(1.04); }
-          100% { transform: translate(-55%, -52%) scale(0.96); }
+        .hero-robot-col {
+          flex: 0 0 auto;
+          width: 440px;
+          height: 520px;
+          position: relative;
         }
       `}</style>
     </PageTransitionSection>

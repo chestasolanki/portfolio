@@ -427,3 +427,62 @@ p, .body-text {
   70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(56, 189, 248, 0); }
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
 }
+
+/* ==========================================================================
+   SPLINE BADGE & LIGHT MODE HERO STYLING
+   ========================================================================== */
+.spline-badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(8, 14, 28, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  user-select: none;
+  pointer-events: none;
+  z-index: 10;
+  transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+.spline-badge-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #38bdf8, #8b5cf6, #0284c7, #38bdf8);
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+[data-theme="light"] #hero {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] .hero-robot-glow {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(125, 211, 252, 0.35) 45%, transparent 75%) !important;
+  opacity: 0.95 !important;
+}
+
+[data-theme="light"] .hero-robot-core-glow {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.5) 0%, rgba(186, 230, 253, 0.3) 50%, transparent 70%) !important;
+  opacity: 0.9 !important;
+}
+
+
+[data-theme="light"] .spline-badge {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border: 1px solid rgba(2, 132, 199, 0.25) !important;
+  color: #0f172a !important;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.12) !important;
+}
+

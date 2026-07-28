@@ -3,6 +3,7 @@ import { Calendar, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PageTransitionSection from './PageTransitionSection';
 import CinematicDeveloperBackground from './CinematicDeveloperBackground';
+import TiltCard from './TiltCard';
 
 export default function Experience() {
   const timelinePoints = [
@@ -73,118 +74,120 @@ export default function Experience() {
               <span>WORK EXPERIENCE</span>
             </div>
 
-            <div
-              className="premium-glass-card"
-              style={{
-                padding: '36px 38px',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border-glass)',
-                position: 'relative',
-                overflow: 'hidden',
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-              }}
-            >
-              {/* Top Accent Line */}
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '2px',
-                background: 'linear-gradient(90deg, #38bdf8 0%, #0284c7 60%, transparent 100%)'
-              }} />
+            <TiltCard style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <div
+                className="premium-glass-card"
+                style={{
+                  padding: '36px 38px',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--border-glass)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+                }}
+              >
+                {/* Top Accent Line */}
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'linear-gradient(90deg, #38bdf8 0%, #0284c7 60%, transparent 100%)'
+                }} />
 
-              <div>
-                {/* Header Information */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '28px' }}>
-                  <div>
-                    <h3 style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: 'clamp(28px, 3.2vw, 38px)',
-                      fontWeight: '600',
-                      color: 'var(--text-primary)',
-                      lineHeight: '1.1',
-                      marginBottom: '6px'
-                    }}>
-                      Software Developer Intern
-                    </h3>
-                    <div style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '22px',
-                      fontWeight: '700',
-                      color: 'var(--accent-purple)',
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase'
-                    }}>
-                      LIMETTA
+                <div>
+                  {/* Header Information */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '28px' }}>
+                    <div>
+                      <h3 style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: 'clamp(28px, 3.2vw, 38px)',
+                        fontWeight: '600',
+                        color: 'var(--text-primary)',
+                        lineHeight: '1.1',
+                        marginBottom: '6px'
+                      }}>
+                        Software Developer Intern
+                      </h3>
+                      <div style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '22px',
+                        fontWeight: '700',
+                        color: 'var(--accent-purple)',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase'
+                      }}>
+                        LIMETTA
+                      </div>
+                    </div>
+
+                    <div className="date-badge" style={{ padding: '6px 16px', fontSize: '13px' }}>
+                      <Calendar size={14} />
+                      <span>June 2026 — Present</span>
                     </div>
                   </div>
 
-                  <div className="date-badge" style={{ padding: '6px 16px', fontSize: '13px' }}>
-                    <Calendar size={14} />
-                    <span>June 2026 — Present</span>
-                  </div>
-                </div>
+                  {/* Vertical Timeline */}
+                  <div style={{ position: 'relative', paddingLeft: '28px', marginTop: '12px' }}>
+                    
+                    {/* Continuous Vertical Timeline Line */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '8px',
+                      bottom: '12px',
+                      left: '8px',
+                      width: '2px',
+                      background: 'linear-gradient(180deg, var(--accent-purple) 0%, rgba(56, 189, 248, 0.15) 100%)'
+                    }} />
 
-                {/* Vertical Timeline */}
-                <div style={{ position: 'relative', paddingLeft: '28px', marginTop: '12px' }}>
-                  
-                  {/* Continuous Vertical Timeline Line */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '8px',
-                    bottom: '12px',
-                    left: '8px',
-                    width: '2px',
-                    background: 'linear-gradient(180deg, var(--accent-purple) 0%, rgba(56, 189, 248, 0.15) 100%)'
-                  }} />
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                      {timelinePoints.map((point, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: idx * 0.08 }}
+                          style={{ position: 'relative' }}
+                        >
+                          {/* Timeline Glowing Node Bullet */}
+                          <div style={{
+                            position: 'absolute',
+                            top: '6px',
+                            left: '-28px',
+                            transform: 'translateX(-50%)',
+                            width: '10px',
+                            height: '10px',
+                            borderRadius: '50%',
+                            background: 'var(--accent-purple)',
+                            boxShadow: '0 0 10px var(--accent-purple)',
+                            border: '2px solid var(--bg-surface)'
+                          }} />
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
-                    {timelinePoints.map((point, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.08 }}
-                        style={{ position: 'relative' }}
-                      >
-                        {/* Timeline Glowing Node Bullet */}
-                        <div style={{
-                          position: 'absolute',
-                          top: '6px',
-                          left: '-28px',
-                          transform: 'translateX(-50%)',
-                          width: '10px',
-                          height: '10px',
-                          borderRadius: '50%',
-                          background: 'var(--accent-purple)',
-                          boxShadow: '0 0 10px var(--accent-purple)',
-                          border: '2px solid var(--bg-surface)'
-                        }} />
+                          <p style={{
+                            fontSize: '16px',
+                            color: 'var(--text-secondary)',
+                            lineHeight: '1.65',
+                            margin: 0,
+                            fontWeight: '400'
+                          }}>
+                            {point}
+                          </p>
+                        </motion.div>
+                      ))}
+                    </div>
 
-                        <p style={{
-                          fontSize: '16px',
-                          color: 'var(--text-secondary)',
-                          lineHeight: '1.65',
-                          margin: 0,
-                          fontWeight: '400'
-                        }}>
-                          {point}
-                        </p>
-                      </motion.div>
-                    ))}
                   </div>
 
                 </div>
 
               </div>
-
-            </div>
+            </TiltCard>
           </motion.div>
 
           {/* Right Column (30%): Academic Cards */}
@@ -209,63 +212,63 @@ export default function Experience() {
               zIndex: 1
             }}>
               {educationList.map((edu, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ y: -4, borderColor: 'var(--border-glass-hover)' }}
-                  className="premium-glass-card"
-                  style={{
-                    padding: '22px 24px',
-                    borderRadius: 'var(--radius-md)',
-                    border: '1px solid var(--border-glass)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-                  }}
-                >
-                  {/* Subtle Accent Edge */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    width: '3px',
-                    background: idx === 0 ? 'var(--accent-purple)' : 'var(--border-glass)'
-                  }} />
+                <TiltCard key={idx}>
+                  <div
+                    className="premium-glass-card"
+                    style={{
+                      padding: '22px 24px',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--border-glass)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+                    }}
+                  >
+                    {/* Subtle Accent Edge */}
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      width: '3px',
+                      background: idx === 0 ? 'var(--accent-purple)' : 'var(--border-glass)'
+                    }} />
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                      <GraduationCap size={15} style={{ color: 'var(--accent-purple)' }} />
-                      <span>{edu.period}</span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                        <GraduationCap size={15} style={{ color: 'var(--accent-purple)' }} />
+                        <span>{edu.period}</span>
+                      </div>
+
+                      <span style={{
+                        fontSize: '12.5px',
+                        fontWeight: '700',
+                        fontFamily: 'var(--font-mono)',
+                        background: 'rgba(56, 189, 248, 0.16)',
+                        color: 'var(--accent-purple)',
+                        padding: '3px 10px',
+                        borderRadius: 'var(--radius-pill)'
+                      }}>
+                        {edu.score}
+                      </span>
                     </div>
 
-                    <span style={{
-                      fontSize: '12.5px',
-                      fontWeight: '700',
-                      fontFamily: 'var(--font-mono)',
-                      background: 'rgba(56, 189, 248, 0.16)',
-                      color: 'var(--accent-purple)',
-                      padding: '3px 10px',
-                      borderRadius: 'var(--radius-pill)'
+                    <h4 style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '20px',
+                      fontWeight: '600',
+                      color: 'var(--text-primary)',
+                      lineHeight: '1.25',
+                      marginBottom: '4px'
                     }}>
-                      {edu.score}
-                    </span>
-                  </div>
+                      {edu.school}
+                    </h4>
 
-                  <h4 style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '20px',
-                    fontWeight: '600',
-                    color: 'var(--text-primary)',
-                    lineHeight: '1.25',
-                    marginBottom: '4px'
-                  }}>
-                    {edu.school}
-                  </h4>
-
-                  <div style={{ fontSize: '13.5px', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                    {edu.degree}
+                    <div style={{ fontSize: '13.5px', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                      {edu.degree}
+                    </div>
                   </div>
-                </motion.div>
+                </TiltCard>
               ))}
             </div>
 
@@ -276,20 +279,6 @@ export default function Experience() {
       </div>
 
       <style>{`
-        @keyframes diagonalCloudFlow {
-          0% { transform: translate(0, 0) scale(0.95); }
-          100% { transform: translate(60px, 40px) scale(1.08); }
-        }
-        @keyframes diagonalCloudFlowReverse {
-          0% { transform: translate(0, 0) scale(1.05); }
-          100% { transform: translate(-50px, -35px) scale(0.92); }
-        }
-        @keyframes dataPacketDrift {
-          0% { transform: translate(0, 0); opacity: 0; }
-          20% { opacity: 0.85; }
-          80% { opacity: 0.85; }
-          100% { transform: translate(140px, -200px); opacity: 0; }
-        }
         .exp-70-30-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -298,11 +287,6 @@ export default function Experience() {
         }
         .premium-glass-card {
           background: var(--bg-card);
-        }
-        .premium-glass-card:hover {
-          transform: translateY(-6px) !important;
-          border-color: var(--border-glass-hover) !important;
-          box-shadow: var(--glow-card-hover) !important;
         }
         @media (min-width: 992px) {
           .exp-70-30-grid {
