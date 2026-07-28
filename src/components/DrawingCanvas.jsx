@@ -120,9 +120,10 @@ export default function DrawingCanvas() {
   };
 
   return (
-    <>
+    <div className="drawing-container">
       <canvas
         ref={canvasRef}
+        className="drawing-canvas-element"
         style={{
           position: 'fixed',
           inset: 0,
@@ -169,7 +170,7 @@ export default function DrawingCanvas() {
       )}
 
       {/* Floating Drawing Control Dock (Toggle + Clear) */}
-      <div style={{
+      <div className="drawing-control-dock" style={{
         position: 'fixed',
         bottom: '24px',
         right: '24px',
@@ -228,7 +229,15 @@ export default function DrawingCanvas() {
             display: block !important;
           }
         }
+        @media (max-width: 767px) {
+          .drawing-container,
+          .drawing-canvas-element,
+          .drawing-control-dock,
+          .custom-cursor {
+            display: none !important;
+          }
+        }
       `}</style>
-    </>
+    </div>
   );
 }

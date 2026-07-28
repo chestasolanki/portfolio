@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, ArrowUpRight, Code2 } from 'lucide-react';
 
 export default function Pure3DLaptop() {
-  const [rotateX, setRotateX] = useState(-10);
-  const [rotateY, setRotateY] = useState(15);
+  const [rotateX, setRotateX] = useState(-8);
+  const [rotateY, setRotateY] = useState(10);
   const [typedText, setTypedText] = useState('');
   const containerRef = useRef(null);
 
@@ -28,18 +28,18 @@ export default function Pure3DLaptop() {
 
   // Mouse tilt reaction
   const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || window.innerWidth < 768) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
 
-    setRotateY(x * 0.08 + 15);
-    setRotateX(-y * 0.08 - 10);
+    setRotateY(x * 0.08 + 10);
+    setRotateX(-y * 0.08 - 8);
   };
 
   const handleMouseLeave = () => {
-    setRotateX(-10);
-    setRotateY(15);
+    setRotateX(-8);
+    setRotateY(10);
   };
 
   return (
@@ -47,11 +47,13 @@ export default function Pure3DLaptop() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      className="hero-laptop-container"
       style={{
         position: 'relative',
         width: '100%',
         maxWidth: '920px',
-        height: '620px',
+        height: 'auto',
+        minHeight: '540px',
         perspective: '1400px',
         pointerEvents: 'auto',
         margin: '0 auto',
@@ -62,8 +64,9 @@ export default function Pure3DLaptop() {
     >
       {/* 3D PURE CODE LAPTOP OBJECT */}
       <div
+        className="hero-laptop-object"
         style={{
-          width: '780px',
+          width: 'min(780px, 94vw)',
           position: 'relative',
           transformStyle: 'preserve-3d',
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
@@ -74,27 +77,30 @@ export default function Pure3DLaptop() {
         {/* Holographic Glowing Halo */}
         <div style={{
           position: 'absolute',
-          top: '-60px',
-          left: '-60px',
-          right: '-60px',
-          bottom: '-60px',
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.42) 0%, rgba(125, 211, 252, 0.18) 55%, transparent 75%)',
-          filter: 'blur(45px)',
+          top: '-40px',
+          left: '-40px',
+          right: '-40px',
+          bottom: '-40px',
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.38) 0%, rgba(125, 211, 252, 0.15) 55%, transparent 75%)',
+          filter: 'blur(40px)',
           pointerEvents: 'none'
         }} />
 
-        {/* 1. LAPTOP SCREEN (LID DISPLAY CONTAINING ENTIRE PORTFOLIO HERO CONTENT) */}
-        <div style={{
-          width: '100%',
-          height: '460px',
-          background: '#090d1a',
-          border: '3px solid rgba(56, 189, 248, 0.85)',
-          borderRadius: '20px 20px 4px 4px',
-          boxShadow: '0 0 55px rgba(56, 189, 248, 0.65), inset 0 0 30px rgba(56, 189, 248, 0.25)',
-          padding: '14px',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
+        {/* 1. LAPTOP SCREEN */}
+        <div
+          className="laptop-screen-lid"
+          style={{
+            width: '100%',
+            height: '460px',
+            background: '#090d1a',
+            border: '3px solid rgba(56, 189, 248, 0.85)',
+            borderRadius: '20px 20px 4px 4px',
+            boxShadow: '0 0 55px rgba(56, 189, 248, 0.65), inset 0 0 30px rgba(56, 189, 248, 0.25)',
+            padding: '12px',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
           
           {/* Top Notch & Camera */}
           <div style={{
@@ -102,8 +108,8 @@ export default function Pure3DLaptop() {
             top: 0,
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '140px',
-            height: '16px',
+            width: '130px',
+            height: '14px',
             background: '#030712',
             borderRadius: '0 0 8px 8px',
             border: '1px solid rgba(56, 189, 248, 0.5)',
@@ -118,29 +124,32 @@ export default function Pure3DLaptop() {
           </div>
 
           {/* Screen Inner Portfolio Display */}
-          <div style={{
-            width: '100%',
-            height: '100%',
-            background: 'rgba(5, 10, 24, 0.96)',
-            borderRadius: '14px',
-            padding: '24px 28px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            position: 'relative',
-            overflowY: 'auto'
-          }}>
+          <div
+            className="laptop-screen-content"
+            style={{
+              width: '100%',
+              height: '100%',
+              background: 'rgba(5, 10, 24, 0.96)',
+              borderRadius: '14px',
+              padding: '20px 22px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              position: 'relative',
+              overflowY: 'auto'
+            }}
+          >
             
             {/* Top Bar Status */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="pulse-dot" />
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#38bdf8', letterSpacing: '0.12em', fontWeight: '700' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#38bdf8', letterSpacing: '0.1em', fontWeight: '700' }}>
                   AVAILABLE FOR OPPORTUNITIES
                 </span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#4ade80' }}>
-                <Code2 size={13} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#4ade80' }}>
+                <Code2 size={12} />
                 <span>FULL-STACK DEVELOPER</span>
               </div>
             </div>
@@ -148,7 +157,7 @@ export default function Pure3DLaptop() {
             {/* Main Portfolio Headline */}
             <div>
               <h1 className="font-serif" style={{
-                fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)',
+                fontSize: 'clamp(2rem, 5.5vw, 3.2rem)',
                 fontWeight: '500',
                 color: '#ffffff',
                 margin: 0,
@@ -159,9 +168,9 @@ export default function Pure3DLaptop() {
               
               <div style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.9rem',
+                fontSize: '13px',
                 color: '#7dd3fc',
-                letterSpacing: '0.12em',
+                letterSpacing: '0.1em',
                 marginTop: '4px',
                 textTransform: 'uppercase'
               }}>
@@ -172,77 +181,80 @@ export default function Pure3DLaptop() {
             {/* Typewriter Line */}
             <div style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '1.02rem',
+              fontSize: '14px',
               color: '#4ade80',
               fontWeight: '700',
               background: 'rgba(74, 222, 128, 0.08)',
-              padding: '8px 14px',
+              padding: '6px 12px',
               borderRadius: '8px',
               border: '1px solid rgba(74, 222, 128, 0.25)'
             }}>
               &gt; {typedText}
-              <span className="pulse-dot" style={{ width: '6px', height: '14px', borderRadius: 0, marginLeft: '3px', background: '#4ade80' }} />
+              <span className="pulse-dot" style={{ width: '5px', height: '12px', borderRadius: 0, marginLeft: '3px', background: '#4ade80' }} />
             </div>
 
             {/* Bio Description */}
             <p style={{
-              fontSize: '0.95rem',
+              fontSize: '14px',
               color: 'var(--text-secondary)',
-              lineHeight: '1.65',
+              lineHeight: '1.6',
               margin: 0
             }}>
               Curious mind and full-stack developer. Building interactive digital web platforms, scalable RESTful APIs, and AI integrations.
             </p>
 
             {/* Action Buttons Inside Laptop Screen */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               <a
                 href="mailto:chestasolanki664@gmail.com"
                 className="btn-primary"
-                style={{ padding: '8px 20px', fontSize: '0.82rem' }}
+                style={{ padding: '7px 18px', fontSize: '12.5px' }}
               >
                 <span>Let's get in touch</span>
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={13} />
               </a>
 
               <a
                 href="#experience"
                 className="btn-secondary"
-                style={{ padding: '8px 18px', fontSize: '0.82rem' }}
+                style={{ padding: '7px 16px', fontSize: '12.5px' }}
               >
                 <span>View Experience</span>
               </a>
             </div>
 
             {/* Stats Metrics Bar Inside Laptop Screen */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '12px',
-              paddingTop: '12px',
-              borderTop: '1px solid var(--border-glass)',
-              fontFamily: 'var(--font-mono)'
-            }}>
+            <div
+              className="laptop-metrics-bar"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '10px',
+                paddingTop: '10px',
+                borderTop: '1px solid var(--border-glass)',
+                fontFamily: 'var(--font-mono)'
+              }}
+            >
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#ffffff' }}>
-                  8.13 <span style={{ fontSize: '0.7rem', color: '#38bdf8' }}>CGPA</span>
+                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#ffffff' }}>
+                  8.13 <span style={{ fontSize: '0.65rem', color: '#38bdf8' }}>CGPA</span>
                 </div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>B.Tech IT</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>B.Tech IT</div>
               </div>
 
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#ffffff' }}>250+</div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>LeetCode</div>
+                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#ffffff' }}>250+</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>LeetCode</div>
               </div>
 
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#ffffff' }}>Full Stack</div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>React/Node</div>
+                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#ffffff' }}>Full Stack</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>React/Node</div>
               </div>
 
               <div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#ffffff' }}>AI / ML</div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>LLMs &amp; RAG</div>
+                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#ffffff' }}>AI / ML</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>LLMs &amp; RAG</div>
               </div>
             </div>
 
@@ -252,8 +264,8 @@ export default function Pure3DLaptop() {
 
         {/* 2. LAPTOP HINGE */}
         <div style={{
-          width: '240px',
-          height: '12px',
+          width: '180px',
+          height: '10px',
           background: '#030712',
           border: '1px solid rgba(56, 189, 248, 0.7)',
           margin: '0 auto',
@@ -261,36 +273,39 @@ export default function Pure3DLaptop() {
         }} />
 
         {/* 3. LAPTOP KEYBOARD BASE */}
-        <div style={{
-          width: '820px',
-          height: '160px',
-          background: 'linear-gradient(180deg, #0b1329 0%, #030712 100%)',
-          border: '3px solid rgba(56, 189, 248, 0.85)',
-          borderRadius: '4px 4px 24px 24px',
-          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(56, 189, 248, 0.45)',
-          margin: '-2px 0 0 -20px',
-          padding: '14px 32px',
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
+        <div
+          className="laptop-base-keyboard"
+          style={{
+            width: '100%',
+            height: '120px',
+            background: 'linear-gradient(180deg, #0b1329 0%, #030712 100%)',
+            border: '3px solid rgba(56, 189, 248, 0.85)',
+            borderRadius: '4px 4px 20px 20px',
+            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95), 0 0 45px rgba(56, 189, 248, 0.45)',
+            margin: '-2px 0 0 0',
+            padding: '10px 20px',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
           
           {/* Glowing Translucent Keyboard Keys Grid */}
           <div style={{
             width: '100%',
-            height: '80px',
+            height: '60px',
             background: 'rgba(56, 189, 248, 0.08)',
             border: '1px solid rgba(56, 189, 248, 0.35)',
             borderRadius: '6px',
             display: 'grid',
             gridTemplateRows: 'repeat(4, 1fr)',
-            gap: '3px',
-            padding: '5px'
+            gap: '2px',
+            padding: '4px'
           }}>
             {[0, 1, 2, 3].map((row) => (
-              <div key={row} style={{ display: 'flex', gap: '3px', justifyContent: 'center' }}>
+              <div key={row} style={{ display: 'flex', gap: '2px', justifyContent: 'center' }}>
                 {[...Array(16)].map((_, col) => (
                   <div
                     key={col}
@@ -298,8 +313,7 @@ export default function Pure3DLaptop() {
                       flex: 1,
                       background: 'rgba(56, 189, 248, 0.18)',
                       border: '1px solid rgba(56, 189, 248, 0.45)',
-                      borderRadius: '2px',
-                      boxShadow: '0 0 6px rgba(56, 189, 248, 0.35)'
+                      borderRadius: '2px'
                     }}
                   />
                 ))}
@@ -309,12 +323,12 @@ export default function Pure3DLaptop() {
 
           {/* Trackpad */}
           <div style={{
-            width: '150px',
-            height: '42px',
+            width: '110px',
+            height: '30px',
             background: 'rgba(255, 255, 255, 0.04)',
             border: '1px solid rgba(56, 189, 248, 0.45)',
-            borderRadius: '6px',
-            marginBottom: '4px'
+            borderRadius: '5px',
+            marginBottom: '2px'
           }} />
 
         </div>
@@ -323,9 +337,29 @@ export default function Pure3DLaptop() {
 
       <style>{`
         @keyframes float3DLaptop {
-          0% { transform: rotateX(-10deg) rotateY(15deg) translateY(0px); }
-          50% { transform: rotateX(-6deg) rotateY(19deg) translateY(-20px); }
-          100% { transform: rotateX(-10deg) rotateY(15deg) translateY(0px); }
+          0% { transform: rotateX(-8deg) rotateY(10deg) translateY(0px); }
+          50% { transform: rotateX(-4deg) rotateY(14deg) translateY(-14px); }
+          100% { transform: rotateX(-8deg) rotateY(10deg) translateY(0px); }
+        }
+        @media (max-width: 767px) {
+          .hero-laptop-container {
+            min-height: 480px !important;
+          }
+          .laptop-screen-lid {
+            height: 400px !important;
+            padding: 8px !important;
+          }
+          .laptop-screen-content {
+            padding: 16px 14px !important;
+          }
+          .laptop-metrics-bar {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .laptop-base-keyboard {
+            height: 90px !important;
+            padding: 8px 12px !important;
+          }
         }
       `}</style>
     </div>

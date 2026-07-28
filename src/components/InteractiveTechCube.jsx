@@ -14,7 +14,7 @@ export default function InteractiveTechCube() {
       icon: Globe,
       x: 20,
       y: 22,
-      projects: ['PrepAI (AI Interview Platform)', 'Portfolio UI'],
+      projects: ['PrepAI Platform', 'Portfolio UI'],
       desc: 'Interactive UI, Component Architecture & State'
     },
     {
@@ -24,7 +24,7 @@ export default function InteractiveTechCube() {
       icon: Cpu,
       x: 80,
       y: 22,
-      projects: ['Craftly (AI Gen)', 'PrepAI Backend'],
+      projects: ['Craftly AI Gen', 'PrepAI Backend'],
       desc: 'Asynchronous Event-Driven Backend Server'
     },
     {
@@ -34,7 +34,7 @@ export default function InteractiveTechCube() {
       icon: Terminal,
       x: 18,
       y: 78,
-      projects: ['250+ LeetCode Solved', 'STL Optimization'],
+      projects: ['250+ LeetCode', 'STL Optimization'],
       desc: 'Data Structures, Algorithms & High Performance'
     },
     {
@@ -44,7 +44,7 @@ export default function InteractiveTechCube() {
       icon: Sparkles,
       x: 82,
       y: 78,
-      projects: ['Craftly (Website Generator)', 'AI Response Streaming'],
+      projects: ['Craftly Generator', 'AI SSE Stream'],
       desc: 'Prompt Engineering & Real-time LLM Workflows'
     },
     {
@@ -73,11 +73,11 @@ export default function InteractiveTechCube() {
 
   return (
     <div
-      className="glass-card"
+      className="glass-card tech-cube-card"
       style={{
-        padding: '32px 24px',
+        padding: '24px 20px',
         height: '100%',
-        minHeight: '460px',
+        minHeight: '440px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -123,7 +123,7 @@ export default function InteractiveTechCube() {
       <div style={{
         position: 'relative',
         width: '100%',
-        height: '320px',
+        height: '300px',
         margin: '10px 0'
       }}>
         {/* SVG Connecting Network Lines */}
@@ -168,8 +168,8 @@ export default function InteractiveTechCube() {
           top: `${centerNode.y}%`,
           left: `${centerNode.x}%`,
           transform: 'translate(-50%, -50%)',
-          width: '76px',
-          height: '76px',
+          width: '70px',
+          height: '70px',
           borderRadius: '50%',
           background: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
           border: '2px solid #ffffff',
@@ -180,13 +180,13 @@ export default function InteractiveTechCube() {
           justifyContent: 'center',
           zIndex: 5
         }}>
-          <Zap size={22} style={{ color: '#ffffff' }} />
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.58rem', fontWeight: '800', color: '#ffffff', letterSpacing: '0.08em', marginTop: '2px' }}>
+          <Zap size={20} style={{ color: '#ffffff' }} />
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', fontWeight: '800', color: '#ffffff', letterSpacing: '0.08em', marginTop: '2px' }}>
             CHESTA
           </span>
         </div>
 
-        {/* Orbiting Skill Nodes (HIGH CONTRAST & LEGIBILITY IN BOTH LIGHT & DARK MODES) */}
+        {/* Orbiting Skill Nodes */}
         {skillNodes.map((node) => {
           const IconComp = node.icon;
           const isHovered = hoveredNode?.id === node.id;
@@ -196,8 +196,9 @@ export default function InteractiveTechCube() {
               key={node.id}
               onMouseEnter={() => setHoveredNode(node)}
               onMouseLeave={() => setHoveredNode(null)}
+              onClick={() => setHoveredNode(hoveredNode?.id === node.id ? null : node)}
               animate={{
-                scale: isHovered ? 1.2 : 1,
+                scale: isHovered ? 1.18 : 1,
                 zIndex: isHovered ? 20 : 10
               }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
@@ -212,23 +213,24 @@ export default function InteractiveTechCube() {
               <div
                 className="skill-node-pill"
                 style={{
-                  padding: isHovered ? '9px 16px' : '7px 14px',
+                  padding: isHovered ? '8px 14px' : '6px 12px',
                   borderRadius: 'var(--radius-pill)',
                   border: isHovered ? '2px solid #38bdf8' : '1px solid var(--border-glass)',
                   boxShadow: isHovered ? '0 0 25px rgba(56, 189, 248, 0.7)' : '0 4px 15px rgba(0, 0, 0, 0.2)',
                   backdropFilter: 'blur(12px)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
+                  gap: '6px',
                   transition: 'all 0.2s ease'
                 }}
               >
-                <IconComp size={15} style={{ color: isHovered ? '#ffffff' : 'var(--accent-purple)' }} />
+                <IconComp size={14} style={{ color: isHovered ? '#ffffff' : 'var(--accent-purple)' }} />
                 <span style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: '13px',
+                  fontSize: '12px',
                   fontWeight: '700',
-                  letterSpacing: '0.02em'
+                  letterSpacing: '0.01em',
+                  whiteSpace: 'nowrap'
                 }}>
                   {node.name}
                 </span>
@@ -239,7 +241,7 @@ export default function InteractiveTechCube() {
       </div>
 
       {/* Interactive Tooltip Callout Bar */}
-      <div style={{ width: '100%', minHeight: '68px' }}>
+      <div style={{ width: '100%', minHeight: '64px' }}>
         <AnimatePresence mode="wait">
           {hoveredNode ? (
             <motion.div
@@ -250,7 +252,7 @@ export default function InteractiveTechCube() {
               transition={{ duration: 0.2 }}
               style={{
                 width: '100%',
-                padding: '12px 16px',
+                padding: '10px 14px',
                 borderRadius: '12px',
                 background: 'rgba(56, 189, 248, 0.14)',
                 border: '1px solid var(--border-glass-hover)',
@@ -258,26 +260,26 @@ export default function InteractiveTechCube() {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '13.5px', fontWeight: '800', color: 'var(--text-primary)' }}>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: '800', color: 'var(--text-primary)' }}>
                   {hoveredNode.name} — <span style={{ color: 'var(--accent-purple)' }}>{hoveredNode.category}</span>
                 </span>
-                <span style={{ fontSize: '11px', color: 'var(--accent-purple)', fontFamily: 'var(--font-mono)', fontWeight: '700' }}>
+                <span style={{ fontSize: '10.5px', color: 'var(--accent-purple)', fontFamily: 'var(--font-mono)', fontWeight: '700' }}>
                   ACTIVE NODE
                 </span>
               </div>
 
-              <div style={{ fontSize: '12.5px', color: 'var(--text-secondary)', marginBottom: '4px' }}>
+              <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                 {hoveredNode.desc}
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', flexWrap: 'wrap' }}>
                 <span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontWeight: '600' }}>USED IN:</span>
                 {hoveredNode.projects.map((proj, pIdx) => (
                   <span
                     key={pIdx}
                     style={{
                       fontFamily: 'var(--font-body)',
-                      fontSize: '11.5px',
+                      fontSize: '11px',
                       fontWeight: '600',
                       background: 'rgba(56, 189, 248, 0.18)',
                       color: 'var(--text-primary)',
@@ -294,20 +296,20 @@ export default function InteractiveTechCube() {
           ) : (
             <div style={{
               width: '100%',
-              padding: '12px 16px',
+              padding: '10px 14px',
               borderRadius: '12px',
               background: 'rgba(255, 255, 255, 0.03)',
               border: '1px dashed var(--border-glass)',
               textAlign: 'center',
               color: 'var(--text-muted)',
-              fontSize: '12.5px',
+              fontSize: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px'
+              gap: '6px'
             }}>
-              <Sparkles size={14} style={{ color: 'var(--accent-purple)' }} />
-              <span>Hover any skill node above to reveal linked projects &amp; architecture details</span>
+              <Sparkles size={13} style={{ color: 'var(--accent-purple)' }} />
+              <span>Tap or hover any skill node to reveal details</span>
             </div>
           )}
         </AnimatePresence>
@@ -327,6 +329,11 @@ export default function InteractiveTechCube() {
         [data-theme="light"] .skill-node-pill:hover {
           background: #0284c7 !important;
           color: #ffffff !important;
+        }
+        @media (max-width: 767px) {
+          .tech-cube-card {
+            padding: 16px 12px !important;
+          }
         }
       `}</style>
     </div>
