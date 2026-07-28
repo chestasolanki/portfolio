@@ -25,7 +25,7 @@ export default function Navbar({ theme, toggleTheme }) {
             width: '40px',
             height: '40px',
             borderRadius: '10px',
-            background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
+            background: 'linear-gradient(135deg, var(--accent-purple), var(--accent-violet))',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -51,7 +51,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <span style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.68rem',
-              color: 'var(--accent-cyan)',
+              color: 'var(--accent-purple)',
               letterSpacing: '0.12em',
               textTransform: 'uppercase'
             }}>
@@ -60,15 +60,15 @@ export default function Navbar({ theme, toggleTheme }) {
           </div>
         </a>
 
-        {/* Navigation Anchor Links */}
+        {/* Navigation Anchor Links in Exact Sequence: Experience -> Skills -> Projects -> Contact */}
         <div style={{
           display: 'none',
           alignItems: 'center',
           gap: '32px'
         }} className="desktop-nav">
-          <a href="#projects" className="nav-link">Projects</a>
           <a href="#experience" className="nav-link">Experience</a>
           <a href="#skills" className="nav-link">Skills</a>
+          <a href="#projects" className="nav-link">Projects</a>
           <a href="#contact" className="nav-link">Contact</a>
         </div>
 
@@ -85,7 +85,7 @@ export default function Navbar({ theme, toggleTheme }) {
               borderRadius: '50%',
               background: 'var(--bg-card)',
               border: '1px solid var(--border-glass)',
-              color: 'var(--accent-cyan)',
+              color: 'var(--accent-purple)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -109,7 +109,7 @@ export default function Navbar({ theme, toggleTheme }) {
           position: relative;
         }
         .nav-link:hover {
-          color: var(--accent-cyan);
+          color: var(--accent-purple);
         }
         .nav-link::after {
           content: '';
@@ -118,7 +118,7 @@ export default function Navbar({ theme, toggleTheme }) {
           left: 0;
           width: 0%;
           height: 2px;
-          background: var(--accent-cyan);
+          background: var(--accent-purple);
           transition: width var(--transition-fast);
         }
         .nav-link:hover::after {

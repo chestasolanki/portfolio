@@ -71,9 +71,9 @@ export default function DrawingCanvas() {
           const alpha = 1 - pt.age / pt.maxAge;
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, pt.size * alpha, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(6, 182, 212, ${alpha * 0.75})`;
-          ctx.shadowColor = '#06b6d4';
-          ctx.shadowBlur = 14;
+          ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.85})`;
+          ctx.shadowColor = '#38bdf8';
+          ctx.shadowBlur = 16;
           ctx.fill();
 
           if (i > 0) {
@@ -83,7 +83,7 @@ export default function DrawingCanvas() {
               ctx.beginPath();
               ctx.moveTo(prevPt.x, prevPt.y);
               ctx.lineTo(pt.x, pt.y);
-              ctx.strokeStyle = `rgba(6, 182, 212, ${alpha * 0.45})`;
+              ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.55})`;
               ctx.lineWidth = pt.size * alpha;
               ctx.stroke();
             }
@@ -132,7 +132,7 @@ export default function DrawingCanvas() {
         }}
       />
 
-      {/* Crystal Ring Cursor Pointer */}
+      {/* Light Blue Ring Cursor Pointer */}
       {isEnabled && (
         <div
           ref={cursorRef}
@@ -143,9 +143,9 @@ export default function DrawingCanvas() {
             width: 24,
             height: 24,
             borderRadius: '50%',
-            border: '1.5px solid var(--accent-cyan)',
-            background: 'rgba(6, 182, 212, 0.2)',
-            boxShadow: '0 0 16px var(--accent-cyan)',
+            border: '2px solid #38bdf8',
+            background: 'rgba(56, 189, 248, 0.25)',
+            boxShadow: '0 0 20px #38bdf8, inset 0 0 8px rgba(56, 189, 248, 0.5)',
             pointerEvents: 'none',
             zIndex: 9999,
             transition: 'transform 0.04s ease-out',
@@ -159,10 +159,11 @@ export default function DrawingCanvas() {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 4,
-            height: 4,
+            width: 5,
+            height: 5,
             borderRadius: '50%',
-            background: 'var(--accent-cyan)'
+            background: '#38bdf8',
+            boxShadow: '0 0 8px #38bdf8'
           }} />
         </div>
       )}
@@ -186,13 +187,14 @@ export default function DrawingCanvas() {
             padding: '8px 16px',
             fontSize: '0.78rem',
             borderRadius: 'var(--radius-pill)',
-            borderColor: isEnabled ? 'var(--accent-cyan)' : 'var(--border-glass)',
-            color: isEnabled ? 'var(--accent-cyan)' : 'var(--text-muted)'
+            borderColor: isEnabled ? '#38bdf8' : 'var(--border-glass)',
+            color: isEnabled ? '#38bdf8' : 'var(--text-muted)',
+            boxShadow: isEnabled ? '0 0 16px rgba(56, 189, 248, 0.35)' : 'none'
           }}
         >
           {isEnabled ? (
             <>
-              <Edit3 size={14} style={{ color: 'var(--accent-cyan)' }} />
+              <Edit3 size={14} style={{ color: '#38bdf8' }} />
               <span>Drawing: ON</span>
             </>
           ) : (
@@ -214,7 +216,7 @@ export default function DrawingCanvas() {
               borderRadius: 'var(--radius-pill)'
             }}
           >
-            <Trash2 size={14} style={{ color: 'var(--accent-cyan)' }} />
+            <Trash2 size={14} style={{ color: '#38bdf8' }} />
             <span>Clear</span>
           </button>
         )}

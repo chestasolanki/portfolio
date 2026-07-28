@@ -1,330 +1,225 @@
 import React, { useState } from 'react';
-import { Award, Star, Code2, Terminal, Cpu, Database, Shield, Wrench, Sparkles } from 'lucide-react';
 import PageTransitionSection from './PageTransitionSection';
 import { MotionTitle } from './MotionText';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Code, Layout, Server, Database, Brain, Wrench, BookOpen, Award, CheckCircle2 } from 'lucide-react';
+import InteractiveTechCube from './InteractiveTechCube';
 
 export default function Skills() {
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState('languages');
 
-  const skillCategories = [
-    {
-      id: 'languages',
-      name: 'Programming Languages',
-      icon: <Code2 size={20} style={{ color: 'var(--accent-cyan)' }} />,
-      skills: ['C++', 'JavaScript', 'Python']
-    },
-    {
-      id: 'core',
-      name: 'Core Computer Science',
-      icon: <Shield size={20} style={{ color: '#10b981' }} />,
-      skills: ['Data Structures & Algorithms', 'DBMS', 'Operating Systems', 'OOP']
-    },
-    {
-      id: 'frontend',
-      name: 'Frontend Development',
-      icon: <Terminal size={20} style={{ color: 'var(--accent-cyan)' }} />,
-      skills: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3']
-    },
-    {
-      id: 'fullstack',
-      name: 'Full Stack & APIs',
-      icon: <Wrench size={20} style={{ color: 'var(--accent-purple)' }} />,
-      skills: ['Node.js', 'Express.js', 'REST APIs']
-    },
-    {
-      id: 'aiml',
-      name: 'AI / Machine Learning',
-      icon: <Cpu size={20} style={{ color: 'var(--accent-rose)' }} />,
-      skills: ['Scikit-learn', 'PyTorch', 'NumPy', 'Pandas', 'LLMs', 'LangChain', 'RAG', 'Prompt Engineering']
-    },
-    {
-      id: 'databases',
-      name: 'Databases & Vector DBs',
-      icon: <Database size={20} style={{ color: '#10b981' }} />,
-      skills: ['MySQL', 'MongoDB', 'Pinecone', 'ChromaDB']
-    },
-    {
-      id: 'tools',
-      name: 'Developer Tools',
-      icon: <Sparkles size={20} style={{ color: 'var(--accent-cyan)' }} />,
-      skills: ['Git', 'GitHub', 'Postman', 'Linux']
-    }
+  const categories = [
+    { id: 'languages', name: 'Languages', icon: Code },
+    { id: 'frontend', name: 'Frontend', icon: Layout },
+    { id: 'backend', name: 'Backend', icon: Server },
+    { id: 'database', name: 'Databases', icon: Database },
+    { id: 'ai', name: 'AI & ML', icon: Brain },
+    { id: 'tools', name: 'Dev Tools', icon: Wrench },
+    { id: 'core', name: 'Core CS', icon: BookOpen }
   ];
+
+  const skillData = {
+    languages: [
+      { name: 'C++', level: 'Proficient', desc: 'Data Structures, Algorithms & STL' },
+      { name: 'JavaScript', level: 'Proficient', desc: 'ES6+, Async/Await & DOM' },
+      { name: 'Python', level: 'Intermediate', desc: 'AI Scripting & Data Processing' }
+    ],
+    frontend: [
+      { name: 'React.js', level: 'Proficient', desc: 'Hooks, State Management & SPA' },
+      { name: 'HTML5 & CSS3', level: 'Proficient', desc: 'Semantic Layouts & Styling' },
+      { name: 'Tailwind CSS', level: 'Proficient', desc: 'Utility-first Responsive UI' },
+      { name: 'Responsive Design', level: 'Proficient', desc: 'Cross-device Adaptability' }
+    ],
+    backend: [
+      { name: 'Node.js', level: 'Proficient', desc: 'Asynchronous Event Runtime' },
+      { name: 'Express.js', level: 'Proficient', desc: 'RESTful API Routing & Middleware' },
+      { name: 'RESTful APIs', level: 'Proficient', desc: 'Secure Client-Server Endpoints' },
+      { name: 'Server-Sent Events (SSE)', level: 'Proficient', desc: 'Real-time Streaming Data' },
+      { name: 'Authentication', level: 'Proficient', desc: 'JWT & Session Security' }
+    ],
+    database: [
+      { name: 'MySQL', level: 'Proficient', desc: 'Relational Schemas & SQL Queries' },
+      { name: 'MongoDB', level: 'Proficient', desc: 'NoSQL Document Store' },
+      { name: 'DB Optimization', level: 'Proficient', desc: 'Query Execution & Indexing' }
+    ],
+    ai: [
+      { name: 'Large Language Models (LLMs)', level: 'Proficient', desc: 'Generative AI Integrations' },
+      { name: 'Retrieval-Augmented Generation (RAG)', level: 'Proficient', desc: 'Context-Aware AI Workflows' },
+      { name: 'Prompt Engineering', level: 'Proficient', desc: 'Instruction Design & Fine-tuning' },
+      { name: 'Server-Sent Events (SSE)', level: 'Proficient', desc: 'Real-time AI Stream Generation' }
+    ],
+    tools: [
+      { name: 'Git & GitHub', level: 'Proficient', desc: 'Version Control & Collaboration' },
+      { name: 'Postman', level: 'Proficient', desc: 'API Testing & Documentation' },
+      { name: 'Linux', level: 'Proficient', desc: 'CLI Navigation & Environment Setup' },
+      { name: 'VS Code', level: 'Proficient', desc: 'Development & Debugging' }
+    ],
+    core: [
+      { name: 'Data Structures & Algorithms', level: 'Proficient', desc: '250+ LeetCode Solved' },
+      { name: 'Object-Oriented Programming (OOP)', level: 'Proficient', desc: 'Abstraction & Encapsulation' },
+      { name: 'Operating Systems', level: 'Proficient', desc: 'Process & Memory Management' },
+      { name: 'DBMS', level: 'Proficient', desc: 'Database Management Systems' },
+      { name: 'Computer Networks', level: 'Proficient', desc: 'TCP/IP & HTTP Protocols' }
+    ]
+  };
 
   const certifications = [
     {
-      title: 'AWS - Machine Learning Foundations',
-      issuer: 'Amazon Web Services',
-      badge: 'AWS Certified'
+      title: 'Supervised Machine Learning: Regression and Classification',
+      issuer: 'Coursera / DeepLearning.AI',
+      date: '2024'
     },
     {
-      title: 'Palo Alto - Cloud Security Automation, Network Security, Operations & Configurations',
-      issuer: 'Palo Alto Networks',
-      badge: 'Security Certified'
-    },
-    {
-      title: 'Red Hat - Red Hat System Administration',
-      issuer: 'Red Hat Linux',
-      badge: 'System Admin'
+      title: 'Complete C++ STL',
+      issuer: 'Udemy',
+      date: '2024'
     }
   ];
-
-  const additionalHighlights = [
-    'Earned the LeetCode 100 Days Coding Badge by maintaining consistent coding practice.',
-    'Solved 250+ LeetCode questions.',
-    'Participated in multiple hackathons, including SIH, and served as Management Lead of the department\'s club.'
-  ];
-
-  const filteredCategories = activeTab === 'all'
-    ? skillCategories
-    : skillCategories.filter((cat) => cat.id === activeTab);
 
   return (
     <PageTransitionSection id="skills" className="section-spacing">
       <div className="container">
         
-        {/* Clean Header with Motion */}
-        <div style={{ marginBottom: '40px' }}>
+        {/* Section Header */}
+        <div style={{ marginBottom: '36px' }}>
           <div className="section-tag">
-            <span>TECHNICAL CAPABILITIES</span>
+            <span>TECHNICAL PROFICIENCY</span>
           </div>
-          <h2 className="section-title">
-            <MotionTitle>Skills & Proficiencies</MotionTitle>
-          </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '640px', margin: 0 }}>
-            Comprehensive technical knowledge sourced directly from my experience and projects.
-          </p>
+          <div>
+            <h2 className="section-title" style={{ margin: 0 }}>
+              <MotionTitle>Technical Skills </MotionTitle>
+            </h2>
+          </div>
         </div>
 
-        {/* Tab Filter Pills */}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '10px',
-          marginBottom: '40px'
-        }}>
-          <button
-            onClick={() => setActiveTab('all')}
-            style={{
-              padding: '8px 20px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid',
-              borderColor: activeTab === 'all' ? 'var(--accent-cyan)' : 'var(--border-glass)',
-              background: activeTab === 'all' ? 'rgba(6, 182, 212, 0.18)' : 'rgba(255, 255, 255, 0.03)',
-              color: activeTab === 'all' ? 'var(--accent-cyan)' : 'var(--text-secondary)',
-              fontFamily: 'var(--font-body)',
-              fontWeight: '600',
-              fontSize: '0.85rem',
-              cursor: 'pointer',
-              transition: 'all 0.25s ease'
-            }}
-          >
-            All Skills
-          </button>
+        {/* 1. Interactive Knowledge Graph Widget */}
+        <div style={{ marginBottom: '48px' }}>
+          <InteractiveTechCube />
+        </div>
 
-          {skillCategories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
+        {/* 2. Categorized Glassmorphic Skills Tabs */}
+        <div>
+          {/* Category Tabs Bar */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px',
+            marginBottom: '28px',
+            background: 'var(--bg-card)',
+            padding: '8px',
+            borderRadius: 'var(--radius-md)',
+            border: '1px solid var(--border-glass)'
+          }}>
+            {categories.map((cat) => {
+              const IconComp = cat.icon;
+              const isActive = activeTab === cat.id;
+
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  style={{
+                    background: isActive ? 'linear-gradient(135deg, var(--accent-purple), var(--accent-violet))' : 'transparent',
+                    color: isActive ? '#ffffff' : 'var(--text-secondary)',
+                    border: 'none',
+                    borderRadius: 'var(--radius-sm)',
+                    padding: '10px 18px',
+                    fontSize: '0.85rem',
+                    fontWeight: '600',
+                    fontFamily: 'var(--font-body)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'all var(--transition-fast)',
+                    boxShadow: isActive ? '0 4px 15px rgba(168, 85, 247, 0.4)' : 'none'
+                  }}
+                >
+                  <IconComp size={15} />
+                  <span>{cat.name}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Category Skills Grid */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25 }}
               style={{
-                padding: '8px 18px',
-                borderRadius: 'var(--radius-pill)',
-                border: '1px solid',
-                borderColor: activeTab === cat.id ? 'var(--accent-cyan)' : 'var(--border-glass)',
-                background: activeTab === cat.id ? 'rgba(6, 182, 212, 0.18)' : 'rgba(255, 255, 255, 0.03)',
-                color: activeTab === cat.id ? 'var(--accent-cyan)' : 'var(--text-secondary)',
-                fontFamily: 'var(--font-body)',
-                fontWeight: '600',
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease'
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                gap: '16px'
               }}
             >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Clean Cohesive Skills Cards Grid with Framer Motion */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '24px',
-          marginBottom: '56px'
-        }}>
-          {filteredCategories.map((cat, idx) => (
-            <motion.div
-              key={cat.id}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.7, delay: (idx % 3) * 0.12, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div
-                className="glass-card"
-                style={{
-                  padding: '28px',
-                  borderRadius: 'var(--radius-md)',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justify: 'space-between'
-                }}
-              >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                    <div style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '12px',
-                      background: 'rgba(6, 182, 212, 0.12)',
-                      border: '1px solid var(--border-glass)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      {cat.icon}
-                    </div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>
-                      {cat.name}
-                    </h3>
-                  </div>
-
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                    {cat.skills.map((skill, sIdx) => (
-                      <span
-                        key={sIdx}
-                        style={{
-                          fontSize: '0.85rem',
-                          fontFamily: 'var(--font-mono)',
-                          background: 'rgba(6, 182, 212, 0.08)',
-                          color: 'var(--text-primary)',
-                          padding: '6px 14px',
-                          borderRadius: 'var(--radius-pill)',
-                          border: '1px solid var(--border-glass)',
-                          transition: 'all 0.2s ease'
-                        }}
-                        className="clean-skill-pill"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Certifications & Additional Highlights Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '24px',
-          '@media (min-width: 992px)': { gridTemplateColumns: '1fr 1fr' }
-        }} className="cert-add-grid">
-          
-          {/* Certifications */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="glass-card" style={{ padding: '28px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                <Award size={22} style={{ color: 'var(--accent-cyan)' }} />
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>
-                  Certifications
-                </h3>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                {certifications.map((cert, cIdx) => (
-                  <div
-                    key={cIdx}
-                    style={{
-                      padding: '16px 20px',
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid var(--border-subtle)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      flexWrap: 'wrap',
-                      gap: '10px'
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontSize: '0.95rem', fontWeight: '700', color: 'var(--text-primary)' }}>
-                        {cert.title}
-                      </div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginTop: '2px' }}>
-                        {cert.issuer}
-                      </div>
-                    </div>
-
+              {skillData[activeTab]?.map((skill, sIdx) => (
+                <div
+                  key={sIdx}
+                  className="glass-card"
+                  style={{
+                    padding: '18px 20px',
+                    borderRadius: 'var(--radius-sm)'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                    <span style={{ fontWeight: '700', fontSize: '0.98rem', color: 'var(--text-primary)' }}>
+                      {skill.name}
+                    </span>
                     <span style={{
                       fontSize: '0.72rem',
                       fontFamily: 'var(--font-mono)',
-                      background: 'rgba(6, 182, 212, 0.12)',
-                      color: 'var(--accent-cyan)',
-                      padding: '4px 10px',
+                      color: 'var(--accent-purple)',
+                      background: 'rgba(168, 85, 247, 0.12)',
+                      padding: '2px 8px',
                       borderRadius: 'var(--radius-pill)',
-                      border: '1px solid rgba(6, 182, 212, 0.25)'
+                      border: '1px solid var(--border-glass)'
                     }}>
-                      {cert.badge}
+                      {skill.level}
                     </span>
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.45' }}>
+                    {skill.desc}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Certifications Card Footer */}
+          <div style={{ marginTop: '36px' }}>
+            <div className="glass-card" style={{ padding: '24px 28px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                <Award size={18} style={{ color: 'var(--accent-purple)' }} />
+                <span className="font-serif" style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+                  Certifications &amp; Coding Benchmarks
+                </span>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+                {certifications.map((cert, cIdx) => (
+                  <div key={cIdx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-purple)', marginTop: '3px', flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+                        {cert.title}
+                      </div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                        {cert.issuer} • {cert.date}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-          </motion.div>
-
-          {/* Additional Highlights */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="glass-card" style={{ padding: '28px', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                <Star size={22} style={{ color: '#10b981' }} />
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>
-                  Additional Highlights
-                </h3>
-              </div>
-
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {additionalHighlights.map((hl, hIdx) => (
-                  <li key={hIdx} style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '12px', lineHeight: '1.65' }}>
-                    <span style={{ color: 'var(--accent-cyan)', marginTop: '2px' }}>✦</span>
-                    <span>{hl}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          </div>
 
         </div>
 
       </div>
-
-      <style>{`
-        .clean-skill-pill:hover {
-          background: rgba(6, 182, 212, 0.18) !important;
-          border-color: var(--accent-cyan) !important;
-          color: var(--accent-cyan) !important;
-          transform: translateY(-2px);
-        }
-        @media (min-width: 992px) {
-          .cert-add-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-      `}</style>
     </PageTransitionSection>
   );
 }
