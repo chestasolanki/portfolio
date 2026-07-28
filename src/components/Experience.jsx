@@ -112,7 +112,7 @@ export default function Experience() {
                         lineHeight: '1.1',
                         marginBottom: '6px'
                       }}>
-                        Software Developer Intern
+                        Full Stack Developer Intern
                       </h3>
                       <div style={{
                         fontFamily: 'var(--font-body)',
