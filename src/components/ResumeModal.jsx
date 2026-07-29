@@ -203,10 +203,10 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <strong style={{ color: '#38bdf8' }}>Certifications:</strong>
                 <ul style={{ paddingLeft: '18px', marginTop: '4px' }}>
                   <li><strong>AWS</strong> – Machine Learning Foundations</li>
-                  <li><strong>Palo Alto</strong> – Cloud Security Automation, Network Security, Operations &amp; Configurations</li>
+                  <li><strong>AWS</strong> – Cloud Foundations</li>
+                  <li><strong>Palo Alto</strong> – Cloud Security Automation, Operations &amp; Configurations</li>
                   <li><strong>Red Hat</strong> – Red Hat System Administration</li>
-                  <li><strong>Coursera / DeepLearning.AI</strong> – Supervised Machine Learning: Regression and Classification</li>
-                  <li><strong>Udemy</strong> – Complete C++ STL</li>
+                  
                 </ul>
               </div>
 

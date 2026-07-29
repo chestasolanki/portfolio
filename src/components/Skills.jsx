@@ -38,11 +38,11 @@ export default function Skills() {
 
   const certifications = [
     { title: 'AWS – Machine Learning Foundations', issuer: 'Amazon Web Services' },
+    { title: 'AWS – Cloud Foundations', issuer: 'Amazon Web Services' },
     { title: 'Palo Alto – Cloud Security Automation', issuer: 'Palo Alto Networks' },
-    { title: 'Palo Alto – Network Security, Operations & Configurations', issuer: 'Palo Alto Networks' },
+    { title: 'Palo Alto – Operations & Configurations', issuer: 'Palo Alto Networks' },
     { title: 'Red Hat – System Administration', issuer: 'Red Hat' },
-    { title: 'Supervised Machine Learning: Regression & Classification', issuer: 'Coursera / DeepLearning.AI' },
-    { title: 'Complete C++ STL', issuer: 'Udemy' }
+    
   ];
 
   return (
