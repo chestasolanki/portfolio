@@ -70,6 +70,7 @@ export default function RobotCompanion() {
       shape.quadraticCurveTo(x, y + h, x, y + h - r);
       shape.lineTo(x, y + r);
       shape.quadraticCurveTo(x, y, x + r, y);
+      shape.closePath();
       return shape;
     }
 

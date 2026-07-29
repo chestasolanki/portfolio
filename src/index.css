@@ -39,7 +39,7 @@
   --navbar-text: #ffffff;
 
   /* High-Contrast Font Pairing Tokens */
-  --font-serif: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Boska', Georgia, serif;
   --font-body: 'Inter', 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
@@ -201,14 +201,14 @@ body {
 }
 
 /* ==========================================================================
-   CLASH DISPLAY HEADINGS & TYPOGRAPHY
+   BOSKA HEADINGS & TYPOGRAPHY
    ========================================================================== */
 .font-serif {
-  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: 'Boska', Georgia, serif !important;
 }
 
 .giant-hero-title {
-  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: 'Boska', Georgia, serif !important;
   font-size: clamp(80px, 13vw, 160px);
   font-weight: 500 !important;
   line-height: 0.9;
@@ -250,7 +250,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: 'Boska', Georgia, serif !important;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 600;
   line-height: 1.05;
@@ -260,7 +260,7 @@ body {
 }
 
 .card-title {
-  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: 'Boska', Georgia, serif !important;
   font-size: 24px;
   font-weight: 600;
   color: var(--text-primary);

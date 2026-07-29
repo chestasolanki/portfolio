@@ -36,14 +36,18 @@ export default function Contact({ onOpenResume }) {
                 <span>GET IN TOUCH</span>
               </div>
 
-              <h2 style={{
-                fontSize: 'clamp(2.2rem, 5vw, 4.2rem)',
-                fontWeight: '800',
-                letterSpacing: '-0.02em',
-                lineHeight: '1.05',
-                color: 'var(--text-primary)',
-                marginBottom: '20px'
-              }}>
+              <h2
+                className="font-serif"
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: 'clamp(2.2rem, 5vw, 4.2rem)',
+                  fontWeight: '800',
+                  letterSpacing: '-0.02em',
+                  lineHeight: '1.05',
+                  color: 'var(--text-primary)',
+                  marginBottom: '20px'
+                }}
+              >
                 Let's talk about<br />
                 <span style={{ color: '#38bdf8', textShadow: '0 0 25px rgba(56, 189, 248, 0.4)' }}>your project &amp; opportunities</span>
               </h2>
