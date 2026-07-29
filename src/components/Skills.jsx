@@ -32,7 +32,7 @@ export default function Skills() {
     },
     {
       title: 'Developer Tools & OS',
-      skills: ['Git', 'GitHub', 'Postman', 'Linux', 'VS Code']
+      skills: ['Git', 'GitHub', 'Postman', 'Linux']
     }
   ];
 
