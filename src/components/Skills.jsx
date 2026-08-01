@@ -72,7 +72,7 @@ export default function Skills() {
               <span>TECHNICAL PROFICIENCY</span>
             </div>
             <h2 className="section-title" style={{ margin: 0 }}>
-              Skills &amp; Knowledge Graph
+              Skills &amp; <em>Knowledge Graph</em>
             </h2>
           </div>
 

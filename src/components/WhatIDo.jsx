@@ -22,7 +22,7 @@ export default function WhatIDo() {
       {services.map((srv, idx) => (
         <div key={idx} className="glass-card" style={{ padding: '24px', borderRadius: 'var(--radius-md)' }}>
           <div style={{ marginBottom: '14px' }}>{srv.icon}</div>
-          <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '8px' }}>
+          <h3 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', fontWeight: '500', color: 'var(--text-primary)', marginBottom: '8px' }}>
             {srv.title}
           </h3>
           <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '16px' }}>

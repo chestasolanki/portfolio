@@ -29,28 +29,29 @@ export default function Navbar({ theme, toggleTheme }) {
         {/* Brand Logo */}
         <a href="#hero" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{
-            width: '34px',
-            height: '34px',
+            width: '32px',
+            height: '32px',
             borderRadius: '50%',
             background: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: '#ffffff',
-            fontWeight: '800',
+            fontWeight: '600',
             fontFamily: 'var(--font-serif)',
-            fontSize: '1rem',
+            fontSize: '0.9rem',
             boxShadow: '0 0 14px rgba(56, 189, 248, 0.4)'
           }}>
             CS
           </div>
-          <span className="font-serif" style={{
-            fontWeight: '700',
-            fontSize: '1.1rem',
+          <span className="font-italic" style={{
+            fontSize: '1.15rem',
             color: 'var(--navbar-text)',
-            letterSpacing: '-0.01em'
+            fontStyle: 'italic',
+            fontWeight: '500',
+            letterSpacing: '0.04em'
           }}>
-            CHESTA
+            Chesta Solanki
           </span>
         </a>
 
@@ -60,10 +61,10 @@ export default function Navbar({ theme, toggleTheme }) {
           alignItems: 'center',
           gap: '28px'
         }} className="desktop-nav">
-          <a href="#experience" className="nav-link">Experience</a>
-          <a href="#skills" className="nav-link">Skills</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#experience" className="nav-link">EXPERIENCE</a>
+          <a href="#skills" className="nav-link">SKILLS</a>
+          <a href="#projects" className="nav-link">PROJECTS</a>
+          <a href="#contact" className="nav-link">CONTACT</a>
         </div>
 
         {/* Theme Toggle Button */}
@@ -97,7 +98,8 @@ export default function Navbar({ theme, toggleTheme }) {
           text-decoration: none;
           font-family: var(--font-body);
           font-weight: 500;
-          font-size: 0.9rem;
+          font-size: 0.78rem;
+          letter-spacing: 0.16em;
           transition: color var(--transition-fast);
           position: relative;
         }

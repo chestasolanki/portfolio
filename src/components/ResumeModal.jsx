@@ -78,11 +78,11 @@ export default function ResumeModal({ isOpen, onClose }) {
             paddingBottom: '20px',
             marginBottom: '24px'
           }}>
-            <h1 className="font-serif" style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
-              CHESTA SOLANKI
+            <h1 className="font-italic" style={{ fontSize: '2.2rem', color: 'var(--text-primary)', marginBottom: '6px', fontStyle: 'italic', fontWeight: '500', letterSpacing: '0.02em' }}>
+              Chesta Solanki
             </h1>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', color: '#38bdf8', fontWeight: '700', marginBottom: '14px' }}>
-              Full-Stack Developer
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-purple)', fontWeight: '500', marginBottom: '14px' }}>
+              Full-Stack &amp; AI Engineer
             </div>
 
             {/* Contact Details */}

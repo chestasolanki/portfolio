@@ -47,7 +47,7 @@ export default function Projects() {
             <span>FEATURED WORK</span>
           </div>
           <h2 className="section-title" style={{ margin: 0 }}>
-            Featured Projects
+            Featured <em>Projects</em>
           </h2>
         </div>
 

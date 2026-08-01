@@ -112,31 +112,44 @@ export default function Hero() {
             transition={{ duration: 0.7 }}
             style={{ marginBottom: '24px' }}
           >
-            <div className="glass-pill" style={{ padding: '7px 20px', fontSize: '13.5px', display: 'inline-flex' }}>
+            <div className="glass-pill" style={{ padding: '7px 20px', fontSize: '11.5px', letterSpacing: '0.22em', textTransform: 'uppercase', display: 'inline-flex' }}>
               <span className="pulse-dot" />
               <span>AVAILABLE FOR OPPORTUNITIES</span>
             </div>
           </motion.div>
 
-          {/* 2. GIANT HERO NAME: CHESTA SOLANKI */}
+          {/* 2. GIANT HERO NAME WITH LIMETTA LUXURY SERIF & ITALIC ACCENT */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             style={{ marginBottom: '20px', position: 'relative' }}
           >
-            <h1 className="giant-hero-title" style={{ textAlign: 'left', lineHeight: '0.98' }}>
-              <span style={{ display: 'block', color: 'var(--text-primary)', fontWeight: '500' }}>CHESTA</span>
+            <h1 className="giant-hero-title" style={{ textAlign: 'left', lineHeight: '0.96' }}>
               <span
-                className="hero-name-shine"
+                className="font-italic"
+                style={{
+                  display: 'block',
+                  color: 'var(--text-primary)',
+                  fontStyle: 'italic',
+                  fontWeight: '500',
+                  letterSpacing: '0.01em'
+                }}
+              >
+                Chesta
+              </span>
+              <span
+                className="hero-name-shine font-italic"
                 style={{
                   display: 'block',
                   color: 'var(--accent-purple)',
+                  fontStyle: 'italic',
                   fontWeight: '500',
+                  letterSpacing: '0.01em',
                   textShadow: '0 0 45px rgba(56, 189, 248, 0.6)'
                 }}
               >
-                SOLANKI
+                Solanki
               </span>
             </h1>
           </motion.div>
@@ -147,16 +160,16 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'clamp(16px, 2.2vw, 22px)',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(14px, 1.8vw, 18px)',
               color: 'var(--accent-purple)',
-              letterSpacing: '0.2em',
+              letterSpacing: '0.22em',
               marginBottom: '20px',
               textTransform: 'uppercase',
-              fontWeight: '600'
+              fontWeight: '500'
             }}
           >
-            &gt;_ FULL-STACK ENGINEER
+            Full-Stack &amp; AI Engineer
           </motion.div>
 
           {/* 4. Dynamic Terminal Typewriter */}
@@ -166,13 +179,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '16px',
+              fontSize: '15px',
               color: '#4ade80',
-              fontWeight: '700',
+              fontWeight: '600',
               marginBottom: '22px',
               display: 'inline-block',
               background: 'rgba(74, 222, 128, 0.08)',
-              padding: '9px 20px',
+              padding: '8px 20px',
               borderRadius: 'var(--radius-pill)',
               border: '1px solid rgba(74, 222, 128, 0.25)'
             }}
@@ -186,7 +199,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
             style={{
-              fontSize: '16px',
+              fontSize: '15.5px',
               color: 'var(--text-secondary)',
               maxWidth: '520px',
               marginBottom: '30px',
@@ -194,7 +207,7 @@ export default function Hero() {
               fontWeight: '400'
             }}
           >
-            Building scalable web applications, AI-powered experiences, and modern digital products with a focus on performance, design, and user experience.
+            Crafting <em>timeless</em> web applications, AI-powered systems, and <em>modern</em> digital experiences built with performance, beauty, and precision.
           </motion.p>
 
           {/* 6. Action Buttons */}
@@ -207,18 +220,18 @@ export default function Hero() {
             <a
               href="mailto:chestasolanki664@gmail.com"
               className="btn-primary"
-              style={{ padding: '12px 26px', fontSize: '14.5px' }}
+              style={{ padding: '12px 28px', fontSize: '13px', letterSpacing: '0.14em', textTransform: 'uppercase' }}
             >
-              <span>Get in Touch</span>
-              <ArrowUpRight size={16} />
+              <span>GET IN TOUCH</span>
+              <ArrowUpRight size={15} />
             </a>
 
             <a
               href="#projects"
               className="btn-secondary"
-              style={{ padding: '12px 24px', fontSize: '14.5px' }}
+              style={{ padding: '12px 26px', fontSize: '13px', letterSpacing: '0.14em', textTransform: 'uppercase' }}
             >
-              <span>View Projects</span>
+              <span>VIEW PROJECTS</span>
             </a>
           </motion.div>
 

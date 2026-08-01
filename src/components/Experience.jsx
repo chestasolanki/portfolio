@@ -55,7 +55,7 @@ export default function Experience() {
             <span>CAREER &amp; ACADEMICS</span>
           </div>
           <h2 className="section-title" style={{ margin: 0 }}>
-            Experience &amp; Background
+            Experience &amp; <em>Background</em>
           </h2>
         </div>
 
