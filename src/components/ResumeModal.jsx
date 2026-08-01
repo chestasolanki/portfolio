@@ -149,7 +149,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             </h2>
             <div style={{ background: 'var(--bg-card)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontWeight: '700', fontSize: '14.5px', marginBottom: '2px' }}>
-                <span>Software Developer Intern</span>
+                <span>Full Stack Developer Intern</span>
                 <span style={{ fontSize: '12.5px', color: 'var(--text-muted)', fontWeight: '400' }}>June 2026 – Present</span>
               </div>
               <div style={{ fontSize: '13.5px', color: '#38bdf8', fontWeight: '600', marginBottom: '10px' }}>
