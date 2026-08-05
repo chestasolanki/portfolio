@@ -12,7 +12,7 @@ export default function Projects() {
       title: 'Craftly — AI-Powered Website Generation Platform',
       subtitle: 'Prompt-to-Website Engine',
       description: 'Built an AI platform that converts natural language prompts into live functional websites. Features real-time SSE streaming for live code execution and interactive code preview.',
-      tags: ['LLMs', 'Prompt Engineering', 'Node.js', 'Express.js', 'REST APIs', 'SSE', 'HTML/CSS/JS'],
+      tags: ['Groq API', 'Llama 3.3 70B', 'Prompt Engineering', 'Node.js', 'Express.js', 'REST APIs', 'SSE', 'HTML/CSS/JS'],
       github: 'https://github.com/chestasolanki/craftly',
       live: '#',
       featured: true,
@@ -27,6 +27,16 @@ export default function Projects() {
       live: '#',
       featured: true,
       metrics: 'Full-Stack Solution'
+    },
+    {
+      title: 'ResumeMatch — GenAI Resume & JD Matching Platform',
+      subtitle: 'GenAI Match & Skill-Gap Engine',
+      description: 'Built a full-stack GenAI platform comparing candidate resumes against job descriptions, returning quantified match scores, skill-gap breakdowns, and LLM-generated feedback.',
+      tags: ['React.js', 'Node.js', 'Express.js', 'LLMs', 'LangChain', 'Vector DB', 'Prompt Engineering'],
+      github: 'https://github.com/chestasolanki',
+      live: '#',
+      featured: true,
+      metrics: 'Semantic Vector Search'
     }
   ];
 

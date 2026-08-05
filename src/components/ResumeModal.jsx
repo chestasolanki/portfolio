@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Mail, Globe, Code2, Download, ExternalLink } from 'lucide-react';
+import { X, Mail, Globe, Code2, Download, ExternalLink, MapPin, Phone } from 'lucide-react';
 
 export default function ResumeModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -93,9 +93,24 @@ export default function ResumeModal({ isOpen, onClose }) {
               fontSize: '13px',
               color: 'var(--text-secondary)'
             }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <MapPin size={13} style={{ color: '#38bdf8' }} />
+                <span>Greater Noida</span>
+              </span>
+
               <a href="mailto:chestasolanki664@gmail.com" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Mail size={13} style={{ color: '#38bdf8' }} />
                 <span>chestasolanki664@gmail.com</span>
+              </a>
+
+              <a href="tel:+917455042260" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Phone size={13} style={{ color: '#38bdf8' }} />
+                <span>+91-7455042260</span>
+              </a>
+
+              <a href="https://chestasolanki.tech" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Globe size={13} style={{ color: '#38bdf8' }} />
+                <span>chestasolanki.tech</span>
               </a>
 
               <a href="https://linkedin.com/in/chestasolanki1/" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -122,21 +137,21 @@ export default function ResumeModal({ isOpen, onClose }) {
                   <span style={{ color: '#38bdf8' }}>CGPA: 8.13</span>
                 </div>
                 <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '2px' }}>
-                  Bachelor of Technology (B.Tech) - Information Technology (2022 - 2026)
+                  Bachelor of Technology (B.Tech) — Information Technology (2023 – 2027)
                 </div>
               </div>
 
               <div style={{ background: 'var(--bg-card)', padding: '12px 18px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontWeight: '700', fontSize: '13.5px' }}>
                   <span>Senior Secondary School (Class XII) — CBSE</span>
-                  <span style={{ color: '#38bdf8' }}>88.6%</span>
+                  <span style={{ color: '#38bdf8' }}>88.6% (2022 – 2023)</span>
                 </div>
               </div>
 
               <div style={{ background: 'var(--bg-card)', padding: '12px 18px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontWeight: '700', fontSize: '13.5px' }}>
                   <span>Secondary School (Class X) — CBSE</span>
-                  <span style={{ color: '#38bdf8' }}>87.8%</span>
+                  <span style={{ color: '#38bdf8' }}>87.8% (2020 – 2021)</span>
                 </div>
               </div>
             </div>
@@ -149,18 +164,16 @@ export default function ResumeModal({ isOpen, onClose }) {
             </h2>
             <div style={{ background: 'var(--bg-card)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontWeight: '700', fontSize: '14.5px', marginBottom: '2px' }}>
-                <span>Full Stack Developer Intern</span>
-                <span style={{ fontSize: '12.5px', color: 'var(--text-muted)', fontWeight: '400' }}>June 2026 – Present</span>
+                <span>Freelance Full-Stack Developer</span>
               </div>
               <div style={{ fontSize: '13.5px', color: '#38bdf8', fontWeight: '600', marginBottom: '10px' }}>
                 LIMETTA
               </div>
               <ul style={{ paddingLeft: '18px', fontSize: '13.5px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                <li>Developed and maintained a production-ready web application using React.js, Node.js, Express.js, and REST APIs.</li>
-                <li>Built responsive, reusable UI components and implemented modern frontend best practices.</li>
-                <li>Designed and integrated backend APIs, authentication, and database operations to support core business features.</li>
-                <li>Collaborated with the founder and team to translate business requirements into scalable technical solutions.</li>
-                <li>Improved application performance, fixed bugs, and optimized the user experience across devices.</li>
+                <li>Developed a full-stack e-commerce platform for luxury interior decor for Limetta using React 19, Node.js, Express.js, and MongoDB with Framer Motion animations.</li>
+                <li>Integrated Razorpay for payment processing and Delhivery Logistics for order fulfillment, waybill tracking, shipping updates, and automated email receipts via Resend.</li>
+                <li>Built customer portals with custom product finishes, search/filtering, cart, wishlist, product reviews, and secure JWT-based authentication.</li>
+                <li>Designed an Admin Portal for real-time inventory management, order status tracking (Packed, Shipped, Out for Delivery), and cloud media storage via ImageKit API.</li>
               </ul>
             </div>
           </div>
@@ -174,20 +187,30 @@ export default function ResumeModal({ isOpen, onClose }) {
               <div style={{ background: 'var(--bg-card)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
                 <div style={{ fontWeight: '700', fontSize: '14px' }}>Craftly — AI-Powered Website Generation Platform</div>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '6px 0', lineHeight: '1.55' }}>
-                  Developed an AI-powered website generation platform transforming natural language prompts into functional websites using LLMs with real-time SSE streaming.
+                  Developed an AI website generation platform that turns natural language prompts into functional websites using Llama 3.3 70B via the Groq API, with a structured pipeline producing consistent, multi-file HTML/CSS/JS output. Implemented real-time LLM streaming with Server-Sent Events (SSE) and automated backend file creation for a live preview.
                 </p>
                 <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
-                  Tools: LLMs, Prompt Engineering, Node.js, Express.js, REST APIs, SSE, HTML, CSS, JS
+                  Tools: Groq API, Llama 3.3 70B, Prompt Engineering, Node.js, Express.js, REST APIs, SSE, HTML/CSS/JS
                 </div>
               </div>
 
               <div style={{ background: 'var(--bg-card)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
                 <div style={{ fontWeight: '700', fontSize: '14px' }}>PrepAI — AI Interview Preparation Platform</div>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '6px 0', lineHeight: '1.55' }}>
-                  Built a full-stack AI interview preparation platform using React.js, Node.js, Express.js, and MySQL with authentication, analytics dashboards, and interview workflows.
+                  Built a full-stack AI interview preparation platform using React.js, Node.js, Express.js, and MySQL with authentication and role-based access. Built analytics dashboards visualizing performance trends, topic-wise strengths/weaknesses, and company-wise coverage on a normalized, query-optimized MySQL schema.
                 </p>
                 <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
                   Tools: React.js, Node.js, Express.js, MySQL, REST APIs, Tailwind CSS
+                </div>
+              </div>
+
+              <div style={{ background: 'var(--bg-card)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
+                <div style={{ fontWeight: '700', fontSize: '14px' }}>ResumeMatch — GenAI Resume &amp; JD Matching Platform</div>
+                <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '6px 0', lineHeight: '1.55' }}>
+                  Built a full-stack GenAI platform comparing a candidate's resume against a JD, returning a quantified match score and skill-gap breakdown. Designed a document ingestion pipeline parsing resumes/JDs (PDF/DOCX) using vector embeddings for semantic matching beyond keywords, integrating an LLM for human-readable feedback.
+                </p>
+                <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
+                  Tools: React.js, Node.js, Express.js, LLMs, LangChain, Vector DB, Prompt Engineering, REST APIs
                 </div>
               </div>
             </div>
@@ -203,23 +226,17 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <strong style={{ color: '#38bdf8' }}>Certifications:</strong>
                 <ul style={{ paddingLeft: '18px', marginTop: '4px' }}>
                   <li><strong>AWS</strong> – Machine Learning Foundations</li>
-                  <li><strong>AWS</strong> – Cloud Foundations</li>
-                  <li><strong>Palo Alto</strong> – Cloud Security Automation, Operations &amp; Configurations</li>
+                  <li><strong>Palo Alto</strong> – Cloud Security Automation &amp; Network Security Operations</li>
                   <li><strong>Red Hat</strong> – Red Hat System Administration</li>
-                  
                 </ul>
               </div>
 
               <div><strong>Programming Languages:</strong> C++, JavaScript, Python</div>
-              <div><strong>Frontend Development:</strong> React.js, HTML5, CSS3, Tailwind CSS, Responsive Design</div>
-              <div><strong>Backend Development:</strong> Node.js, Express.js, RESTful APIs, SSE, Authentication &amp; Authorization</div>
-              <div><strong>Databases:</strong> MySQL, MongoDB, Database Optimization</div>
-              <div><strong>AI &amp; ML Integrations:</strong> LLMs, RAG, Prompt Engineering, Server-Sent Events (SSE)</div>
-              <div><strong>Developer Tools &amp; OS:</strong> Git, GitHub, Postman, Linux, VS Code</div>
-              <div><strong>Core Computer Science:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Operating Systems, DBMS, Computer Networks</div>
-              <div style={{ marginTop: '6px', color: '#38bdf8' }}>
-                <strong>Coding Profiles:</strong> LeetCode (250+ Problems Solved)
-              </div>
+              <div><strong>Frontend:</strong> React.js, Tailwind CSS, HTML5, CSS3</div>
+              <div><strong>Full Stack Development:</strong> Node.js, Express.js, REST APIs</div>
+              <div><strong>AI / ML:</strong> Scikit-learn, PyTorch, NumPy, Pandas, LLMs, LangChain, RAG, Prompt Engineering</div>
+              <div><strong>Databases:</strong> MySQL, MongoDB, Redis, Pinecone, ChromaDB</div>
+              <div><strong>Developer Tools:</strong> Git, GitHub, Postman, Linux</div>
             </div>
           </div>
 

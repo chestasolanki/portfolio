@@ -7,11 +7,10 @@ import TiltCard from './TiltCard';
 
 export default function Experience() {
   const timelinePoints = [
-    'Developed and maintained a production-ready web application using React.js, Node.js, Express.js, and REST APIs.',
-    'Built responsive, reusable UI components and implemented modern frontend best practices.',
-    'Designed and integrated backend APIs, authentication, and database operations to support core business features.',
-    'Collaborated with the founder and team to translate business requirements into scalable technical solutions.',
-    'Improved application performance, fixed bugs, and optimized the user experience across devices.'
+    'Developed a full-stack e-commerce platform for luxury interior decor for Limetta using React 19, Node.js, Express.js, and MongoDB with Framer Motion animations.',
+    'Integrated Razorpay for payment processing and Delhivery Logistics for order fulfillment, waybill tracking, shipping updates, and automated email receipts via Resend.',
+    'Built customer portals with custom product finishes, search/filtering, cart, wishlist, product reviews, and secure JWT-based authentication.',
+    'Designed an Admin Portal for real-time inventory management, order status tracking (Packed, Shipped, Out for Delivery), and cloud media storage via ImageKit API.'
   ];
 
   const educationList = [
@@ -19,19 +18,19 @@ export default function Experience() {
       school: 'GL Bajaj Institute of Technology and Management',
       degree: 'B.Tech — Information Technology',
       score: '8.13 CGPA',
-      period: '2022 – 2026'
+      period: '2023 – 2027'
     },
     {
       school: 'Senior Secondary School (Class XII)',
       degree: 'Central Board of Secondary Education',
       score: '88.6%',
-      period: '2022'
+      period: '2022 – 2023'
     },
     {
       school: 'Secondary School (Class X)',
       degree: 'Central Board of Secondary Education',
       score: '87.8%',
-      period: '2020'
+      period: '2020 – 2021'
     }
   ];
 
@@ -112,7 +111,7 @@ export default function Experience() {
                         lineHeight: '1.1',
                         marginBottom: '6px'
                       }}>
-                        Full Stack Developer Intern
+                        Freelance Full-Stack Developer
                       </h3>
                       <div style={{
                         fontFamily: 'var(--font-body)',
