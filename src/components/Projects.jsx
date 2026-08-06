@@ -9,19 +9,19 @@ import TiltCard from './TiltCard';
 export default function Projects() {
   const projectsList = [
     {
-      title: 'Craftly — AI-Powered Website Generation Platform',
-      subtitle: 'Prompt-to-Website Engine',
-      description: 'Built an AI platform that converts natural language prompts into live functional websites. Features real-time SSE streaming for live code execution and interactive code preview.',
-      tags: ['Groq API', 'Llama 3.3 70B', 'Prompt Engineering', 'Node.js', 'Express.js', 'REST APIs', 'SSE', 'HTML/CSS/JS'],
-      github: 'https://github.com/chestasolanki/craftly',
+      title: 'CareerPilot — AI Interview Preparation Platform',
+      subtitle: 'Personalized AI Prep Engine',
+      description: 'Built an AI-powered platform that analyzes candidate resumes (PDF), job descriptions, and self-descriptions to calculate match scores, identify skill gaps, and generate multi-day personalized prep plans with technical/behavioral guidance.',
+      tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Multer', 'PDF-Parse', 'Gemini API', 'SCSS'],
+      github: 'https://github.com/chestasolanki/CareerPilot',
       live: '#',
       featured: true,
-      metrics: 'Real-time Generation'
+      metrics: 'AI Document Pipeline'
     },
     {
       title: 'PrepAI — AI Interview Preparation Platform',
       subtitle: 'Interactive AI Mock Interviewer',
-      description: 'Created a full-stack AI interview prep application with custom question generation, feedback analytics dashboards, authentication workflows, and performance tracking.',
+      description: 'Created a full-stack AI interview prep application with custom question generation, feedback analytics dashboards, authentication workflows, and performance tracking on a normalized MySQL schema.',
       tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Tailwind CSS'],
       github: 'https://github.com/chestasolanki/prep-ai',
       live: '#',
@@ -29,14 +29,14 @@ export default function Projects() {
       metrics: 'Full-Stack Solution'
     },
     {
-      title: 'ResumeMatch — GenAI Resume & JD Matching Platform',
-      subtitle: 'GenAI Match & Skill-Gap Engine',
-      description: 'Built a full-stack GenAI platform comparing candidate resumes against job descriptions, returning quantified match scores, skill-gap breakdowns, and LLM-generated feedback.',
-      tags: ['React.js', 'Node.js', 'Express.js', 'LLMs', 'LangChain', 'Vector DB', 'Prompt Engineering'],
-      github: 'https://github.com/chestasolanki',
+      title: 'Craftly — AI-Powered Website Generation Platform',
+      subtitle: 'Prompt-to-Website Engine',
+      description: 'Built an AI platform that converts natural language prompts into live functional websites using Llama 3.3 70B via Groq API. Features real-time SSE streaming for live code execution and multi-file preview.',
+      tags: ['Groq API', 'Llama 3.3 70B', 'Prompt Engineering', 'Node.js', 'Express.js', 'REST APIs', 'SSE', 'HTML/CSS/JS'],
+      github: 'https://github.com/chestasolanki/craftly',
       live: '#',
       featured: true,
-      metrics: 'Semantic Vector Search'
+      metrics: 'Real-time LLM Streaming'
     }
   ];
 

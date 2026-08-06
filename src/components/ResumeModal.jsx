@@ -164,7 +164,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             </h2>
             <div style={{ background: 'var(--bg-card)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontWeight: '700', fontSize: '14.5px', marginBottom: '2px' }}>
-                <span>Freelance Full-Stack Developer</span>
+                <span>Founding Product Developer</span>
               </div>
               <div style={{ fontSize: '13.5px', color: '#38bdf8', fontWeight: '600', marginBottom: '10px' }}>
                 LIMETTA
@@ -185,12 +185,12 @@ export default function ResumeModal({ isOpen, onClose }) {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ background: 'var(--bg-card)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
-                <div style={{ fontWeight: '700', fontSize: '14px' }}>Craftly — AI-Powered Website Generation Platform</div>
+                <div style={{ fontWeight: '700', fontSize: '14px' }}>CareerPilot — AI Interview Preparation Platform</div>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '6px 0', lineHeight: '1.55' }}>
-                  Developed an AI website generation platform that turns natural language prompts into functional websites using Llama 3.3 70B via the Groq API, with a structured pipeline producing consistent, multi-file HTML/CSS/JS output. Implemented real-time LLM streaming with Server-Sent Events (SSE) and automated backend file creation for a live preview.
+                  Built an AI-powered interview preparation platform analyzing candidate resumes (PDF), job descriptions, and self-descriptions to generate personalized reports, skill-gap analysis, role-specific questions, and multi-day prep plans.
                 </p>
                 <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
-                  Tools: Groq API, Llama 3.3 70B, Prompt Engineering, Node.js, Express.js, REST APIs, SSE, HTML/CSS/JS
+                  Tools: React.js, Node.js, Express.js, MongoDB, JWT, Multer, PDF-Parse, Gemini API, SCSS
                 </div>
               </div>
 
@@ -205,12 +205,12 @@ export default function ResumeModal({ isOpen, onClose }) {
               </div>
 
               <div style={{ background: 'var(--bg-card)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-glass)' }}>
-                <div style={{ fontWeight: '700', fontSize: '14px' }}>ResumeMatch — GenAI Resume &amp; JD Matching Platform</div>
+                <div style={{ fontWeight: '700', fontSize: '14px' }}>Craftly — AI-Powered Website Generation Platform</div>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '6px 0', lineHeight: '1.55' }}>
-                  Built a full-stack GenAI platform comparing a candidate's resume against a JD, returning a quantified match score and skill-gap breakdown. Designed a document ingestion pipeline parsing resumes/JDs (PDF/DOCX) using vector embeddings for semantic matching beyond keywords, integrating an LLM for human-readable feedback.
+                  Developed an AI website generation platform that turns natural language prompts into functional websites using Llama 3.3 70B via the Groq API, with a structured pipeline producing consistent, multi-file HTML/CSS/JS output. Implemented real-time LLM streaming with Server-Sent Events (SSE) and automated backend file creation for a live preview.
                 </p>
                 <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: '#38bdf8' }}>
-                  Tools: React.js, Node.js, Express.js, LLMs, LangChain, Vector DB, Prompt Engineering, REST APIs
+                  Tools: Groq API, Llama 3.3 70B, Prompt Engineering, Node.js, Express.js, REST APIs, SSE, HTML/CSS/JS
                 </div>
               </div>
             </div>
@@ -227,7 +227,6 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <ul style={{ paddingLeft: '18px', marginTop: '4px' }}>
                   <li><strong>AWS</strong> – Machine Learning Foundations</li>
                   <li><strong>Palo Alto</strong> – Cloud Security Automation &amp; Network Security Operations</li>
-                  <li><strong>Red Hat</strong> – Red Hat System Administration</li>
                 </ul>
               </div>
 
