@@ -9,7 +9,13 @@ export default function ResumeModal({ isOpen, onClose }) {
       <div
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
-        style={{ padding: '0', overflow: 'hidden' }}
+        style={{
+          padding: '0',
+          display: 'flex',
+          flexDirection: 'column',
+          maxHeight: '90vh',
+          overflow: 'hidden'
+        }}
       >
         {/* Modal Top Control Bar */}
         <div style={{
@@ -18,7 +24,11 @@ export default function ResumeModal({ isOpen, onClose }) {
           justifyContent: 'space-between',
           padding: '14px 20px',
           background: 'var(--bg-card)',
-          borderBottom: '1px solid var(--border-glass)'
+          borderBottom: '1px solid var(--border-glass)',
+          flexShrink: 0,
+          position: 'sticky',
+          top: 0,
+          zIndex: 10
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="pulse-dot" />
@@ -70,7 +80,7 @@ export default function ResumeModal({ isOpen, onClose }) {
         </div>
 
         {/* Printable Resume Canvas */}
-        <div style={{ padding: '32px 36px', background: 'var(--bg-surface)' }}>
+        <div className="resume-modal-scroll" style={{ padding: '32px 36px', background: 'var(--bg-surface)', flex: 1 }}>
           
           {/* Header */}
           <div style={{
