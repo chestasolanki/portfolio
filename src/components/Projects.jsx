@@ -8,14 +8,14 @@ export default function Projects() {
   const [isPlaying, setIsPlaying] = useState(true);
   const SLIDE_DURATION = 6500; // 6.5s per slide
 
-  // Rotating intro transition words
+  // Rotating intro transition words (Fast rhythm)
   const introWords = ['intelligent', 'adaptive', 'meaningful', 'dynamic'];
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % introWords.length);
-    }, 2800);
+    }, 1500);
     return () => clearInterval(timer);
   }, [introWords.length]);
 
@@ -128,10 +128,10 @@ export default function Projects() {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={wordIndex}
-                  initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
+                  initial={{ opacity: 0, y: 12, filter: 'blur(3px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
-                  transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                  exit={{ opacity: 0, y: -12, filter: 'blur(3px)' }}
+                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
                   className="work-cyan-accent"
                   style={{ display: 'inline-block' }}
                 >
