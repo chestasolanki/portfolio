@@ -99,7 +99,7 @@ export default function Projects({ onNavigate }) {
   const currentProject = projects[activeSlide];
 
   return (
-    <section id="work" className="purrweb-exact-work-stage">
+    <section className="purrweb-exact-work-stage">
       {/* Top Navigation Bar: Non-fixed, unique to Work Page */}
       <PageHeader activePage="work" onNavigate={onNavigate} />
 

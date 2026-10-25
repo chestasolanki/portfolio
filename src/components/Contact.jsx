@@ -13,7 +13,7 @@ export default function Contact({ onNavigate, onOpenResume }) {
   };
 
   return (
-    <footer id="contact" className="purrweb-exact-slide-stage purrweb-contact-section">
+    <footer className="purrweb-exact-slide-stage purrweb-contact-section">
       {/* Top Navigation Bar: Non-fixed, unique to Contact Page */}
       <PageHeader activePage="contact" onNavigate={onNavigate} />
 

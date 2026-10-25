@@ -111,7 +111,6 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
 
   return (
     <section
-      id="hero"
       ref={heroRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}

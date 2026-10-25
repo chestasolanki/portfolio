@@ -7,8 +7,15 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import ResumeModal from './components/ResumeModal';
 
+const getInitialPage = () => {
+  if (typeof window === 'undefined') return 0;
+  const hash = window.location.hash.toLowerCase().replace('#', '');
+  const map = { home: 0, work: 1, skills: 2, experience: 3, contact: 4 };
+  return map[hash] ?? 0;
+};
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const isTransitioning = useRef(false);
   const touchStartY = useRef(0);
@@ -19,11 +26,29 @@ export default function App() {
     if (pageIndex >= 0 && pageIndex < TOTAL_PAGES) {
       isTransitioning.current = true;
       setCurrentPage(pageIndex);
+      const pageNames = ['home', 'work', 'skills', 'experience', 'contact'];
+      window.history.replaceState(null, '', '#' + pageNames[pageIndex]);
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
       setTimeout(() => {
         isTransitioning.current = false;
       }, 850);
     }
   };
+
+  // Sync with initial URL hash and external hash navigation
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.toLowerCase().replace('#', '');
+      const map = { home: 0, work: 1, skills: 2, experience: 3, contact: 4 };
+      if (hash in map) {
+        goToPage(map[hash]);
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   // Full-page scroll transition on Mouse Wheel / Trackpad Gesture
   useEffect(() => {

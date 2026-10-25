@@ -45,7 +45,7 @@ export default function Skills({ onNavigate }) {
   ];
 
   return (
-    <section id="skills" className="purrweb-exact-slide-stage">
+    <section className="purrweb-exact-slide-stage">
       {/* Top Navigation Bar: Non-fixed, unique to Skills Page */}
       <PageHeader activePage="skills" onNavigate={onNavigate} />
 

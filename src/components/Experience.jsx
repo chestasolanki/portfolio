@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Calendar, Sparkles, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Briefcase, Sparkles, ArrowUpRight, Globe, Lock, ShieldCheck, ExternalLink, Zap } from 'lucide-react';
 import PageHeader from './PageHeader';
 
 export default function Experience({ onNavigate }) {
@@ -12,32 +12,8 @@ export default function Experience({ onNavigate }) {
     'Designed and implemented an Admin Portal featuring live order lifecycle management (Packed, Shipped, Out for Delivery, Delivered) and cloud asset storage with ImageKit API.'
   ];
 
-  const educationList = [
-    {
-      institution: 'GL Bajaj Institute of Technology and Management',
-      degree: 'B.Tech — Information Technology',
-      score: '8.13 CGPA',
-      period: '2023 – 2027',
-      status: 'Current'
-    },
-    {
-      institution: 'Senior Secondary School (Class XII)',
-      degree: 'Central Board of Secondary Education (CBSE)',
-      score: '88.6%',
-      period: '2022 – 2023',
-      status: 'Completed'
-    },
-    {
-      institution: 'Secondary School (Class X)',
-      degree: 'Central Board of Secondary Education (CBSE)',
-      score: '87.8%',
-      period: '2020 – 2021',
-      status: 'Completed'
-    }
-  ];
-
   return (
-    <section id="experience" className="purrweb-exact-slide-stage">
+    <section className="purrweb-exact-slide-stage">
       {/* Top Navigation Bar: Non-fixed, unique to Experience Page */}
       <PageHeader activePage="experience" onNavigate={onNavigate} />
 
@@ -47,30 +23,29 @@ export default function Experience({ onNavigate }) {
         <div className="purrweb-section-header">
           <div className="purrweb-badge">
             <Sparkles size={12} style={{ color: 'var(--accent-cyan)' }} />
-            <span className="purrweb-badge-text">CAREER JOURNEY</span>
+            <span className="purrweb-badge-text">PRODUCTION RECORD</span>
           </div>
           <h2 className="purrweb-section-title">
-            Experience &amp; <span className="purrweb-serif-accent">Background</span>
+            Industry &amp; <span className="purrweb-serif-accent">Production Experience</span>
           </h2>
           <p className="purrweb-section-subtitle">
-            Industry development experience and strong academic foundations in Information Technology.
+            Founding full-stack product engineering, cloud deployment, and live customer-facing systems.
           </p>
         </div>
 
-        {/* Open Editorial Asymmetric Dual Layout */}
+        {/* Editorial Asymmetric Dual Layout: Role Details + Live Website Showcase */}
         <div className="purrweb-exp-grid">
           
-          {/* Left Column: Industry Experience */}
+          {/* Left Column: Industry Experience Details */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="exp-column"
           >
             <div className="exp-column-header">
-              <Briefcase size={16} style={{ color: 'var(--accent-violet)' }} />
-              <span>INDUSTRY EXPERIENCE</span>
+              <Briefcase size={16} style={{ color: 'var(--accent-gold)' }} />
+              <span>FOUNDING PRODUCT DEVELOPMENT</span>
             </div>
 
             <div className="exp-timeline-block">
@@ -79,15 +54,17 @@ export default function Experience({ onNavigate }) {
                 <div className="role-meta">
                   <span className="role-company">Limetta</span>
                   <span className="meta-dot">•</span>
-                  <span className="role-type">Full-Stack Engineering</span>
+                  <span className="role-type">Full-Stack Architecture</span>
                   <span className="meta-dot">•</span>
-                  <span className="role-date">Recent</span>
+                  <span className="role-status-badge">
+                    <span className="live-pulse-dot" /> Live in Production
+                  </span>
                 </div>
               </div>
 
               <p className="exp-intro-text">
                 Spearheaded the technical architecture and end-to-end development of Limetta’s flagship
-                e-commerce platform, taking it from zero to production deployment.
+                e-commerce platform, scaling it from concept to live production deployment with real-world users.
               </p>
 
               <ul className="exp-bullets">
@@ -105,49 +82,108 @@ export default function Experience({ onNavigate }) {
                 <span className="stack-tag">Express.js</span>
                 <span className="stack-tag">MongoDB</span>
                 <span className="stack-tag">Razorpay</span>
-                <span className="stack-tag">Delhivery API</span>
+                <span className="stack-tag">Delhivery Logistics</span>
                 <span className="stack-tag">Resend</span>
-                <span className="stack-tag">ImageKit</span>
+                <span className="stack-tag">ImageKit CDN</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Academic Milestones */}
+          {/* Right Column: Live Experienced Website Browser Mockup */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="edu-column"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="exp-preview-column"
           >
             <div className="exp-column-header">
-              <GraduationCap size={16} style={{ color: 'var(--accent-coral)' }} />
-              <span>ACADEMIC BACKGROUND</span>
+              <Globe size={16} style={{ color: 'var(--accent-cyan)' }} />
+              <span>PRODUCTION WEB APPLICATION</span>
+              <a
+                href="https://www.limetta.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="exp-visit-link"
+              >
+                <span>Visit Live Platform</span>
+                <ArrowUpRight size={13} />
+              </a>
             </div>
 
-            <div className="edu-list">
-              {educationList.map((edu, idx) => (
-                <div key={idx} className="edu-card-item">
-                  <div className="edu-item-top">
-                    <span className="edu-period">
-                      <Calendar size={12} />
-                      <span>{edu.period}</span>
-                    </span>
-                    <span className="edu-score-badge">{edu.score}</span>
-                  </div>
-
-                  <h4 className="edu-institution">{edu.institution}</h4>
-                  <div className="edu-degree">{edu.degree}</div>
+            {/* Browser Mockup Window */}
+            <div className="exp-browser-window">
+              {/* Browser Chrome Header */}
+              <div className="exp-browser-header">
+                <div className="exp-window-dots">
+                  <span className="dot red" />
+                  <span className="dot yellow" />
+                  <span className="dot green" />
                 </div>
-              ))}
+
+                <div className="exp-url-pill">
+                  <Lock size={11} className="lock-icon" />
+                  <span className="url-text">https://www.limetta.in</span>
+                  <span className="ssl-badge">SSL Verified</span>
+                </div>
+
+                <div className="exp-window-actions">
+                  <a
+                    href="https://www.limetta.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="open-tab-btn"
+                    title="Open live site in new tab"
+                  >
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Viewport Frame with Live Website Screenshot */}
+              <a
+                href="https://www.limetta.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="exp-screenshot-wrap"
+              >
+                <img
+                  src="/limetta_experience.png"
+                  alt="Limetta - Luxury Interior Home Decor E-Commerce Platform"
+                  className="exp-screenshot-img"
+                  loading="lazy"
+                />
+                
+                {/* Floating Inspection Pill */}
+                <div className="exp-hover-pill">
+                  <Zap size={13} style={{ color: 'var(--accent-gold)' }} />
+                  <span>Click to view live site (limetta.in)</span>
+                  <ArrowUpRight size={13} />
+                </div>
+              </a>
+
+              {/* Engineering Metrics Strip */}
+              <div className="exp-browser-footer">
+                <div className="footer-metric">
+                  <span className="metric-label">Architecture</span>
+                  <span className="metric-val">React 19 • Node • Mongo</span>
+                </div>
+                <div className="footer-metric">
+                  <span className="metric-label">Checkout</span>
+                  <span className="metric-val">Razorpay Webhooks</span>
+                </div>
+                <div className="footer-metric">
+                  <span className="metric-label">Fulfillment</span>
+                  <span className="metric-val">Delhivery Automated Waybills</span>
+                </div>
+              </div>
             </div>
 
-            {/* Quick Summary Pill */}
-            <div className="edu-summary-pill">
-              <CheckCircle2 size={15} style={{ color: '#4ade80' }} />
-              <div>
-                <strong>Strong Foundation in Computer Science:</strong>
-                <span> Algorithms, System Design, Database Normalization &amp; Distributed Systems.</span>
+            {/* Architecture Highlight Card */}
+            <div className="exp-system-badge">
+              <ShieldCheck size={18} style={{ color: '#34d399', flexShrink: 0 }} />
+              <div className="system-badge-content">
+                <strong>Live E-Commerce Core &amp; Admin Dashboard:</strong>
+                <span> Fully deployed with live payment webhooks, automated customer receipts, and cloud asset processing pipeline.</span>
               </div>
             </div>
           </motion.div>
@@ -158,3 +194,4 @@ export default function Experience({ onNavigate }) {
     </section>
   );
 }
+
