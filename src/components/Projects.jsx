@@ -412,6 +412,24 @@ export default function Projects() {
             </motion.div>
           </AnimatePresence>
 
+          {/* Minimal Project Transition Indicator Dots */}
+          <div className="deck-dots-indicator">
+            {projects.map((proj, idx) => {
+              const isActive = activeSlide === idx;
+              return (
+                <button
+                  key={proj.id}
+                  onClick={() => setActiveSlide(idx)}
+                  className={`deck-dot ${isActive ? 'is-active' : ''}`}
+                  aria-label={`Jump to project ${idx + 1}: ${proj.title}`}
+                  title={`${proj.title} • ${proj.category}`}
+                >
+                  <span className="deck-dot-pill" />
+                </button>
+              );
+            })}
+          </div>
+
         </div>
 
       </div>
