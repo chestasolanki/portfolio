@@ -1,9 +1,8 @@
 import React from 'react';
-import { Calendar, GraduationCap } from 'lucide-react';
+import { Calendar, GraduationCap, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PageTransitionSection from './PageTransitionSection';
 import CinematicDeveloperBackground from './CinematicDeveloperBackground';
-import TiltCard from './TiltCard';
 
 export default function Experience() {
   const timelinePoints = [
@@ -48,8 +47,8 @@ export default function Experience() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
-        {/* Section Header with Minimal 20px Gap */}
-        <div style={{ marginBottom: '24px' }}>
+        {/* Section Header */}
+        <div style={{ marginBottom: '40px' }}>
           <div className="section-tag">
             <span>CAREER &amp; ACADEMICS</span>
           </div>
@@ -58,216 +57,203 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* 70% / 30% Asymmetric Grid Layout */}
-        <div className="exp-70-30-grid">
+        {/* Open, Borderless Asymmetric Dual Layout */}
+        <div className="exp-open-layout">
           
-          {/* Left Column (70%): Work Experience Card */}
+          {/* Left Column: Work Experience (Open Timeline) */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             style={{ display: 'flex', flexDirection: 'column' }}
           >
-            <div className="section-tag" style={{ marginBottom: '8px' }}>
-              <span>WORK EXPERIENCE</span>
+            <div className="section-tag" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Briefcase size={13} style={{ color: 'var(--accent-purple)' }} />
+              <span>INDUSTRY EXPERIENCE</span>
             </div>
 
-            <TiltCard style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <div
-                className="premium-glass-card"
-                style={{
-                  padding: '36px 38px',
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid var(--border-glass)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  flex: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-                }}
-              >
-                {/* Top Accent Line */}
+            {/* Role, Company & Date Line */}
+            <div style={{ marginBottom: '24px' }}>
+              <h3 style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(32px, 3.6vw, 44px)',
+                fontWeight: '600',
+                color: 'var(--text-primary)',
+                lineHeight: '1.1',
+                marginBottom: '8px',
+                letterSpacing: '-0.01em'
+              }}>
+                Founding Product Developer
+              </h3>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '12px',
+                borderBottom: '1px solid rgba(56, 189, 248, 0.15)',
+                paddingBottom: '16px'
+              }}>
                 <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  background: 'linear-gradient(90deg, #38bdf8 0%, #0284c7 60%, transparent 100%)'
-                }} />
-
-                <div>
-                  {/* Header Information */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '28px' }}>
-                    <div>
-                      <h3 style={{
-                        fontFamily: 'var(--font-serif)',
-                        fontSize: 'clamp(28px, 3.2vw, 38px)',
-                        fontWeight: '600',
-                        color: 'var(--text-primary)',
-                        lineHeight: '1.1',
-                        marginBottom: '6px'
-                      }}>
-                        Founding Product Developer
-                      </h3>
-                      <div style={{
-                        fontFamily: 'var(--font-body)',
-                        fontSize: '22px',
-                        fontWeight: '700',
-                        color: 'var(--accent-purple)',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase'
-                      }}>
-                        LIMETTA
-                      </div>
-                    </div>
-
-                    <div className="date-badge" style={{ padding: '6px 16px', fontSize: '13px' }}>
-                      <Calendar size={14} />
-                      <span>June 2026 — Present</span>
-                    </div>
-                  </div>
-
-                  {/* Vertical Timeline */}
-                  <div style={{ position: 'relative', paddingLeft: '28px', marginTop: '12px' }}>
-                    
-                    {/* Continuous Vertical Timeline Line */}
-                    <div style={{
-                      position: 'absolute',
-                      top: '8px',
-                      bottom: '12px',
-                      left: '8px',
-                      width: '2px',
-                      background: 'linear-gradient(180deg, var(--accent-purple) 0%, rgba(56, 189, 248, 0.15) 100%)'
-                    }} />
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
-                      {timelinePoints.map((point, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: idx * 0.08 }}
-                          style={{ position: 'relative' }}
-                        >
-                          {/* Timeline Glowing Node Bullet */}
-                          <div style={{
-                            position: 'absolute',
-                            top: '6px',
-                            left: '-28px',
-                            transform: 'translateX(-50%)',
-                            width: '10px',
-                            height: '10px',
-                            borderRadius: '50%',
-                            background: 'var(--accent-purple)',
-                            boxShadow: '0 0 10px var(--accent-purple)',
-                            border: '2px solid var(--bg-surface)'
-                          }} />
-
-                          <p style={{
-                            fontSize: '16px',
-                            color: 'var(--text-secondary)',
-                            lineHeight: '1.65',
-                            margin: 0,
-                            fontWeight: '400'
-                          }}>
-                            {point}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                  </div>
-
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '24px',
+                  fontWeight: '700',
+                  color: 'var(--accent-purple)',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase'
+                }}>
+                  LIMETTA
                 </div>
 
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontSize: '13.5px',
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'var(--font-mono)'
+                }}>
+                  <Calendar size={14} style={{ color: 'var(--accent-purple)' }} />
+                  <span>June 2026 — Present</span>
+                </div>
               </div>
-            </TiltCard>
-          </motion.div>
-
-          {/* Right Column (30%): Academic Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}
-          >
-            <div className="section-tag" style={{ marginBottom: '8px', position: 'relative', zIndex: 1 }}>
-              <span>ACADEMIC BACKGROUND</span>
             </div>
 
+            {/* Open Vertical Timeline */}
+            <div style={{ position: 'relative', paddingLeft: '32px', marginTop: '8px' }}>
+              
+              {/* Continuous Glowing Vertical Line */}
+              <div style={{
+                position: 'absolute',
+                top: '8px',
+                bottom: '12px',
+                left: '10px',
+                width: '2px',
+                background: 'linear-gradient(180deg, var(--accent-purple) 0%, rgba(56, 189, 248, 0.25) 75%, transparent 100%)'
+              }} />
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '26px' }}>
+                {timelinePoints.map((point, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.08 }}
+                    style={{ position: 'relative' }}
+                  >
+                    {/* Glowing Bullet Node */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '6px',
+                      left: '-32px',
+                      transform: 'translateX(-50%)',
+                      width: '10px',
+                      height: '10px',
+                      borderRadius: '50%',
+                      background: 'var(--accent-purple)',
+                      boxShadow: '0 0 12px var(--accent-purple)',
+                      border: '2px solid var(--bg-main)'
+                    }} />
+
+                    <p style={{
+                      fontSize: '16.5px',
+                      color: 'var(--text-secondary)',
+                      lineHeight: '1.7',
+                      margin: 0,
+                      fontWeight: '400'
+                    }}>
+                      {point}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+            </div>
+          </motion.div>
+
+          {/* Right Column: Academic Background (Open Timeline) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <div className="section-tag" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <GraduationCap size={14} style={{ color: 'var(--accent-purple)' }} />
+              <span>EDUCATION</span>
+            </div>
+
+            {/* Academic Items (Open, Clean, Boxless) */}
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '16px',
-              flex: 1,
-              justifyContent: 'space-between',
-              position: 'relative',
-              zIndex: 1
+              gap: '28px',
+              marginTop: '4px'
             }}>
               {educationList.map((edu, idx) => (
-                <TiltCard key={idx}>
-                  <div
-                    className="premium-glass-card"
-                    style={{
-                      padding: '22px 24px',
-                      borderRadius: 'var(--radius-md)',
-                      border: '1px solid var(--border-glass)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-                    }}
-                  >
-                    {/* Subtle Accent Edge */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      bottom: 0,
-                      width: '3px',
-                      background: idx === 0 ? 'var(--accent-purple)' : 'var(--border-glass)'
-                    }} />
-
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                        <GraduationCap size={15} style={{ color: 'var(--accent-purple)' }} />
-                        <span>{edu.period}</span>
-                      </div>
-
-                      <span style={{
-                        fontSize: '12.5px',
-                        fontWeight: '700',
-                        fontFamily: 'var(--font-mono)',
-                        background: 'rgba(56, 189, 248, 0.16)',
-                        color: 'var(--accent-purple)',
-                        padding: '3px 10px',
-                        borderRadius: 'var(--radius-pill)'
-                      }}>
-                        {edu.score}
-                      </span>
-                    </div>
-
-                    <h4 style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: '20px',
-                      fontWeight: '600',
-                      color: 'var(--text-primary)',
-                      lineHeight: '1.25',
-                      marginBottom: '4px'
+                <div
+                  key={idx}
+                  style={{
+                    position: 'relative',
+                    paddingBottom: idx !== educationList.length - 1 ? '24px' : '0',
+                    borderBottom: idx !== educationList.length - 1 ? '1px solid rgba(255, 255, 255, 0.08)' : 'none'
+                  }}
+                >
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'baseline',
+                    flexWrap: 'wrap',
+                    gap: '8px',
+                    marginBottom: '6px'
+                  }}>
+                    <span style={{
+                      fontSize: '12.5px',
+                      color: 'var(--accent-purple)',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: '600'
                     }}>
-                      {edu.school}
-                    </h4>
+                      {edu.period}
+                    </span>
 
-                    <div style={{ fontSize: '13.5px', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                      {edu.degree}
-                    </div>
+                    <span style={{
+                      fontSize: '13px',
+                      fontWeight: '700',
+                      fontFamily: 'var(--font-mono)',
+                      color: 'var(--text-primary)',
+                      background: 'rgba(56, 189, 248, 0.12)',
+                      padding: '2px 9px',
+                      borderRadius: 'var(--radius-pill)',
+                      border: '1px solid rgba(56, 189, 248, 0.25)'
+                    }}>
+                      {edu.score}
+                    </span>
                   </div>
-                </TiltCard>
+
+                  <h4 style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '22px',
+                    fontWeight: '600',
+                    color: 'var(--text-primary)',
+                    lineHeight: '1.25',
+                    marginBottom: '6px'
+                  }}>
+                    {edu.school}
+                  </h4>
+
+                  <div style={{
+                    fontSize: '14px',
+                    color: 'var(--text-secondary)',
+                    fontFamily: 'var(--font-body)',
+                    lineHeight: '1.5'
+                  }}>
+                    {edu.degree}
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -278,18 +264,16 @@ export default function Experience() {
       </div>
 
       <style>{`
-        .exp-70-30-grid {
+        .exp-open-layout {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 32px;
-          align-items: stretch;
-        }
-        .premium-glass-card {
-          background: var(--bg-card);
+          gap: 48px;
+          align-items: start;
         }
         @media (min-width: 992px) {
-          .exp-70-30-grid {
-            grid-template-columns: 2.2fr 1fr !important;
+          .exp-open-layout {
+            grid-template-columns: 1.8fr 1.1fr !important;
+            gap: 64px !important;
           }
         }
       `}</style>
