@@ -8,6 +8,17 @@ export default function Projects() {
   const [isPlaying, setIsPlaying] = useState(true);
   const SLIDE_DURATION = 6500; // 6.5s per slide
 
+  // Rotating intro transition words
+  const introWords = ['intelligent', 'adaptive', 'meaningful', 'dynamic'];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % introWords.length);
+    }, 2800);
+    return () => clearInterval(timer);
+  }, [introWords.length]);
+
   const projects = [
     {
       id: 'codemesh',
@@ -112,10 +123,25 @@ export default function Projects() {
         <div className="work-left-editorial">
           <h2 className="work-editorial-statement">
             I am Chesta Solanki,<br />
-            i engineer <span className="work-cyan-accent">intelligent</span><br />
-            yet resilient &amp; high<br />
-            performance systems for<br />
-            the cloud, AI and web
+            crafting{' '}
+            <span className="rotating-word-slot" style={{ display: 'inline-block', position: 'relative' }}>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={wordIndex}
+                  initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
+                  transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                  className="work-cyan-accent"
+                  style={{ display: 'inline-block' }}
+                >
+                  {introWords[wordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span><br />
+            digital experiences<br />
+            at the intersection<br />
+            of AI &amp; engineering.
           </h2>
 
           <div className="work-meta-domain">
