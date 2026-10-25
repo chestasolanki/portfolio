@@ -1392,8 +1392,8 @@ button {
   background: #07090e;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(90px, 11vh, 130px) clamp(24px, 5.5vw, 76px) clamp(36px, 5vh, 50px) clamp(24px, 5.5vw, 76px);
+  justify-content: center;
+  padding: clamp(140px, 16vh, 180px) clamp(24px, 5.5vw, 76px) clamp(80px, 10vh, 120px) clamp(24px, 5.5vw, 76px);
   color: #ffffff;
 }
 
@@ -1681,103 +1681,6 @@ button {
 .info-action-btn:hover {
   background: var(--gradient-purrweb);
   border-color: transparent;
-}
-
-/* Bottom Player Controls (Play + Pink Progress Bar + Dots) */
-.work-player-bar {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  width: 100%;
-  max-width: 1320px;
-  margin: 0 auto;
-  z-index: 20;
-  position: relative;
-  margin-top: clamp(28px, 4.5vh, 50px);
-}
-
-.player-play-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #07090e;
-  cursor: pointer;
-  flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease;
-}
-
-.player-play-btn:hover {
-  transform: scale(1.08);
-}
-
-.player-track-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.player-track-bg {
-  flex: 1;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.16);
-  border-radius: 9999px;
-  overflow: hidden;
-  position: relative;
-}
-
-.player-track-progress {
-  height: 100%;
-  background: linear-gradient(90deg, #ec4899 0%, #f43f5e 100%);
-  box-shadow: 0 0 14px rgba(236, 72, 153, 0.9);
-  border-radius: 9999px;
-}
-
-.player-dots-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.player-dot-btn {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.player-dot-btn .dot-inner {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  transition: all 0.25s ease;
-}
-
-.player-dot-btn.is-active {
-  border: 1.5px solid #00e5ff;
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-}
-
-.player-dot-btn.is-active .dot-inner {
-  width: 5px;
-  height: 5px;
-  background: #00e5ff;
-  box-shadow: 0 0 8px #00e5ff;
 }
 
 @media (max-width: 1024px) {

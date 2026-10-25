@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Play, Pause, ExternalLink, Code2, Sparkles, Terminal } from 'lucide-react';
+import { ArrowRight, ExternalLink, Code2, Sparkles, Terminal } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 export default function Projects() {
@@ -125,17 +125,31 @@ export default function Projects() {
         </div>
 
         {/* Right Column: Stacked Project Cards Deck */}
-        <div className="work-right-deck">
+        <div
+          className="work-right-deck"
+          onMouseEnter={() => setIsPlaying(false)}
+          onMouseLeave={() => setIsPlaying(true)}
+        >
           
           {/* Peeking Background Card 1 (Top Stack) */}
-          <div className="stack-card card-back-1">
+          <div
+            onClick={() => setActiveSlide((activeSlide + 2) % total)}
+            className="stack-card card-back-1"
+            style={{ cursor: 'pointer' }}
+            title={`Switch to ${projects[(activeSlide + 2) % total].title}`}
+          >
             <div className="stack-card-title">
               <span>{projects[(activeSlide + 2) % total].category}</span>
             </div>
           </div>
 
           {/* Peeking Background Card 2 (Middle Stack) */}
-          <div className="stack-card card-back-2">
+          <div
+            onClick={() => setActiveSlide((activeSlide + 1) % total)}
+            className="stack-card card-back-2"
+            style={{ cursor: 'pointer' }}
+            title={`Switch to ${projects[(activeSlide + 1) % total].title}`}
+          >
             <div className="stack-card-title">
               <span>{projects[(activeSlide + 1) % total].category}</span>
             </div>
@@ -372,54 +386,6 @@ export default function Projects() {
             </motion.div>
           </AnimatePresence>
 
-        </div>
-
-      </div>
-
-      {/* =========================================================================
-          BOTTOM PLAYER CONTROLS
-          Play/Pause Button + Pink/Magenta Glowing Progress Bar + Dots
-          Matching the exact playback bar in the Purrweb Dribbble reference
-          ========================================================================= */}
-      <div className="work-player-bar">
-        
-        {/* Play / Pause Toggle Button */}
-        <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          className="player-play-btn"
-          aria-label={isPlaying ? 'Pause auto slide' : 'Play auto slide'}
-        >
-          {isPlaying ? <Pause size={18} fill="#07090e" /> : <Play size={18} fill="#07090e" style={{ marginLeft: '2px' }} />}
-        </button>
-
-        {/* Long Progress Bar Track with Magenta Gradient Glow */}
-        <div className="player-track-container">
-          <div className="player-track-bg">
-            <motion.div
-              key={`${activeSlide}-${isPlaying}`}
-              initial={{ width: '0%' }}
-              animate={{ width: isPlaying ? '100%' : '100%' }}
-              transition={{ duration: isPlaying ? SLIDE_DURATION / 1000 : 0, ease: 'linear' }}
-              className="player-track-progress"
-            />
-          </div>
-
-          {/* 4 Pagination Indicator Dots */}
-          <div className="player-dots-group">
-            {projects.map((proj, idx) => {
-              const isActive = activeSlide === idx;
-              return (
-                <button
-                  key={proj.id}
-                  onClick={() => setActiveSlide(idx)}
-                  className={`player-dot-btn ${isActive ? 'is-active' : ''}`}
-                  aria-label={`Jump to slide ${idx + 1}: ${proj.title}`}
-                >
-                  <span className="dot-inner" />
-                </button>
-              );
-            })}
-          </div>
         </div>
 
       </div>
