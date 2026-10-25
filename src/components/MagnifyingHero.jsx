@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PageHeader from './PageHeader';
 
 export default function MagnifyingHero({ onNavigate, onOpenResume }) {
   const heroRef = useRef(null);
@@ -140,8 +139,8 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
         <div className="atmosphere-grain" />
       </div>
 
-      {/* Top Navigation Bar: Non-fixed, unique to Home Page */}
-      <PageHeader activePage="home" onNavigate={onNavigate} />
+      {/* Top Spacer preserving balanced vertical centering beneath fixed navbar */}
+      <div className="hero-top-spacer" aria-hidden="true" style={{ height: 'clamp(60px, 8vh, 80px)' }} />
 
       {/* =========================================================================
           MASSIVE HERO TYPOGRAPHY: Software Engineer
@@ -192,7 +191,7 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
             <div className="meta-line">IN INDIA</div>
             <div className="meta-spacer" />
             <div className="meta-line">B.TECH IT (8.13 CGPA)</div>
-            <div className="meta-line">FOUNDING DEV @ LIMETTA</div>
+            <div className="meta-line">GL Bajaj Institute of tecnology and management</div>
           </div>
 
         </div>

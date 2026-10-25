@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Copy, Check, ArrowUpRight, Phone, MapPin, Sparkles, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
-import PageHeader from './PageHeader';
 
 export default function Contact({ onNavigate, onOpenResume }) {
   const [copiedField, setCopiedField] = useState(null);
@@ -14,9 +13,6 @@ export default function Contact({ onNavigate, onOpenResume }) {
 
   return (
     <footer className="purrweb-exact-slide-stage purrweb-contact-section">
-      {/* Top Navigation Bar: Non-fixed, unique to Contact Page */}
-      <PageHeader activePage="contact" onNavigate={onNavigate} />
-
       <div className="container" style={{ maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* =========================================================================

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Sparkles, Terminal, Code2, Database, Brain, Cpu, Wrench } from 'lucide-react';
 import CertificateSlideshow from './CertificateSlideshow';
-import PageHeader from './PageHeader';
 
 export default function Skills({ onNavigate }) {
   const skillClusters = [
@@ -46,9 +45,6 @@ export default function Skills({ onNavigate }) {
 
   return (
     <section className="purrweb-exact-slide-stage">
-      {/* Top Navigation Bar: Non-fixed, unique to Skills Page */}
-      <PageHeader activePage="skills" onNavigate={onNavigate} />
-
       <div className="container" style={{ maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* Section Header */}

@@ -6,6 +6,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import ResumeModal from './components/ResumeModal';
+import PageHeader from './components/PageHeader';
 
 const getInitialPage = () => {
   if (typeof window === 'undefined') return 0;
@@ -156,8 +157,20 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentPage, isResumeOpen]);
 
+  const pageNames = ['home', 'work', 'skills', 'experience', 'contact'];
+
   return (
     <div className="purrweb-deck-viewport">
+      {/* 
+        Fixed Persistent Navbar:
+        Stays firmly anchored at the top across all pages.
+        Only the page content translates/changes underneath it.
+      */}
+      <PageHeader
+        activePage={pageNames[currentPage]}
+        onNavigate={goToPage}
+      />
+
       {/* 
         Full-Page Slides Track:
         Slides transition smoothly with GPU-accelerated cubic-bezier physics

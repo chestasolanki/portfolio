@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Sparkles, ArrowUpRight, Globe, Lock, ShieldCheck, ExternalLink, Zap } from 'lucide-react';
-import PageHeader from './PageHeader';
 
 export default function Experience({ onNavigate }) {
   const limettaHighlights = [
@@ -14,9 +13,6 @@ export default function Experience({ onNavigate }) {
 
   return (
     <section className="purrweb-exact-slide-stage">
-      {/* Top Navigation Bar: Non-fixed, unique to Experience Page */}
-      <PageHeader activePage="experience" onNavigate={onNavigate} />
-
       <div className="container" style={{ maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* Section Header */}

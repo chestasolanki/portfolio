@@ -240,15 +240,19 @@ button {
    ========================================================================== */
 
 .purrweb-exact-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(28px, 4.5vh, 48px) clamp(24px, 5.5vw, 76px);
-  z-index: 20;
+  padding: clamp(22px, 3.6vh, 34px) clamp(24px, 5.5vw, 76px);
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0.88) 0%, rgba(7, 9, 14, 0.5) 60%, transparent 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
 }
 
 .header-col {

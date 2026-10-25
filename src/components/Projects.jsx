@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ExternalLink, Code2, Sparkles, Terminal } from 'lucide-react';
 import { GithubIcon } from './Icons';
-import PageHeader from './PageHeader';
 
 export default function Projects({ onNavigate }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -100,9 +99,6 @@ export default function Projects({ onNavigate }) {
 
   return (
     <section className="purrweb-exact-work-stage">
-      {/* Top Navigation Bar: Non-fixed, unique to Work Page */}
-      <PageHeader activePage="work" onNavigate={onNavigate} />
-
       {/* =========================================================================
           BACKGROUND VIBRANT GRADIENT MESH
           Turquoise/cyan, violet, magenta aura matching the Purrweb Work screenshot
