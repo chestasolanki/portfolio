@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PageHeader from './PageHeader';
 
-export default function MagnifyingHero({ onOpenResume }) {
+export default function MagnifyingHero({ onNavigate, onOpenResume }) {
   const heroRef = useRef(null);
   const lensRef = useRef(null);
   const zoomRedRef = useRef(null);
@@ -140,29 +141,8 @@ export default function MagnifyingHero({ onOpenResume }) {
         <div className="atmosphere-grain" />
       </div>
 
-      {/* =========================================================================
-          TOP NAVIGATION BAR (Exact Typography & Spacing)
-          CHESTA SOLANKI   |   WORK   |   RESUME   |   CONTACT
-          ========================================================================= */}
-      <header className="purrweb-exact-header">
-        <div className="header-col header-brand">
-          <a href="#hero">CHESTA SOLANKI</a>
-        </div>
-
-        <nav className="header-col header-nav-link">
-          <a href="#work">WORK</a>
-        </nav>
-
-        <div className="header-col header-nav-link">
-          <button onClick={onOpenResume} className="nav-text-btn">
-            RESUME
-          </button>
-        </div>
-
-        <div className="header-col header-contact-link">
-          <a href="#contact">CONTACT</a>
-        </div>
-      </header>
+      {/* Top Navigation Bar: Non-fixed, unique to Home Page */}
+      <PageHeader activePage="home" onNavigate={onNavigate} />
 
       {/* =========================================================================
           MASSIVE HERO TYPOGRAPHY: Software Engineer
@@ -219,10 +199,10 @@ export default function MagnifyingHero({ onOpenResume }) {
         </div>
 
         {/* Right: Scroll Down Indicator Arrow */}
-        <a href="#work" className="footer-scroll-down" aria-label="Scroll to featured work">
+        <button onClick={() => onNavigate(1)} className="footer-scroll-down" aria-label="Go to Work slide">
           <span className="scroll-stem" />
           <span className="scroll-arrow">↓</span>
-        </a>
+        </button>
 
       </footer>
 

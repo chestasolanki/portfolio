@@ -1742,3 +1742,132 @@ button {
     display: none;
   }
 }
+/* ==========================================================================
+   FULL-PAGE PRESENTATION DECK & UNIFIED NON-FIXED HEADER NAVIGATION
+   Each page has its own minimal header. Scrolling triggers full-page transitions.
+   ========================================================================== */
+
+.purrweb-deck-viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: #07090e;
+}
+
+.purrweb-deck-track {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.purrweb-slide-screen {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Slide Stage for Skills, Experience, and Contact */
+.purrweb-exact-slide-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #07090e;
+  padding: clamp(100px, 13vh, 140px) clamp(24px, 5.5vw, 76px) clamp(40px, 6vh, 60px) clamp(24px, 5.5vw, 76px);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Smooth Scrollbar for Slide Stage if content overflows vertically on small screens */
+.purrweb-exact-slide-stage::-webkit-scrollbar {
+  width: 4px;
+}
+
+.purrweb-exact-slide-stage::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.purrweb-exact-slide-stage::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+/* Active Navigation Indicators across Page Headers */
+.header-col.is-active .nav-text-btn {
+  color: #ffffff !important;
+  font-weight: 700;
+  position: relative;
+}
+
+.header-active-bar {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff;
+}
+
+.header-col:not(.is-active) .nav-text-btn {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.header-col:not(.is-active) .nav-text-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Discrete Edge Pagination Dots on Right Margin */
+.purrweb-edge-pagination {
+  position: fixed;
+  right: clamp(14px, 2.5vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.edge-dot-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edge-dot-pill {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.edge-dot-btn:hover .edge-dot-pill {
+  background: rgba(255, 255, 255, 0.65);
+  transform: scale(1.3);
+}
+
+.edge-dot-btn.is-active .edge-dot-pill {
+  height: 22px;
+  border-radius: 9999px;
+  background: #00e5ff;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .purrweb-edge-pagination {
+    display: none;
+  }
+}

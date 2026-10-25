@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Calendar, Sparkles, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import PageHeader from './PageHeader';
 
-export default function Experience() {
+export default function Experience({ onNavigate }) {
   const limettaHighlights = [
     'Engineered the production full-stack e-commerce web platform for Limetta (luxury interior decor) leveraging React 19, Node.js, Express.js, and MongoDB with fluid Framer Motion animations.',
     'Architected payment and fulfillment pipelines by integrating Razorpay for checkout transactions and Delhivery Logistics for automated waybill generation and real-time tracking.',
@@ -36,8 +37,11 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="purrweb-section">
-      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto' }}>
+    <section id="experience" className="purrweb-exact-slide-stage">
+      {/* Top Navigation Bar: Non-fixed, unique to Experience Page */}
+      <PageHeader activePage="experience" onNavigate={onNavigate} />
+
+      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* Section Header */}
         <div className="purrweb-section-header">

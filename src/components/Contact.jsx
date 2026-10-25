@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Mail, Copy, Check, ArrowUpRight, Phone, MapPin, Sparkles, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
+import PageHeader from './PageHeader';
 
-export default function Contact({ onOpenResume }) {
+export default function Contact({ onNavigate, onOpenResume }) {
   const [copiedField, setCopiedField] = useState(null);
 
   const copyToClipboard = (text, field) => {
@@ -12,8 +13,11 @@ export default function Contact({ onOpenResume }) {
   };
 
   return (
-    <footer id="contact" className="purrweb-section purrweb-contact-section">
-      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto' }}>
+    <footer id="contact" className="purrweb-exact-slide-stage purrweb-contact-section">
+      {/* Top Navigation Bar: Non-fixed, unique to Contact Page */}
+      <PageHeader activePage="contact" onNavigate={onNavigate} />
+
+      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* =========================================================================
             GET IN TOUCH HERO CARD (The one allowed bordered/styled container)
