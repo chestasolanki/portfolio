@@ -44,7 +44,7 @@ export default function Navbar({ theme, toggleTheme, onOpenResume }) {
 
             {/* Center Nav Links */}
             <nav className="purrweb-nav-links">
-              <a href="#projects" className="nav-item">
+              <a href="#work" className="nav-item">
                 <span>Work</span>
               </a>
               <a href="#skills" className="nav-item">

@@ -150,7 +150,7 @@ export default function MagnifyingHero({ onOpenResume }) {
         </div>
 
         <nav className="header-col header-nav-link">
-          <a href="#projects">WORK</a>
+          <a href="#work">WORK</a>
         </nav>
 
         <div className="header-col header-nav-link">
@@ -219,7 +219,7 @@ export default function MagnifyingHero({ onOpenResume }) {
         </div>
 
         {/* Right: Scroll Down Indicator Arrow */}
-        <a href="#projects" className="footer-scroll-down" aria-label="Scroll to featured projects">
+        <a href="#work" className="footer-scroll-down" aria-label="Scroll to featured work">
           <span className="scroll-stem" />
           <span className="scroll-arrow">↓</span>
         </a>

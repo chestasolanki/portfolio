@@ -1,225 +1,351 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Sparkles, ArrowUpRight, Code2, Layers, Cpu } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Play, Pause, ExternalLink, Code2, Sparkles, Terminal } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const progressRef = useRef(null);
+  const SLIDE_DURATION = 6500; // 6.5s per slide
 
-  const projectsList = [
+  const projects = [
     {
-      id: '01',
+      id: 'careerpilot',
+      category: 'AI DOCUMENT PIPELINE',
+      nextCategory: 'FULL-STACK INTELLIGENCE',
       title: 'CareerPilot',
       tagline: 'AI Interview Preparation & Skill Gap Platform',
-      category: 'AI DOCUMENT INTELLIGENCE',
+      domain: 'AI / RESUME PARSING / LLM',
       description:
-        'Architected an end-to-end AI platform that parses candidate resumes (PDF), matches them against target job descriptions, identifies critical skill deficits, and dynamically generates multi-day personalized technical and behavioral preparation roadmaps.',
-      highlights: [
-        'Automated PDF text parsing & gap analysis pipeline',
-        'Gemini API integration for contextual interview roadmaps',
-        'JWT-based secure authentication & session management',
-        'Full candidate scoring with behavioral evaluation metrics'
-      ],
-      tags: ['React 19', 'Node.js', 'Express.js', 'MongoDB', 'Gemini API', 'PDF-Parse', 'Multer', 'JWT', 'SCSS'],
+        'Engineered an AI platform that parses candidate resumes (PDF), calculates job description match scores, detects skill deficits, and generates personalized multi-day preparation plans with Gemini API.',
+      stack: ['React 19', 'Node.js', 'Express', 'MongoDB', 'Gemini API', 'PDF-Parse', 'JWT'],
       github: 'https://github.com/chestasolanki/CareerPilot',
       live: 'https://github.com/chestasolanki/CareerPilot',
-      stats: 'Multi-Day Prep Engine',
-      accent: 'var(--accent-violet)'
+      accentColor: '#00e5ff',
+      illustrationType: 'pipeline'
     },
     {
-      id: '02',
+      id: 'prepai',
+      category: 'FULL-STACK INTELLIGENCE',
+      nextCategory: 'GENERATIVE AI STREAMING',
       title: 'PrepAI',
       tagline: 'Interactive Full-Stack AI Mock Interviewer',
-      category: 'FULL-STACK INTELLIGENCE',
+      domain: 'REACT / NODE / MYSQL / APIS',
       description:
-        'Designed an interactive AI interview platform featuring dynamic technical question generation, real-time candidate feedback loops, authentication workflows, and normalized relational analytics on MySQL.',
-      highlights: [
-        'Dynamic question generation tailored to candidate seniority',
-        'Real-time response grading and performance feedback',
-        'Normalized MySQL relational database schema for user metrics',
-        'Modern responsive dashboard with tailored UI telemetry'
-      ],
-      tags: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Tailwind CSS', 'JWT'],
+        'Full-stack AI mock interview application with dynamic technical question generation, real-time candidate evaluation algorithms, analytics dashboards, and normalized relational schema on MySQL.',
+      stack: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Tailwind CSS'],
       github: 'https://github.com/chestasolanki/prep-ai',
       live: 'https://github.com/chestasolanki/prep-ai',
-      stats: 'Real-Time Evaluator',
-      accent: 'var(--accent-pink)'
+      accentColor: '#e5a93c',
+      illustrationType: 'analytics'
     },
     {
-      id: '03',
+      id: 'craftly',
+      category: 'GENERATIVE AI STREAMING',
+      nextCategory: 'AI DOCUMENT PIPELINE',
       title: 'Craftly',
-      tagline: 'Prompt-to-Website Engine via Real-Time LLM Streaming',
-      category: 'GENERATIVE AI & STREAMING',
+      tagline: 'Prompt-to-Website Engine via Real-Time LLM',
+      domain: 'GROQ API / LLAMA 3.3 / SSE',
       description:
-        'Created a prompt-driven web generator that translates natural language prompts into live, multi-file web applications using Llama 3.3 70B via Groq API, leveraging Server-Sent Events (SSE) for instant, streaming code execution.',
-      highlights: [
-        'Sub-second inference with Llama 3.3 70B via Groq API',
-        'Real-time Server-Sent Events (SSE) streaming code execution',
-        'Multi-file HTML, CSS, and JavaScript synthesis in sandbox',
-        'Instant live preview iframe with dynamic DOM injection'
-      ],
-      tags: ['Groq API', 'Llama 3.3 70B', 'SSE Streaming', 'Node.js', 'Express.js', 'REST APIs', 'Sandbox'],
+        'Transforms natural language prompts into live, functional multi-file web applications using Llama 3.3 70B via Groq API. Leverages Server-Sent Events (SSE) for instant, streaming code execution.',
+      stack: ['Groq API', 'Llama 3.3 70B', 'SSE Streaming', 'Node.js', 'Express', 'HTML/CSS/JS'],
       github: 'https://github.com/chestasolanki/craftly',
       live: 'https://github.com/chestasolanki/craftly',
-      stats: 'SSE Live Execution',
-      accent: 'var(--accent-coral)'
+      accentColor: '#ec4899',
+      illustrationType: 'code'
     }
   ];
 
+  const total = projects.length;
+
+  // Auto-advance slides with pause support
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % total);
+    }, SLIDE_DURATION);
+
+    return () => clearInterval(interval);
+  }, [isPlaying, activeSlide, total]);
+
+  const currentProject = projects[activeSlide];
+
   return (
-    <section id="projects" className="purrweb-section">
-      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto' }}>
+    <section id="work" className="purrweb-exact-work-stage">
+      
+      {/* =========================================================================
+          BACKGROUND VIBRANT GRADIENT MESH
+          Turquoise/cyan, violet, magenta aura matching the Purrweb Work screenshot
+          ========================================================================= */}
+      <div className="work-atmosphere" aria-hidden="true">
+        <div className="work-glow glow-cyan-teal" />
+        <div className="work-glow glow-amber-warm" />
+        <div className="work-glow glow-magenta" />
+        <div className="work-grain" />
+      </div>
+
+      {/* =========================================================================
+          MAIN WORK STAGE CONTAINER
+          Two Column Layout:
+          Left: Bold Editorial Headline Statement ("I am Chesta Solanki...")
+          Right: Stacked Project Cards Deck with Illustration
+          ========================================================================= */}
+      <div className="work-content-container">
         
-        {/* Section Header */}
-        <div className="purrweb-section-header">
-          <div className="purrweb-badge">
-            <Sparkles size={12} style={{ color: 'var(--accent-pink)' }} />
-            <span className="purrweb-badge-text">SELECTED WORK</span>
-          </div>
-          <h2 className="purrweb-section-title">
-            Featured <span className="purrweb-serif-accent">Projects</span> &amp; Systems
+        {/* Left Column: Personal Statement & Domain */}
+        <div className="work-left-editorial">
+          <h2 className="work-editorial-statement">
+            I am Chesta Solanki,<br />
+            i engineer <span className="work-cyan-accent">intelligent</span><br />
+            yet resilient &amp; high<br />
+            performance systems for<br />
+            the cloud, AI and web
           </h2>
-          <p className="purrweb-section-subtitle">
-            A curated showcase of production web applications, generative AI pipelines, and distributed backends.
-          </p>
+
+          <div className="work-meta-domain">
+            <div className="domain-line">FULL-STACK &amp; AI / CLOUD /</div>
+            <div className="domain-line">DISTRIBUTED SYSTEMS</div>
+          </div>
         </div>
 
-        {/* Editorial Project Showcase List (Borderless, Open Layout) */}
-        <div className="purrweb-projects-list">
-          {projectsList.map((project, idx) => (
+        {/* Right Column: Stacked Project Cards Deck */}
+        <div className="work-right-deck">
+          
+          {/* Peeking Background Card 1 (Top Stack) */}
+          <div className="stack-card card-back-1">
+            <div className="stack-card-title">
+              <span>GENERATIVE AI STREAMING</span>
+            </div>
+          </div>
+
+          {/* Peeking Background Card 2 (Middle Stack) */}
+          <div className="stack-card card-back-2">
+            <div className="stack-card-title">
+              <span>FULL-STACK INTELLIGENCE</span>
+            </div>
+          </div>
+
+          {/* Active Foreground Card */}
+          <AnimatePresence mode="wait">
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="purrweb-project-row"
+              key={currentProject.id}
+              initial={{ opacity: 0, y: 15, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.98 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              className="stack-card-foreground"
             >
-              {/* Left Column: Project Number & Info */}
-              <div className="purrweb-project-info">
-                <div className="project-meta-bar">
-                  <span className="project-index">{project.id}</span>
-                  <span className="project-category">{project.category}</span>
-                  <span className="project-stat-pill">{project.stats}</span>
+              {/* Card Header: Category + Divider Line + Next Category + Arrow Button */}
+              <div className="card-header-bar">
+                <div className="category-group">
+                  <h3 className="category-title">{currentProject.category}</h3>
+                  <div className="category-divider-line" />
+                  <button
+                    onClick={() => setActiveSlide((prev) => (prev + 1) % total)}
+                    className="next-category-tab"
+                  >
+                    <span>{currentProject.nextCategory}</span>
+                  </button>
                 </div>
 
-                <h3 className="project-title">
-                  {project.title}
-                </h3>
-                <h4 className="project-tagline">
-                  {project.tagline}
-                </h4>
+                <a
+                  href={currentProject.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="card-arrow-circle-btn"
+                  title="View Source on GitHub"
+                >
+                  <ArrowRight size={18} />
+                </a>
+              </div>
 
-                <p className="project-desc">
-                  {project.description}
-                </p>
+              {/* Card Body: Stylized Architectural Illustration */}
+              <div className="card-illustration-frame">
+                {currentProject.illustrationType === 'pipeline' && (
+                  <svg className="project-svg-art" viewBox="0 0 540 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Stylized Artisan Drawing Matching Purrweb Illustration Vibe */}
+                    {/* Dark Canvas & Warm Golden Hand / Nodes */}
+                    <g transform="translate(40, 20)">
+                      {/* Architectural Blueprint Grids */}
+                      <path d="M20 260 L480 260" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" strokeDasharray="4 4" />
+                      <path d="M20 180 L480 180" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+                      
+                      {/* Stylized Golden Artisan Hand holding Stylus / Code Beam */}
+                      <path
+                        d="M60 260 C60 210, 80 160, 110 130 C125 115, 150 110, 160 130 C170 150, 160 180, 150 200 L120 260 Z"
+                        fill="#e5a93c"
+                      />
+                      <path
+                        d="M110 130 C120 90, 140 60, 160 50 C175 40, 195 55, 185 80 L160 130 Z"
+                        fill="#e5a93c"
+                      />
+                      <path
+                        d="M150 80 L230 40 L245 55 L165 95 Z"
+                        fill="#ffffff"
+                        stroke="#07090e"
+                        strokeWidth="2"
+                      />
+                      {/* Stylus Nib */}
+                      <polygon points="245,55 270,42 258,68" fill="#00e5ff" />
 
-                {/* Highlights List */}
-                <ul className="project-highlights">
-                  {project.highlights.map((item, hIdx) => (
-                    <li key={hIdx}>
-                      <span className="highlight-bullet">▹</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                      {/* Glowing Cyan Document / Intelligence Terminal Basket */}
+                      <g transform="translate(260, 50)">
+                        <rect x="0" y="0" width="190" height="180" rx="14" fill="#07090e" stroke="#00e5ff" strokeWidth="2.5" />
+                        <circle cx="28" cy="28" r="8" fill="#e5a93c" />
+                        <line x1="48" y1="28" x2="160" y2="28" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+                        <line x1="28" y1="56" x2="160" y2="56" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+                        <line x1="28" y1="80" x2="140" y2="80" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+                        <line x1="28" y1="104" x2="150" y2="104" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
 
-                {/* Tech Stack Tags */}
-                <div className="project-tags-wrap">
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="project-tech-pill">
-                      {tag}
-                    </span>
-                  ))}
+                        {/* Animated Neural Flow Arc */}
+                        <path
+                          d="M28 138 Q95 110 162 142"
+                          stroke="#00e5ff"
+                          strokeWidth="2.5"
+                          fill="none"
+                        />
+                        <circle cx="95" cy="124" r="5" fill="#ffffff" />
+                      </g>
+                    </g>
+                  </svg>
+                )}
+
+                {currentProject.illustrationType === 'analytics' && (
+                  <svg className="project-svg-art" viewBox="0 0 540 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(40, 20)">
+                      {/* Analytics Mesh Grid */}
+                      <rect x="20" y="30" width="440" height="220" rx="16" fill="#07090e" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
+                      
+                      {/* Golden Waveform Pulse */}
+                      <path
+                        d="M40 150 Q100 80 160 160 T280 120 T380 180 T440 130"
+                        stroke="#e5a93c"
+                        strokeWidth="3.5"
+                        fill="none"
+                      />
+
+                      {/* Cyan Target Radar Circle */}
+                      <circle cx="280" cy="120" r="38" stroke="#00e5ff" strokeWidth="2" strokeDasharray="5 5" />
+                      <circle cx="280" cy="120" r="14" fill="#00e5ff" fillOpacity="0.25" stroke="#00e5ff" strokeWidth="2" />
+                      <circle cx="280" cy="120" r="4" fill="#ffffff" />
+
+                      {/* Live Interview Metric Indicators */}
+                      <rect x="50" y="55" width="100" height="24" rx="12" fill="rgba(229, 169, 60, 0.15)" stroke="#e5a93c" strokeWidth="1" />
+                      <text x="65" y="71" fill="#e5a93c" fontSize="11" fontFamily="monospace" fontWeight="bold">SCORE 94%</text>
+
+                      <rect x="170" y="55" width="110" height="24" rx="12" fill="rgba(0, 229, 255, 0.15)" stroke="#00e5ff" strokeWidth="1" />
+                      <text x="183" y="71" fill="#00e5ff" fontSize="11" fontFamily="monospace" fontWeight="bold">MYSQL 200 OK</text>
+                    </g>
+                  </svg>
+                )}
+
+                {currentProject.illustrationType === 'code' && (
+                  <svg className="project-svg-art" viewBox="0 0 540 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(40, 20)">
+                      <rect x="20" y="20" width="440" height="230" rx="16" fill="#07090e" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
+                      
+                      {/* Code Brackets in Golden Ochre */}
+                      <text x="50" y="90" fill="#e5a93c" fontSize="48" fontFamily="monospace" fontWeight="bold">&lt;/&gt;</text>
+
+                      {/* Streaming SSE Wave */}
+                      <path
+                        d="M170 80 C230 40, 270 130, 340 85 C390 50, 410 110, 440 90"
+                        stroke="#ec4899"
+                        strokeWidth="3.5"
+                        fill="none"
+                      />
+
+                      {/* Synthesized Live DOM Window */}
+                      <g transform="translate(160, 110)">
+                        <rect x="0" y="0" width="280" height="120" rx="10" fill="#0a0f1d" stroke="#00e5ff" strokeWidth="2" />
+                        <line x1="20" y1="30" x2="160" y2="30" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+                        <line x1="20" y1="55" x2="220" y2="55" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+                        <line x1="20" y1="78" x2="190" y2="78" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+                        <circle cx="240" cy="30" r="6" fill="#10b981" />
+                      </g>
+                    </g>
+                  </svg>
+                )}
+              </div>
+
+              {/* Card Meta & Links Footer */}
+              <div className="card-info-footer">
+                <div className="info-title-group">
+                  <h4 className="info-title">{currentProject.title}</h4>
+                  <p className="info-desc">{currentProject.description}</p>
                 </div>
 
-                {/* Actions Row */}
-                <div className="project-actions">
+                <div className="info-actions">
                   <a
-                    href={project.github}
+                    href={currentProject.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="purrweb-btn-primary"
-                    style={{ padding: '10px 22px', fontSize: '13px' }}
+                    className="info-action-btn"
                   >
-                    <GithubIcon size={16} />
-                    <span>View Source Code</span>
-                    <ArrowUpRight size={14} />
+                    <GithubIcon size={14} />
+                    <span>Source Code</span>
+                    <ExternalLink size={12} />
                   </a>
-
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="purrweb-btn-secondary"
-                      style={{ padding: '10px 20px', fontSize: '13px' }}
-                    >
-                      <span>Live Preview</span>
-                      <ExternalLink size={14} />
-                    </a>
-                  )}
                 </div>
               </div>
 
-              {/* Right Column: Sleek Editorial Terminal Preview */}
-              <div className="purrweb-project-preview">
-                <div className="preview-terminal-window">
-                  <div className="terminal-header">
-                    <div className="window-dots">
-                      <span className="dot dot-red" />
-                      <span className="dot dot-yellow" />
-                      <span className="dot dot-green" />
-                    </div>
-                    <div className="terminal-title">
-                      <Code2 size={12} />
-                      <span>{project.title.toLowerCase()}.architecture.spec</span>
-                    </div>
-                  </div>
-
-                  <div className="terminal-content">
-                    <div className="spec-item">
-                      <span className="spec-label">MODULE:</span>
-                      <span className="spec-val" style={{ color: 'var(--accent-pink)' }}>{project.title} Core v2.4</span>
-                    </div>
-                    <div className="spec-item">
-                      <span className="spec-label">RUNTIME:</span>
-                      <span className="spec-val">Node.js / React 19 Client</span>
-                    </div>
-                    <div className="spec-item">
-                      <span className="spec-label">PIPELINE:</span>
-                      <span className="spec-val" style={{ color: 'var(--accent-cyan)' }}>{project.stats}</span>
-                    </div>
-                    <div className="spec-item">
-                      <span className="spec-label">INTEGRITY:</span>
-                      <span className="spec-val" style={{ color: '#4ade80' }}>100% Shipped &amp; Verified</span>
-                    </div>
-
-                    <div className="terminal-code-block">
-                      <div className="code-comment">// Production Architecture Highlights</div>
-                      <div className="code-row">
-                        <span className="c-key">&gt; deploy</span> --target production
-                      </div>
-                      <div className="code-row">
-                        <span className="c-key">&gt; status:</span> <span style={{ color: '#4ade80' }}>ACTIVE (200 OK)</span>
-                      </div>
-                      <div className="code-row">
-                        <span className="c-key">&gt; repository:</span> <span style={{ color: 'var(--accent-coral)' }}>{project.github.replace('https://github.com/', '')}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="terminal-footer">
-                    <span className="footer-status">● SYSTEM HEALTHY</span>
-                    <span className="footer-meta">PURRWEB ARCHITECTURE SPEC</span>
-                  </div>
-                </div>
-              </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
+
         </div>
 
       </div>
+
+      {/* =========================================================================
+          BOTTOM PLAYER CONTROLS
+          Play/Pause Button + Pink/Magenta Glowing Progress Bar + Dots
+          Matching the exact playback bar in the Purrweb Dribbble reference
+          ========================================================================= */}
+      <div className="work-player-bar">
+        
+        {/* Play / Pause Toggle Button */}
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="player-play-btn"
+          aria-label={isPlaying ? 'Pause auto slide' : 'Play auto slide'}
+        >
+          {isPlaying ? <Pause size={18} fill="#07090e" /> : <Play size={18} fill="#07090e" style={{ marginLeft: '2px' }} />}
+        </button>
+
+        {/* Long Progress Bar Track with Magenta Gradient Glow */}
+        <div className="player-track-container">
+          <div className="player-track-bg">
+            <motion.div
+              key={`${activeSlide}-${isPlaying}`}
+              initial={{ width: '0%' }}
+              animate={{ width: isPlaying ? '100%' : '100%' }}
+              transition={{ duration: isPlaying ? SLIDE_DURATION / 1000 : 0, ease: 'linear' }}
+              className="player-track-progress"
+            />
+          </div>
+
+          {/* 3 Pagination Indicator Dots */}
+          <div className="player-dots-group">
+            {projects.map((proj, idx) => {
+              const isActive = activeSlide === idx;
+              return (
+                <button
+                  key={proj.id}
+                  onClick={() => setActiveSlide(idx)}
+                  className={`player-dot-btn ${isActive ? 'is-active' : ''}`}
+                  aria-label={`Jump to slide ${idx + 1}`}
+                >
+                  <span className="dot-inner" />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+      </div>
+
     </section>
   );
 }
