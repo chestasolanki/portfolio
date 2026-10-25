@@ -5,6 +5,7 @@ import PageTransitionSection from './PageTransitionSection';
 import CinematicDeveloperBackground from './CinematicDeveloperBackground';
 import TiltCard from './TiltCard';
 import SkillsKnowledgeGraph from './SkillsKnowledgeGraph';
+import CertificateSlideshow from './CertificateSlideshow';
 
 export default function Skills() {
   const [viewMode, setViewMode] = useState('graph'); // 'graph' | 'cards'
@@ -34,15 +35,6 @@ export default function Skills() {
       title: 'Developer Tools & OS',
       skills: ['Git', 'GitHub', 'Postman', 'Linux']
     }
-  ];
-
-  const certifications = [
-    { title: 'AWS – Machine Learning Foundations', issuer: 'Amazon Web Services' },
-    { title: 'AWS – Cloud Foundations', issuer: 'Amazon Web Services' },
-    { title: 'Palo Alto – Cloud Security Automation', issuer: 'Palo Alto Networks' },
-    { title: 'Palo Alto – Operations & Configurations', issuer: 'Palo Alto Networks' },
-    { title: 'Red Hat – System Administration', issuer: 'Red Hat' },
-    
   ];
 
   return (
@@ -220,73 +212,37 @@ export default function Skills() {
           </motion.div>
         )}
 
-        {/* Certifications Subsection */}
-        <div>
-          <div className="section-tag" style={{ marginBottom: '16px' }}>
-            <span>VERIFIED CREDENTIALS</span>
+        {/* Certifications Subsection: 3D Center Zoom Coverflow Slideshow */}
+        <div style={{ marginTop: '48px' }}>
+          <div className="section-tag" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <Award size={14} style={{ color: 'var(--accent-purple)' }} />
+            <span>VERIFIED CREDENTIALS &amp; CERTIFICATIONS</span>
           </div>
-
-          <h3 style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: '1.8rem',
-            color: 'var(--text-primary)',
-            marginBottom: '24px'
-          }}>
-            Certifications &amp; Achievements
-          </h3>
 
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '16px'
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'baseline',
+            flexWrap: 'wrap',
+            gap: '12px',
+            marginBottom: '10px'
           }}>
-            {certifications.map((cert, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.06 }}
-              >
-                <TiltCard>
-                  <div
-                    className="glass-card"
-                    style={{
-                      padding: '20px 22px',
-                      borderRadius: 'var(--radius-sm)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '14px',
-                      border: '1px solid var(--border-glass)'
-                    }}
-                  >
-                    <div style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: 'rgba(56, 189, 248, 0.15)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--accent-purple)',
-                      flexShrink: 0
-                    }}>
-                      <Award size={20} />
-                    </div>
-
-                    <div>
-                      <div style={{ fontWeight: '600', fontSize: '14.5px', color: 'var(--text-primary)', lineHeight: '1.3' }}>
-                        {cert.title}
-                      </div>
-                      <div style={{ fontSize: '12.5px', color: 'var(--text-secondary)', marginTop: '2px' }}>
-                        {cert.issuer}
-                      </div>
-                    </div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
+            <h3 style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(26px, 3.2vw, 36px)',
+              color: 'var(--text-primary)',
+              margin: 0,
+              fontWeight: '600'
+            }}>
+              Certifications &amp; <em>Achievements</em>
+            </h3>
+            <span style={{ fontSize: '12.5px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+              Auto-advancing every 6s • Hover to pause
+            </span>
           </div>
+
+          {/* Interactive Dynamic Certificate Slideshow */}
+          <CertificateSlideshow />
         </div>
 
       </div>
