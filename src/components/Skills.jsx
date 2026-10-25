@@ -14,19 +14,19 @@ export default function Skills() {
     {
       icon: Code2,
       title: 'Frontend Architecture',
-      skills: ['React 19', 'Next.js concepts', 'HTML5 & Modern CSS3', 'Tailwind CSS', 'Framer Motion', 'Responsive UI'],
+      skills: ['React 19', 'Monaco Editor', 'HTML5 & Modern CSS3', 'Tailwind CSS', 'Framer Motion', 'Responsive UI'],
       accent: 'var(--accent-pink)'
     },
     {
       icon: Cpu,
       title: 'Backend & Distributed Systems',
-      skills: ['Node.js', 'Express.js', 'RESTful APIs', 'Server-Sent Events (SSE)', 'JWT Authentication', 'MVC Architecture'],
+      skills: ['Node.js', 'Express 5', 'Socket.io', 'Yjs (CRDTs)', 'RESTful APIs', 'Server-Sent Events (SSE)', 'JWT Auth'],
       accent: 'var(--accent-cyan)'
     },
     {
       icon: Database,
       title: 'Databases & Cloud Infrastructure',
-      skills: ['MySQL Relational DB', 'MongoDB NoSQL', 'AWS Cloud (IAM, EC2, S3)', 'Database Schema Design', 'Query Optimization'],
+      skills: ['Docker (Multi-Stage)', 'AWS ECR/ECS', 'MySQL Relational DB', 'MongoDB NoSQL', 'AWS Cloud (EC2, S3)'],
       accent: 'var(--accent-coral)'
     },
     {
