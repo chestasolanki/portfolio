@@ -29,7 +29,7 @@ export default function MagnifyingHero({ onOpenResume }) {
         const rect = heroRef.current.getBoundingClientRect();
         setContainerSize({ width: rect.width, height: rect.height });
 
-        // Position initial lens over the lower word, matching the Dribbble screenshot
+        // Position initial lens over the lower word ("engineer"), matching the Dribbble screenshot
         if (currentPos.current.x === 0 && currentPos.current.y === 0) {
           const initX = rect.width * 0.58;
           const initY = rect.height * 0.64;
@@ -142,7 +142,7 @@ export default function MagnifyingHero({ onOpenResume }) {
 
       {/* =========================================================================
           TOP NAVIGATION BAR (Exact Typography & Spacing)
-          VERONICA PW   |   PLAYBOOK   |   SOCIALS   |   CONTACTS
+          CHESTA SOLANKI   |   WORK   |   RESUME   |   CONTACT
           ========================================================================= */}
       <header className="purrweb-exact-header">
         <div className="header-col header-brand">
@@ -165,22 +165,22 @@ export default function MagnifyingHero({ onOpenResume }) {
       </header>
 
       {/* =========================================================================
-          MASSIVE HERO TYPOGRAPHY
-          "Creative" (white sans) + "full-stack" (golden serif italic)
-                     "developer" (white sans)
+          MASSIVE HERO TYPOGRAPHY: Software Engineer
+          "Software" (white sans) + "full-stack" (golden serif italic)
+                     "engineer" (white sans)
           ========================================================================= */}
       <div className="purrweb-center-stage">
         <div className="exact-hero-typography">
           
-          {/* Top Line: "Creative" + Golden Serif Italic Accent */}
+          {/* Top Line: "Software" + Golden Serif Italic Accent "full-stack" */}
           <div className="hero-top-row">
-            <span className="word-creative">Creative</span>
-            <span className="word-visual">full-stack</span>
+            <span className="word-software">Software</span>
+            <span className="word-accent">full-stack</span>
           </div>
 
-          {/* Bottom Line: "developer" sitting tucked underneath */}
+          {/* Bottom Line: "engineer" sitting tucked underneath */}
           <div className="hero-bottom-row">
-            <span className="word-designer">developer</span>
+            <span className="word-engineer">engineer</span>
           </div>
 
         </div>
@@ -189,7 +189,7 @@ export default function MagnifyingHero({ onOpenResume }) {
       {/* =========================================================================
           BOTTOM METADATA & SCROLL INDICATOR
           Left Col 1: Scope & Availability
-          Left Col 2: Location & Education
+          Left Col 2: Location & Academic Pedigree
           Right: Delicate vertical scroll line and arrow
           ========================================================================= */}
       <footer className="purrweb-exact-footer">
@@ -269,11 +269,11 @@ export default function MagnifyingHero({ onOpenResume }) {
               <div className="purrweb-center-stage">
                 <div className="exact-hero-typography">
                   <div className="hero-top-row">
-                    <span className="word-creative">Creative</span>
-                    <span className="word-visual">full-stack</span>
+                    <span className="word-software">Software</span>
+                    <span className="word-accent">full-stack</span>
                   </div>
                   <div className="hero-bottom-row">
-                    <span className="word-designer">developer</span>
+                    <span className="word-engineer">engineer</span>
                   </div>
                 </div>
               </div>
@@ -296,11 +296,11 @@ export default function MagnifyingHero({ onOpenResume }) {
               <div className="purrweb-center-stage">
                 <div className="exact-hero-typography">
                   <div className="hero-top-row">
-                    <span className="word-creative">Creative</span>
-                    <span className="word-visual">full-stack</span>
+                    <span className="word-software">Software</span>
+                    <span className="word-accent">full-stack</span>
                   </div>
                   <div className="hero-bottom-row">
-                    <span className="word-designer">developer</span>
+                    <span className="word-engineer">engineer</span>
                   </div>
                 </div>
               </div>
@@ -323,11 +323,11 @@ export default function MagnifyingHero({ onOpenResume }) {
               <div className="purrweb-center-stage">
                 <div className="exact-hero-typography">
                   <div className="hero-top-row">
-                    <span className="word-creative">Creative</span>
-                    <span className="word-visual">full-stack</span>
+                    <span className="word-software">Software</span>
+                    <span className="word-accent">full-stack</span>
                   </div>
                   <div className="hero-bottom-row">
-                    <span className="word-designer">developer</span>
+                    <span className="word-engineer">engineer</span>
                   </div>
                 </div>
               </div>
@@ -350,11 +350,11 @@ export default function MagnifyingHero({ onOpenResume }) {
               <div className="purrweb-center-stage">
                 <div className="exact-hero-typography">
                   <div className="hero-top-row">
-                    <span className="word-creative">Creative</span>
-                    <span className="word-visual">full-stack</span>
+                    <span className="word-software">Software</span>
+                    <span className="word-accent">full-stack</span>
                   </div>
                   <div className="hero-bottom-row">
-                    <span className="word-designer">developer</span>
+                    <span className="word-engineer">engineer</span>
                   </div>
                 </div>
               </div>
