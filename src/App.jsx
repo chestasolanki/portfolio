@@ -22,6 +22,10 @@ export default function App() {
   const touchStartY = useRef(0);
   const TOTAL_PAGES = 5;
 
+  // Refined smooth slow transition timing & easing curve
+  const TRANSITION_DURATION_MS = 1350; // 1.35 seconds for smooth, slow, luxurious glide
+  const TRANSITION_EASE = 'cubic-bezier(0.65, 0, 0.15, 1)'; // Silky ease-in-out curve
+
   // Handle direct navigation to page index (0: Home, 1: Work, 2: Skills, 3: Experience, 4: Contact)
   const goToPage = (pageIndex) => {
     if (pageIndex >= 0 && pageIndex < TOTAL_PAGES) {
@@ -34,7 +38,7 @@ export default function App() {
       document.documentElement.scrollTop = 0;
       setTimeout(() => {
         isTransitioning.current = false;
-      }, 850);
+      }, TRANSITION_DURATION_MS);
     }
   };
 
@@ -66,7 +70,7 @@ export default function App() {
           setCurrentPage((prev) => prev + 1);
           setTimeout(() => {
             isTransitioning.current = false;
-          }, 850);
+          }, TRANSITION_DURATION_MS);
         }
       } else if (e.deltaY < 0) {
         // Scroll Up -> Transition to Previous Page
@@ -75,7 +79,7 @@ export default function App() {
           setCurrentPage((prev) => prev - 1);
           setTimeout(() => {
             isTransitioning.current = false;
-          }, 850);
+          }, TRANSITION_DURATION_MS);
         }
       }
     };
@@ -106,7 +110,7 @@ export default function App() {
           setCurrentPage((prev) => prev + 1);
           setTimeout(() => {
             isTransitioning.current = false;
-          }, 850);
+          }, TRANSITION_DURATION_MS);
         }
       } else {
         // Swipe Down -> Previous Slide
@@ -115,7 +119,7 @@ export default function App() {
           setCurrentPage((prev) => prev - 1);
           setTimeout(() => {
             isTransitioning.current = false;
-          }, 850);
+          }, TRANSITION_DURATION_MS);
         }
       }
     };
@@ -140,7 +144,7 @@ export default function App() {
           setCurrentPage((prev) => prev + 1);
           setTimeout(() => {
             isTransitioning.current = false;
-          }, 850);
+          }, TRANSITION_DURATION_MS);
         }
       } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
         if (currentPage > 0) {
@@ -148,7 +152,7 @@ export default function App() {
           setCurrentPage((prev) => prev - 1);
           setTimeout(() => {
             isTransitioning.current = false;
-          }, 850);
+          }, TRANSITION_DURATION_MS);
         }
       }
     };
@@ -173,13 +177,14 @@ export default function App() {
 
       {/* 
         Full-Page Slides Track:
-        Slides transition smoothly with GPU-accelerated cubic-bezier physics
+        Slides transition with slow, silky cubic-bezier physics
       */}
       <div
         className="purrweb-deck-track"
         style={{
           transform: `translate3d(0, -${currentPage * 100}vh, 0)`,
-          transition: 'transform 0.85s cubic-bezier(0.16, 1, 0.3, 1)'
+          transition: `transform ${TRANSITION_DURATION_MS}ms ${TRANSITION_EASE}`,
+          willChange: 'transform'
         }}
       >
         {/* Slide 0: Home Page (Magnifying Hero) */}

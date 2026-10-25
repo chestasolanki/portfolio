@@ -29,7 +29,10 @@ export default function PageHeader({ activePage, onNavigate }) {
                 <motion.span
                   layoutId="headerActiveIndicator"
                   className="header-active-bar"
-                  transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                  transition={{
+                    duration: 1.15,
+                    ease: [0.65, 0, 0.15, 1]
+                  }}
                 />
               )}
             </button>
