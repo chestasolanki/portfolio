@@ -51,19 +51,19 @@ export default function Projects({ onNavigate }) {
       illustrationType: 'pipeline'
     },
     {
-      id: 'prepai',
+      id: 'what2cook',
       category: 'FULL-STACK INTELLIGENCE',
       nextCategory: 'GENERATIVE AI STREAMING',
-      title: 'PrepAI',
-      tagline: 'Interactive Full-Stack AI Mock Interviewer',
-      domain: 'REACT / NODE / MYSQL / APIS',
+      title: 'What2Cook',
+      tagline: 'AI Culinary Assistant & Smart Recipe Engine',
+      domain: 'REACT.JS / NODE.JS / GEMINI AI / REST API',
       description:
-        'Full-stack AI mock interview application with dynamic technical question generation, real-time candidate evaluation algorithms, analytics dashboards, and normalized relational schema on MySQL.',
-      stack: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'REST APIs', 'Tailwind CSS'],
-      github: 'https://github.com/chestasolanki/prep-ai',
-      live: 'https://github.com/chestasolanki/prep-ai',
-      accentColor: '#e5a93c',
-      illustrationType: 'analytics'
+        'AI-powered culinary platform that transforms available pantry ingredients into tailored recipes with dynamic step-by-step instructions, nutritional calculations, dietary filtering, and real-time Gemini generation.',
+      stack: ['React.js', 'Node.js', 'Express.js', 'Gemini AI', 'Tailwind CSS', 'Vercel'],
+      github: 'https://github.com/chestasolanki/What2Cook',
+      live: 'https://what2-cook-sage.vercel.app',
+      accentColor: '#10b981',
+      illustrationType: 'what2cook'
     },
     {
       id: 'craftly',
@@ -204,11 +204,11 @@ export default function Projects({ onNavigate }) {
                 </div>
 
                 <a
-                  href={currentProject.github}
+                  href={currentProject.live || currentProject.github}
                   target="_blank"
                   rel="noreferrer"
                   className="card-arrow-circle-btn"
-                  title="View Source on GitHub"
+                  title={currentProject.live && currentProject.live !== currentProject.github ? `Open ${currentProject.title} Live App` : "View Source on GitHub"}
                 >
                   <ArrowRight size={18} />
                 </a>
@@ -335,27 +335,148 @@ export default function Projects({ onNavigate }) {
                   </svg>
                 )}
 
-                {currentProject.illustrationType === 'analytics' && (
+                {currentProject.illustrationType === 'what2cook' && (
                   <svg className="project-svg-art" viewBox="0 0 540 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(40, 20)">
-                      <rect x="20" y="30" width="440" height="220" rx="16" fill="#07090e" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" />
+                    <defs>
+                      <linearGradient id="w2c-header-grad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#10b981" />
+                        <stop offset="50%" stopColor="#00e5ff" />
+                        <stop offset="100%" stopColor="#f59e0b" />
+                      </linearGradient>
+                    </defs>
+                    <g transform="translate(30, 16)">
+                      {/* Outer Window Frame */}
+                      <rect x="10" y="10" width="460" height="258" rx="16" fill="#07090e" stroke="rgba(255,255,255,0.16)" strokeWidth="1.5" />
                       
-                      <path
-                        d="M40 150 Q100 80 160 160 T280 120 T380 180 T440 130"
-                        stroke="#e5a93c"
-                        strokeWidth="3.5"
-                        fill="none"
-                      />
+                      {/* Browser Header Bar */}
+                      <line x1="10" y1="44" x2="470" y2="44" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                      <circle cx="28" cy="27" r="4" fill="#ef4444" />
+                      <circle cx="42" cy="27" r="4" fill="#f59e0b" />
+                      <circle cx="56" cy="27" r="4" fill="#10b981" />
+                      
+                      {/* App URL pill */}
+                      <rect x="76" y="18" width="220" height="18" rx="9" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                      <text x="88" y="31" fill="#10b981" fontSize="9.5" fontFamily="monospace" fontWeight="600">what2-cook-sage.vercel.app</text>
+                      
+                      {/* AI Status pill */}
+                      <rect x="332" y="18" width="128" height="18" rx="9" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.35)" strokeWidth="1" />
+                      <circle cx="344" cy="27" r="3.5" fill="#10b981" />
+                      <text x="354" y="31" fill="#10b981" fontSize="9" fontFamily="monospace" fontWeight="bold">GEMINI RECIPE ENGINE</text>
 
-                      <circle cx="280" cy="120" r="38" stroke="#00e5ff" strokeWidth="2" strokeDasharray="5 5" />
-                      <circle cx="280" cy="120" r="14" fill="#00e5ff" fillOpacity="0.25" stroke="#00e5ff" strokeWidth="2" />
-                      <circle cx="280" cy="120" r="4" fill="#ffffff" />
+                      {/* Left Column: Detected Pantry Ingredients */}
+                      <g transform="translate(18, 52)">
+                        <text x="4" y="12" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" letterSpacing="0.08em" fontWeight="bold">
+                          PANTRY INGREDIENTS DETECTED
+                        </text>
 
-                      <rect x="50" y="55" width="100" height="24" rx="12" fill="rgba(229, 169, 60, 0.15)" stroke="#e5a93c" strokeWidth="1" />
-                      <text x="65" y="71" fill="#e5a93c" fontSize="11" fontFamily="monospace" fontWeight="bold">SCORE 94%</text>
+                        {/* Row 1 chips */}
+                        <g transform="translate(4, 22)">
+                          <rect x="0" y="0" width="86" height="24" rx="12" fill="#0d1b15" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
+                          <circle cx="12" cy="12" r="4" fill="#10b981" />
+                          <text x="22" y="15.5" fill="#4ade80" fontSize="10" fontFamily="sans-serif" fontWeight="600">Avocado</text>
 
-                      <rect x="170" y="55" width="110" height="24" rx="12" fill="rgba(0, 229, 255, 0.15)" stroke="#00e5ff" strokeWidth="1" />
-                      <text x="183" y="71" fill="#00e5ff" fontSize="11" fontFamily="monospace" fontWeight="bold">MYSQL 200 OK</text>
+                          <rect x="94" y="0" width="82" height="24" rx="12" fill="#1b120f" stroke="rgba(239,68,68,0.35)" strokeWidth="1" />
+                          <circle cx="106" cy="12" r="4" fill="#ef4444" />
+                          <text x="116" y="15.5" fill="#f87171" fontSize="10" fontFamily="sans-serif" fontWeight="600">Tomato</text>
+                        </g>
+
+                        {/* Row 2 chips */}
+                        <g transform="translate(4, 52)">
+                          <rect x="0" y="0" width="76" height="24" rx="12" fill="#0d1b15" stroke="rgba(16,185,129,0.4)" strokeWidth="1" />
+                          <circle cx="12" cy="12" r="4" fill="#10b981" />
+                          <text x="22" y="15.5" fill="#4ade80" fontSize="10" fontFamily="sans-serif" fontWeight="600">Basil</text>
+
+                          <rect x="84" y="0" width="76" height="24" rx="12" fill="#1b180d" stroke="rgba(245,158,11,0.35)" strokeWidth="1" />
+                          <circle cx="96" cy="12" r="4" fill="#f59e0b" />
+                          <text x="106" y="15.5" fill="#fcd34d" fontSize="10" fontFamily="sans-serif" fontWeight="600">Garlic</text>
+                        </g>
+
+                        {/* Row 3 chips */}
+                        <g transform="translate(4, 82)">
+                          <rect x="0" y="0" width="88" height="24" rx="12" fill="#1a1809" stroke="rgba(234,179,8,0.35)" strokeWidth="1" />
+                          <circle cx="12" cy="12" r="4" fill="#eab308" />
+                          <text x="22" y="15.5" fill="#fde047" fontSize="10" fontFamily="sans-serif" fontWeight="600">Olive Oil</text>
+
+                          <rect x="96" y="0" width="78" height="24" rx="12" fill="#1a1410" stroke="rgba(251,146,60,0.35)" strokeWidth="1" />
+                          <circle cx="108" cy="12" r="4" fill="#fb923c" />
+                          <text x="118" y="15.5" fill="#fdba74" fontSize="10" fontFamily="sans-serif" fontWeight="600">Pasta</text>
+                        </g>
+
+                        {/* AI Synthesis Flow Pill */}
+                        <g transform="translate(4, 116)">
+                          <rect x="0" y="0" width="180" height="32" rx="8" fill="#0d1424" stroke="rgba(0,229,255,0.35)" strokeWidth="1" />
+                          <text x="12" y="20" fill="#00e5ff" fontSize="9.5" fontFamily="monospace">Gemini AI • Recipe Synthesis</text>
+                          <circle cx="166" cy="16" r="3.5" fill="#00e5ff" />
+                        </g>
+
+                        {/* Dietary Filter Tags */}
+                        <g transform="translate(4, 158)">
+                          <rect x="0" y="0" width="82" height="22" rx="6" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" strokeWidth="1" />
+                          <text x="8" y="15" fill="#10b981" fontSize="9" fontFamily="monospace" fontWeight="bold">VEGETARIAN</text>
+
+                          <rect x="90" y="0" width="76" height="22" rx="6" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" strokeWidth="1" />
+                          <text x="98" y="15" fill="#f59e0b" fontSize="9" fontFamily="monospace" fontWeight="bold">20-MIN MEAL</text>
+                        </g>
+                      </g>
+
+                      {/* Vertical Divider */}
+                      <line x1="216" y1="52" x2="216" y2="252" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="3 3" />
+
+                      {/* Right Column: High-Tech Recipe Card */}
+                      <g transform="translate(228, 52)">
+                        {/* Recipe Card Frame */}
+                        <rect x="0" y="0" width="222" height="198" rx="12" fill="#0b101d" stroke="rgba(16,185,129,0.35)" strokeWidth="1.2" />
+                        
+                        {/* Header Gradient Stripe */}
+                        <rect x="0" y="0" width="222" height="4" rx="2" fill="url(#w2c-header-grad)" />
+
+                        {/* Recipe Title & Subtitle */}
+                        <text x="14" y="24" fill="#ffffff" fontSize="12" fontFamily="sans-serif" fontWeight="bold">Creamy Avocado Basil Pasta</text>
+                        <text x="14" y="38" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="sans-serif">Mediterranean Fusion • 4 Servings</text>
+
+                        {/* Nutritional & Time Metrics Pills */}
+                        <g transform="translate(14, 48)">
+                          <rect x="0" y="0" width="56" height="18" rx="5" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.35)" strokeWidth="1" />
+                          <text x="6" y="12.5" fill="#f59e0b" fontSize="8.5" fontFamily="monospace" fontWeight="bold">⏱ 15 MIN</text>
+
+                          <rect x="62" y="0" width="66" height="18" rx="5" fill="rgba(236,72,153,0.15)" stroke="rgba(236,72,153,0.35)" strokeWidth="1" />
+                          <text x="68" y="12.5" fill="#ec4899" fontSize="8.5" fontFamily="monospace" fontWeight="bold">⚡ 410 KCAL</text>
+
+                          <rect x="134" y="0" width="58" height="18" rx="5" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.35)" strokeWidth="1" />
+                          <text x="144" y="12.5" fill="#10b981" fontSize="8.5" fontFamily="monospace" fontWeight="bold">EASY</text>
+                        </g>
+
+                        {/* Recipe Step Breakdown */}
+                        <g transform="translate(14, 78)">
+                          {/* Step 1 */}
+                          <g transform="translate(0, 0)">
+                            <circle cx="8" cy="8" r="7" fill="rgba(16,185,129,0.2)" stroke="#10b981" strokeWidth="1" />
+                            <text x="5.5" y="11" fill="#10b981" fontSize="8" fontFamily="monospace" fontWeight="bold">1</text>
+                            <text x="22" y="11" fill="rgba(255,255,255,0.85)" fontSize="9" fontFamily="sans-serif">Blend avocado, basil, olive oil & garlic</text>
+                          </g>
+
+                          {/* Step 2 */}
+                          <g transform="translate(0, 26)">
+                            <circle cx="8" cy="8" r="7" fill="rgba(0,229,255,0.2)" stroke="#00e5ff" strokeWidth="1" />
+                            <text x="5.5" y="11" fill="#00e5ff" fontSize="8" fontFamily="monospace" fontWeight="bold">2</text>
+                            <text x="22" y="11" fill="rgba(255,255,255,0.85)" fontSize="9" fontFamily="sans-serif">Boil pasta al dente in salted water</text>
+                          </g>
+
+                          {/* Step 3 */}
+                          <g transform="translate(0, 52)">
+                            <circle cx="8" cy="8" r="7" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" strokeWidth="1" />
+                            <text x="5.5" y="11" fill="#f59e0b" fontSize="8" fontFamily="monospace" fontWeight="bold">3</text>
+                            <text x="22" y="11" fill="rgba(255,255,255,0.85)" fontSize="9" fontFamily="sans-serif">Toss pasta in sauce & top with diced tomato</text>
+                          </g>
+                        </g>
+
+                        {/* AI Match Badge Footer */}
+                        <g transform="translate(14, 160)">
+                          <rect x="0" y="0" width="194" height="24" rx="6" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" strokeWidth="1" />
+                          <circle cx="12" cy="12" r="3.5" fill="#10b981" />
+                          <text x="22" y="16" fill="#10b981" fontSize="9" fontFamily="monospace" fontWeight="bold">99.4% INGREDIENT MATCH • ZERO WASTE</text>
+                        </g>
+                      </g>
                     </g>
                   </svg>
                 )}
@@ -395,11 +516,25 @@ export default function Projects({ onNavigate }) {
                 </div>
 
                 <div className="info-actions">
+                  {currentProject.live && currentProject.live !== currentProject.github && (
+                    <a
+                      href={currentProject.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="info-action-btn live-demo-btn"
+                      title={`Open ${currentProject.title} Live Application`}
+                    >
+                      <Sparkles size={13} style={{ color: currentProject.accentColor || '#10b981' }} />
+                      <span>Live App</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  )}
                   <a
                     href={currentProject.github}
                     target="_blank"
                     rel="noreferrer"
                     className="info-action-btn"
+                    title="View Source on GitHub"
                   >
                     <GithubIcon size={14} />
                     <span>Source Code</span>

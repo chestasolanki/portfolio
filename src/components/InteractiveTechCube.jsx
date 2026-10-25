@@ -14,7 +14,7 @@ export default function InteractiveTechCube() {
       icon: Globe,
       x: 20,
       y: 22,
-      projects: ['PrepAI Platform', 'Portfolio UI'],
+      projects: ['What2Cook UI', 'Portfolio UI'],
       desc: 'Interactive UI, Component Architecture & State'
     },
     {
@@ -24,7 +24,7 @@ export default function InteractiveTechCube() {
       icon: Cpu,
       x: 80,
       y: 22,
-      projects: ['Craftly AI Gen', 'PrepAI Backend'],
+      projects: ['Craftly AI Gen', 'What2Cook Backend'],
       desc: 'Asynchronous Event-Driven Backend Server'
     },
     {
@@ -54,7 +54,7 @@ export default function InteractiveTechCube() {
       icon: Layers,
       x: 50,
       y: 12,
-      projects: ['Craftly Server', 'PrepAI REST API'],
+      projects: ['Craftly Server', 'What2Cook REST API'],
       desc: 'Routing, SSE Streaming & Middleware'
     },
     {
@@ -64,7 +64,7 @@ export default function InteractiveTechCube() {
       icon: Database,
       x: 50,
       y: 88,
-      projects: ['PrepAI Analytics', 'User Auth Schema'],
+      projects: ['What2Cook Recipes', 'User Auth Schema'],
       desc: 'Relational Schemas & Query Optimization'
     }
   ];
