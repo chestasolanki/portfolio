@@ -333,8 +333,7 @@ export default function SkillsKnowledgeGraph() {
           gap: '8px',
           padding: '14px 18px',
           background: 'var(--bg-surface)',
-          border: '1px solid var(--border-glass)',
-          borderBottom: 'none',
+          border: 'none',
           borderTopLeftRadius: 'var(--radius-lg)',
           borderTopRightRadius: 'var(--radius-lg)',
         }}
@@ -348,7 +347,7 @@ export default function SkillsKnowledgeGraph() {
           style={{
             padding: '6px 14px',
             borderRadius: 'var(--radius-pill)',
-            border: activeCategory === 'ALL' ? '1px solid var(--accent-purple)' : '1px solid var(--border-glass)',
+            border: 'none',
             background: activeCategory === 'ALL' ? 'var(--accent-purple)' : 'transparent',
             color: activeCategory === 'ALL' ? '#ffffff' : 'var(--text-secondary)',
             fontSize: '12.5px',
@@ -369,7 +368,7 @@ export default function SkillsKnowledgeGraph() {
               style={{
                 padding: '6px 14px',
                 borderRadius: 'var(--radius-pill)',
-                border: `1px solid ${isActive ? cat.color : 'var(--border-glass)'}`,
+                border: 'none',
                 background: isActive ? `${cat.color}22` : 'transparent',
                 color: isActive ? cat.color : 'var(--text-secondary)',
                 fontSize: '12.5px',
@@ -393,7 +392,7 @@ export default function SkillsKnowledgeGraph() {
           background: 'var(--bg-card)',
           borderBottomLeftRadius: 'var(--radius-lg)',
           borderBottomRightRadius: 'var(--radius-lg)',
-          border: '1px solid var(--border-glass)',
+          border: 'none',
           boxShadow: 'var(--glow-card)',
         }}
       />
@@ -408,7 +407,7 @@ export default function SkillsKnowledgeGraph() {
             padding: '10px 18px',
             borderRadius: 'var(--radius-md)',
             background: 'var(--bg-surface)',
-            border: `1px solid ${hoveredNode.color}`,
+            border: 'none',
             boxShadow: `0 10px 30px ${hoveredNode.color}33`,
             fontFamily: 'var(--font-body)',
             fontSize: '13px',

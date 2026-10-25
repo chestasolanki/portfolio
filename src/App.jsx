@@ -4,19 +4,18 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
+import MagnifyingHero from './components/MagnifyingHero';
 import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 import ResumeModal from './components/ResumeModal';
-import DrawingCanvas from './components/DrawingCanvas';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('cs_portfolio_theme');
+    const savedTheme = localStorage.getItem('cs_purrweb_theme');
     return savedTheme || 'dark';
   });
 
@@ -24,32 +23,33 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('cs_portfolio_theme', theme);
+    localStorage.setItem('cs_purrweb_theme', theme);
   }, [theme]);
 
-  // Initialize Lenis Ultra-Smooth Slow Presentation Scroll
+  // Ultra-smooth Lenis scroll
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2.2,
-      easing: (t) => 1 - Math.pow(1 - t, 4),
+      duration: 1.6,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.75,
-      touchMultiplier: 1.2
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.1
     });
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const updateLenis = (time) => {
       lenis.raf(time * 1000);
-    });
+    };
 
+    gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(updateLenis);
     };
   }, []);
 
@@ -58,23 +58,33 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
-      {/* Interactive Light Blue Drawing Canvas */}
-      <DrawingCanvas />
+    <div className="purrweb-app">
+      {/* Floating Purrweb Minimal Navbar */}
+      <Navbar
+        theme={theme}
+        toggleTheme={toggleTheme}
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
 
-      {/* Floating Glass Pill Navbar */}
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-
-      {/* Page Sections */}
+      {/* Main Portfolio Sections */}
       <main>
-        <Hero />
-        <Experience />
-        <Skills />
+        {/* Signature Purrweb Hero with Interactive Magnifying Glass & Vibrant Gradient Aura */}
+        <MagnifyingHero onOpenResume={() => setIsResumeOpen(true)} />
+
+        {/* Selected Work (Featured Projects) */}
         <Projects />
+
+        {/* Technical Skills & Verified Credentials Slideshow */}
+        <Skills />
+
+        {/* Career & Academic Journey */}
+        <Experience />
+
+        {/* Contact & Footer */}
         <Contact onOpenResume={() => setIsResumeOpen(true)} />
       </main>
 
-      {/* Resume Viewer Modal Drawer */}
+      {/* Embedded PDF Resume Modal Drawer */}
       <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </div>
   );

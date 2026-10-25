@@ -1,251 +1,129 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Network, LayoutGrid } from 'lucide-react';
-import PageTransitionSection from './PageTransitionSection';
-import CinematicDeveloperBackground from './CinematicDeveloperBackground';
-import TiltCard from './TiltCard';
-import SkillsKnowledgeGraph from './SkillsKnowledgeGraph';
+import { Award, Sparkles, Terminal, Code2, Database, Brain, Cpu, Wrench } from 'lucide-react';
 import CertificateSlideshow from './CertificateSlideshow';
 
 export default function Skills() {
-  const [viewMode, setViewMode] = useState('graph'); // 'graph' | 'cards'
-
-  const skillCategories = [
+  const skillClusters = [
     {
+      icon: Terminal,
       title: 'Programming Languages',
-      skills: ['C++', 'JavaScript', 'Python']
+      skills: ['C++', 'JavaScript (ES2024)', 'Python 3', 'TypeScript'],
+      accent: 'var(--accent-violet)'
     },
     {
-      title: 'Frontend Development',
-      skills: ['React.js', 'HTML5', 'CSS3', 'Tailwind CSS', 'Responsive UI']
+      icon: Code2,
+      title: 'Frontend Architecture',
+      skills: ['React 19', 'Next.js concepts', 'HTML5 & Modern CSS3', 'Tailwind CSS', 'Framer Motion', 'Responsive UI'],
+      accent: 'var(--accent-pink)'
     },
     {
-      title: 'Backend Development',
-      skills: ['Node.js', 'Express.js', 'RESTful APIs', 'SSE (Server-Sent Events)', 'Auth & JWT']
+      icon: Cpu,
+      title: 'Backend & Distributed Systems',
+      skills: ['Node.js', 'Express.js', 'RESTful APIs', 'Server-Sent Events (SSE)', 'JWT Authentication', 'MVC Architecture'],
+      accent: 'var(--accent-cyan)'
     },
     {
-      title: 'Databases & Cloud',
-      skills: ['MySQL', 'MongoDB', 'AWS', 'Database Design', 'Query Optimization']
+      icon: Database,
+      title: 'Databases & Cloud Infrastructure',
+      skills: ['MySQL Relational DB', 'MongoDB NoSQL', 'AWS Cloud (IAM, EC2, S3)', 'Database Schema Design', 'Query Optimization'],
+      accent: 'var(--accent-coral)'
     },
     {
-      title: 'AI & ML Integrations',
-      skills: ['LLMs', 'Prompt Engineering', 'RAG Concepts', 'Supervised Learning']
+      icon: Brain,
+      title: 'Generative AI & Machine Learning',
+      skills: ['LLM Orchestration', 'Groq API (Llama 3.3)', 'Gemini API', 'Prompt Engineering', 'RAG Architectures', 'Supervised ML'],
+      accent: 'var(--accent-pink)'
     },
     {
-      title: 'Developer Tools & OS',
-      skills: ['Git', 'GitHub', 'Postman', 'Linux']
+      icon: Wrench,
+      title: 'DevOps, Tools & Operating Systems',
+      skills: ['Git & GitHub', 'Postman API Testing', 'Red Hat Enterprise Linux', 'Vite & Webpack', 'Linux CLI Bash'],
+      accent: 'var(--accent-violet)'
     }
   ];
 
   return (
-    <PageTransitionSection
-      id="skills"
-      className="section-spacing"
-      style={{ position: 'relative', overflow: 'hidden' }}
-    >
-      {/* Reusable Cinematic Developer Background */}
-      <CinematicDeveloperBackground />
-
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+    <section id="skills" className="purrweb-section">
+      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto' }}>
         
-        {/* Section Header with View Toggle */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'flex-end',
-            justifyContent: 'space-between',
-            gap: '20px',
-            marginBottom: '32px'
-          }}
-        >
-          <div>
-            <div className="section-tag">
-              <span>TECHNICAL PROFICIENCY</span>
-            </div>
-            <h2 className="section-title" style={{ margin: 0 }}>
-              Skills &amp; <em>Knowledge Graph</em>
-            </h2>
+        {/* Section Header */}
+        <div className="purrweb-section-header">
+          <div className="purrweb-badge">
+            <Sparkles size={12} style={{ color: 'var(--accent-violet)' }} />
+            <span className="purrweb-badge-text">TECHNICAL EXPERTISE</span>
           </div>
-
-          {/* Interactive View Mode Selector */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '4px',
-              borderRadius: 'var(--radius-pill)',
-              background: 'var(--bg-surface)',
-              border: '1px solid var(--border-glass)',
-              boxShadow: 'var(--glow-card)'
-            }}
-          >
-            <button
-              onClick={() => setViewMode('graph')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 18px',
-                borderRadius: 'var(--radius-pill)',
-                border: 'none',
-                background: viewMode === 'graph' ? 'var(--accent-purple)' : 'transparent',
-                color: viewMode === 'graph' ? '#ffffff' : 'var(--text-secondary)',
-                fontWeight: '600',
-                fontSize: '13.5px',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease'
-              }}
-            >
-              <Network size={16} />
-              <span>Knowledge Graph</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode('cards')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 18px',
-                borderRadius: 'var(--radius-pill)',
-                border: 'none',
-                background: viewMode === 'cards' ? 'var(--accent-purple)' : 'transparent',
-                color: viewMode === 'cards' ? '#ffffff' : 'var(--text-secondary)',
-                fontWeight: '600',
-                fontSize: '13.5px',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease'
-              }}
-            >
-              <LayoutGrid size={16} />
-              <span>Category Cards</span>
-            </button>
-          </div>
+          <h2 className="purrweb-section-title">
+            Skills &amp; <span className="purrweb-serif-accent">Capabilities</span>
+          </h2>
+          <p className="purrweb-section-subtitle">
+            A comprehensive spectrum of full-stack software development, generative AI integrations, and cloud infrastructure.
+          </p>
         </div>
 
-        {/* 1. KNOWLEDGE GRAPH VIEW */}
-        {viewMode === 'graph' && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{ marginBottom: '56px' }}
-          >
-            <SkillsKnowledgeGraph />
-          </motion.div>
-        )}
-
-        {/* 2. CATEGORY CARDS VIEW */}
-        {viewMode === 'cards' && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '24px',
-              marginBottom: '56px'
-            }}
-          >
-            {skillCategories.map((cat, idx) => (
+        {/* Clean, Open Skill Clusters Grid (Borderless) */}
+        <div className="purrweb-skills-grid">
+          {skillClusters.map((cluster, idx) => {
+            const Icon = cluster.icon;
+            return (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.06 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                className="purrweb-skill-cluster"
               >
-                <TiltCard style={{ height: '100%' }}>
-                  <div
-                    className="glass-card"
-                    style={{
-                      padding: '28px',
-                      borderRadius: 'var(--radius-md)',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justify: 'space-between',
-                      border: '1px solid var(--border-glass)',
-                      transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-                    }}
-                  >
-                    <div>
-                      <h3 style={{
-                        fontFamily: 'var(--font-serif)',
-                        fontSize: '20px',
-                        fontWeight: '600',
-                        color: 'var(--text-primary)',
-                        marginBottom: '16px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}>
-                        <span style={{ color: 'var(--accent-purple)' }}>&gt;</span>
-                        <span>{cat.title}</span>
-                      </h3>
-
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                        {cat.skills.map((skill, sIdx) => (
-                          <span
-                            key={sIdx}
-                            style={{
-                              fontSize: '13px',
-                              fontFamily: 'var(--font-mono)',
-                              color: 'var(--text-primary)',
-                              background: 'rgba(56, 189, 248, 0.1)',
-                              border: '1px solid var(--border-glass)',
-                              padding: '5px 12px',
-                              borderRadius: 'var(--radius-pill)'
-                            }}
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+                <div className="cluster-header">
+                  <div className="cluster-icon-wrap" style={{ color: cluster.accent }}>
+                    <Icon size={18} />
                   </div>
-                </TiltCard>
+                  <h3 className="cluster-title">{cluster.title}</h3>
+                </div>
+
+                <div className="cluster-pills-wrap">
+                  {cluster.skills.map((skill, sIdx) => (
+                    <span key={sIdx} className="purrweb-pill">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
-            ))}
-          </motion.div>
-        )}
+            );
+          })}
+        </div>
 
-        {/* Certifications Subsection: 3D Center Zoom Coverflow Slideshow */}
-        <div style={{ marginTop: '48px' }}>
-          <div className="section-tag" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Award size={14} style={{ color: 'var(--accent-purple)' }} />
-            <span>VERIFIED CREDENTIALS &amp; CERTIFICATIONS</span>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'baseline',
-            flexWrap: 'wrap',
-            gap: '12px',
-            marginBottom: '10px'
-          }}>
-            <h3 style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(26px, 3.2vw, 36px)',
-              color: 'var(--text-primary)',
-              margin: 0,
-              fontWeight: '600'
+        {/* =========================================================================
+            VERIFIED CREDENTIALS & CERTIFICATES SLIDESHOW
+            3D Center-Zoom Coverflow with 6-second auto-cycle and image preview
+            ========================================================================= */}
+        <div style={{ marginTop: '90px' }}>
+          <div className="purrweb-section-header" style={{ marginBottom: '24px', textAlign: 'left' }}>
+            <div className="purrweb-badge" style={{ marginBottom: '12px' }}>
+              <Award size={12} style={{ color: 'var(--accent-coral)' }} />
+              <span className="purrweb-badge-text">INDUSTRY CREDENTIALS</span>
+            </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '16px'
             }}>
-              Certifications &amp; <em>Achievements</em>
-            </h3>
-            <span style={{ fontSize: '12.5px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
-              Auto-advancing every 6s • Hover to pause
-            </span>
+              <h3 className="purrweb-section-title" style={{ fontSize: 'clamp(1.8rem, 3.4vw, 2.6rem)', margin: 0 }}>
+                Verified <span className="purrweb-serif-accent">Certificates</span>
+              </h3>
+              <span className="purrweb-meta-text">
+                Auto-advancing every 6s • Click to inspect full certificate
+              </span>
+            </div>
           </div>
 
-          {/* Interactive Dynamic Certificate Slideshow */}
+          {/* Interactive Certificate Slideshow */}
           <CertificateSlideshow />
         </div>
 
       </div>
-    </PageTransitionSection>
+    </section>
   );
 }

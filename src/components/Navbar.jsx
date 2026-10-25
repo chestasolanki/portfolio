@@ -1,132 +1,77 @@
-import React from 'react';
-import { Sun, Moon } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sun, Moon, ArrowUpRight, FileText } from 'lucide-react';
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar({ theme, toggleTheme, onOpenResume }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav style={{
-      position: 'fixed',
-      top: '18px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      zIndex: 100,
-      width: 'min(900px, 92vw)',
-      background: 'var(--navbar-bg)',
-      backdropFilter: 'blur(18px)',
-      WebkitBackdropFilter: 'blur(18px)',
-      border: '1px solid var(--navbar-border)',
-      borderTop: '1px solid var(--border-glass-top)',
-      borderRadius: '9999px',
-      boxShadow: '0 15px 35px rgba(0, 0, 0, 0.15)',
-      padding: '8px 24px',
-      transition: 'all var(--transition-normal)'
-    }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: '46px'
-      }}>
-        {/* Brand Logo */}
-        <a href="#hero" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{
-            width: '32px',
-            height: '32px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ffffff',
-            fontWeight: '600',
-            fontFamily: 'var(--font-serif)',
-            fontSize: '0.9rem',
-            boxShadow: '0 0 14px rgba(56, 189, 248, 0.4)'
-          }}>
-            CS
+    <header
+      className={`purrweb-header ${scrolled ? 'is-scrolled' : ''}`}
+      style={{
+        position: 'fixed',
+        top: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 'min(1180px, 92vw)',
+        zIndex: 100,
+        transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+      }}
+    >
+      <div className="purrweb-nav-pill">
+        
+        {/* Brand Monogram */}
+        <a href="#hero" className="purrweb-nav-brand">
+          <div className="brand-avatar">CS</div>
+          <div className="brand-text">
+            <span className="brand-name">Chesta Solanki</span>
+            <span className="brand-dot" />
+            <span className="brand-role">Engineer</span>
           </div>
-          <span className="font-italic" style={{
-            fontSize: '1.15rem',
-            color: 'var(--navbar-text)',
-            fontStyle: 'italic',
-            fontWeight: '500',
-            letterSpacing: '0.04em'
-          }}>
-            Chesta Solanki
-          </span>
         </a>
 
-        {/* Floating Nav Items */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '28px'
-        }} className="desktop-nav">
-          <a href="#experience" className="nav-link">EXPERIENCE</a>
-          <a href="#skills" className="nav-link">SKILLS</a>
-          <a href="#projects" className="nav-link">PROJECTS</a>
-          <a href="#contact" className="nav-link">CONTACT</a>
-        </div>
+        {/* Center Nav Links */}
+        <nav className="purrweb-nav-links">
+          <a href="#projects" className="nav-item">
+            <span>Work</span>
+          </a>
+          <a href="#skills" className="nav-item">
+            <span>Skills</span>
+          </a>
+          <a href="#experience" className="nav-item">
+            <span>Experience</span>
+          </a>
+          <a href="#contact" className="nav-item">
+            <span>Contact</span>
+          </a>
+        </nav>
 
-        {/* Theme Toggle Button */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        {/* Right Actions: Resume Button & Theme Toggle */}
+        <div className="purrweb-nav-actions">
+          <button onClick={onOpenResume} className="nav-resume-btn" title="View Full Resume PDF">
+            <FileText size={14} />
+            <span>Resume</span>
+            <ArrowUpRight size={13} />
+          </button>
+
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
+            className="nav-theme-toggle"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`}
-            style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '50%',
-              background: 'rgba(2, 132, 199, 0.1)',
-              border: '1px solid var(--border-glass)',
-              color: 'var(--accent-purple)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              transition: 'all var(--transition-fast)'
-            }}
           >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
           </button>
         </div>
-      </div>
 
-      <style>{`
-        .nav-link {
-          color: var(--text-secondary);
-          text-decoration: none;
-          font-family: var(--font-body);
-          font-weight: 500;
-          font-size: 0.78rem;
-          letter-spacing: 0.16em;
-          transition: color var(--transition-fast);
-          position: relative;
-        }
-        .nav-link:hover {
-          color: var(--accent-purple);
-        }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 0%;
-          height: 2px;
-          background: var(--accent-purple);
-          transition: width var(--transition-fast);
-          border-radius: 2px;
-        }
-        .nav-link:hover::after {
-          width: 80%;
-        }
-        @media (max-width: 767px) {
-          .desktop-nav {
-            display: none !important;
-          }
-        }
-      `}</style>
-    </nav>
+      </div>
+    </header>
   );
 }

@@ -114,8 +114,8 @@ export default function CertificateSlideshow() {
           transition={{ duration: isPaused ? 0 : 6, ease: 'linear' }}
           style={{
             height: '100%',
-            background: 'linear-gradient(90deg, #38bdf8 0%, #0284c7 100%)',
-            boxShadow: '0 0 10px #38bdf8'
+            background: 'var(--gradient-purrweb)',
+            boxShadow: '0 0 10px rgba(236, 72, 153, 0.5)'
           }}
         />
       </div>
@@ -224,13 +224,11 @@ export default function CertificateSlideshow() {
                   borderRadius: '16px',
                   overflow: 'hidden',
                   background: 'rgba(10, 16, 32, 0.85)',
-                  border: isActive
-                    ? '2px solid rgba(56, 189, 248, 0.75)'
-                    : '1px solid rgba(255, 255, 255, 0.12)',
+                  border: 'none',
                   boxShadow: isActive
-                    ? '0 24px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(56, 189, 248, 0.35)'
+                    ? '0 24px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(236, 72, 153, 0.25)'
                     : '0 12px 30px rgba(0, 0, 0, 0.6)',
-                  transition: 'border 0.3s ease, box-shadow 0.3s ease'
+                  transition: 'box-shadow 0.3s ease'
                 }}
               >
                 {/* Certificate Image Frame */}
@@ -290,7 +288,7 @@ export default function CertificateSlideshow() {
           height: '46px',
           borderRadius: '50%',
           background: 'rgba(8, 14, 28, 0.85)',
-          border: '1px solid rgba(56, 189, 248, 0.3)',
+          border: 'none',
           color: 'var(--text-primary)',
           cursor: 'pointer',
           display: 'flex',
@@ -301,8 +299,6 @@ export default function CertificateSlideshow() {
           boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
           transition: 'all 0.25s ease'
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#38bdf8')}
-        onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.3)')}
       >
         <ChevronLeft size={22} />
       </button>
@@ -319,7 +315,7 @@ export default function CertificateSlideshow() {
           height: '46px',
           borderRadius: '50%',
           background: 'rgba(8, 14, 28, 0.85)',
-          border: '1px solid rgba(56, 189, 248, 0.3)',
+          border: 'none',
           color: 'var(--text-primary)',
           cursor: 'pointer',
           display: 'flex',
@@ -330,8 +326,6 @@ export default function CertificateSlideshow() {
           boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
           transition: 'all 0.25s ease'
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#38bdf8')}
-        onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.3)')}
       >
         <ChevronRight size={22} />
       </button>
@@ -365,9 +359,9 @@ export default function CertificateSlideshow() {
                   fontFamily: 'var(--font-mono)',
                   padding: '3px 10px',
                   borderRadius: 'var(--radius-pill)',
-                  background: 'rgba(56, 189, 248, 0.15)',
-                  color: 'var(--accent-purple)',
-                  border: '1px solid rgba(56, 189, 248, 0.35)',
+                  background: 'rgba(236, 72, 153, 0.15)',
+                  color: 'var(--accent-pink)',
+                  border: 'none',
                   fontWeight: '600'
                 }}
               >
@@ -409,7 +403,7 @@ export default function CertificateSlideshow() {
               {activeCert.code && (
                 <>
                   <span>•</span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: '#38bdf8' }}>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--accent-coral)' }}>
                     Code: {activeCert.code}
                   </span>
                 </>
@@ -429,12 +423,12 @@ export default function CertificateSlideshow() {
                     gap: '6px',
                     fontSize: '12px',
                     fontFamily: 'var(--font-mono)',
-                    color: 'var(--accent-purple)',
+                    color: 'var(--accent-pink)',
                     textDecoration: 'none',
                     padding: '4px 12px',
                     borderRadius: 'var(--radius-pill)',
-                    background: 'rgba(56, 189, 248, 0.1)',
-                    border: '1px solid rgba(56, 189, 248, 0.25)',
+                    background: 'rgba(236, 72, 153, 0.1)',
+                    border: 'none',
                     transition: 'all 0.2s ease'
                   }}
                 >
