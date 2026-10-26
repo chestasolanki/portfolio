@@ -15,10 +15,7 @@ export default function Experience({ isActive = true, onNavigate }) {
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.75, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="purrweb-badge" style={{ margin: '0 auto 12px auto' }}>
-            <Sparkles size={12} style={{ color: 'var(--accent-cyan)' }} />
-            <span className="purrweb-badge-text">PRODUCTION RECORD</span>
-          </div>
+          
           <h2 className="purrweb-section-title">
             Industry &amp; <span className="purrweb-serif-accent">Production Experience</span>
           </h2>
@@ -39,9 +36,7 @@ export default function Experience({ isActive = true, onNavigate }) {
             <div className="showcase-meta-left">
               <Globe size={15} style={{ color: 'var(--accent-cyan)' }} />
               <span className="meta-site-tag">LIMETTA • FOUNDING PRODUCT DEVELOPMENT</span>
-              <span className="live-status-pill">
-                <span className="live-pulse-dot" /> Live in Production
-              </span>
+              
             </div>
 
             <a
