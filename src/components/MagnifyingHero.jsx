@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 export default function MagnifyingHero({ onNavigate, onOpenResume }) {
   const heroRef = useRef(null);
@@ -170,7 +171,13 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
           Left Col 2: Location & Academic Pedigree
           Right: Delicate vertical scroll line and arrow
           ========================================================================= */}
-      <footer className="purrweb-exact-footer">
+      <motion.footer
+        className="purrweb-exact-footer"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+      >
         
         {/* Left Metadata Columns */}
         <div className="footer-meta-group">
@@ -202,7 +209,7 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
           <span className="scroll-arrow">↓</span>
         </button>
 
-      </footer>
+      </motion.footer>
 
       {/* =========================================================================
           INTERACTIVE CHROMATIC MAGNIFYING GLASS LENS OVERLAY

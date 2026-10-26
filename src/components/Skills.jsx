@@ -64,7 +64,14 @@ export default function Skills({ onNavigate }) {
       <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         
         {/* Section Header */}
-        <div className="purrweb-section-header" style={{ textAlign: 'center', marginBottom: '16px' }}>
+        <motion.div
+          className="purrweb-section-header"
+          style={{ textAlign: 'center', marginBottom: '16px' }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="purrweb-badge" style={{ margin: '0 auto 10px auto' }}>
             <Sparkles size={12} style={{ color: 'var(--accent-violet)' }} />
             <span className="purrweb-badge-text">TECHNICAL EXPERTISE</span>
@@ -75,10 +82,16 @@ export default function Skills({ onNavigate }) {
           <p className="purrweb-section-subtitle" style={{ maxWidth: '600px', margin: '0 auto', fontSize: '0.95rem' }}>
             A comprehensive spectrum of full-stack engineering, cloud infrastructure, and generative AI.
           </p>
-        </div>
+        </motion.div>
 
         {/* Category Filter Tabs */}
-        <div className="skills-category-filters">
+        <motion.div
+          className="skills-category-filters"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+        >
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -88,10 +101,17 @@ export default function Skills({ onNavigate }) {
               {cat.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Visual Skills Cards Grid */}
-        <motion.div layout className="skills-cards-grid">
+        <motion.div
+          layout
+          className="skills-cards-grid"
+          initial={{ opacity: 0, y: 50, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+        >
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill, idx) => {
               const IconComponent = skill.icon;
@@ -120,7 +140,13 @@ export default function Skills({ onNavigate }) {
             VERIFIED CREDENTIALS & CERTIFICATES SLIDESHOW
             3D Center-Zoom Coverflow with auto-cycle and image preview
             ========================================================================= */}
-        <div style={{ marginTop: '80px' }}>
+        <motion.div
+          style={{ marginTop: '80px' }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="purrweb-section-header" style={{ marginBottom: '24px', textAlign: 'left' }}>
             <div className="purrweb-badge" style={{ marginBottom: '12px' }}>
               <Award size={12} style={{ color: 'var(--accent-coral)' }} />
@@ -142,7 +168,7 @@ export default function Skills({ onNavigate }) {
 
           {/* Interactive Certificate Slideshow */}
           <CertificateSlideshow />
-        </div>
+        </motion.div>
 
       </div>
     </section>

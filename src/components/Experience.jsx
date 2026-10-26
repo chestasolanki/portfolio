@@ -8,7 +8,14 @@ export default function Experience({ onNavigate }) {
       <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 10 }}>
         
         {/* Section Header */}
-        <div className="purrweb-section-header" style={{ textAlign: 'center', marginBottom: 'clamp(20px, 3vh, 32px)' }}>
+        <motion.div
+          className="purrweb-section-header"
+          style={{ textAlign: 'center', marginBottom: 'clamp(20px, 3vh, 32px)' }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="purrweb-badge" style={{ margin: '0 auto 12px auto' }}>
             <Sparkles size={12} style={{ color: 'var(--accent-cyan)' }} />
             <span className="purrweb-badge-text">PRODUCTION RECORD</span>
@@ -19,13 +26,14 @@ export default function Experience({ onNavigate }) {
           <p className="purrweb-section-subtitle" style={{ maxWidth: '640px', margin: '0 auto' }}>
             Founding full-stack product engineering, cloud deployment, and live customer-facing systems.
           </p>
-        </div>
+        </motion.div>
 
         {/* Centered Zoomed-in Live Website Browser Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 60, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="exp-centered-showcase"
         >
           {/* Top Bar Action Line */}

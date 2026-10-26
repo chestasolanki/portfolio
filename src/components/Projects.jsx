@@ -123,7 +123,13 @@ export default function Projects({ onNavigate }) {
       <div className="work-content-container">
         
         {/* Left Column: Personal Statement & Domain */}
-        <div className="work-left-editorial">
+        <motion.div
+          className="work-left-editorial"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h2 className="work-editorial-statement">
             I am Chesta Solanki,<br />
             crafting{' '}
@@ -151,11 +157,15 @@ export default function Projects({ onNavigate }) {
             <div className="domain-line">FULL-STACK &amp; AI / CLOUD /</div>
             <div className="domain-line">DISTRIBUTED SYSTEMS</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Stacked Project Cards Deck */}
-        <div
+        <motion.div
           className="work-right-deck"
+          initial={{ opacity: 0, y: 60, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           onMouseEnter={() => setIsPlaying(false)}
           onMouseLeave={() => setIsPlaying(true)}
         >
@@ -326,7 +336,7 @@ export default function Projects({ onNavigate }) {
             })}
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Copy, Check, ArrowUpRight, Phone, MapPin, Sparkles, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
@@ -18,7 +19,13 @@ export default function Contact({ onNavigate, onOpenResume }) {
         {/* =========================================================================
             GET IN TOUCH HERO CARD (The one allowed bordered/styled container)
             ========================================================================= */}
-        <div className="purrweb-contact-cta-box">
+        <motion.div
+          className="purrweb-contact-cta-box"
+          initial={{ opacity: 0, y: 60, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="contact-cta-glow" />
 
           <div className="purrweb-badge" style={{ margin: '0 auto 20px auto' }}>
@@ -58,10 +65,16 @@ export default function Contact({ onNavigate, onOpenResume }) {
               <ArrowUpRight size={16} />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Clean, Open Contact Details Grid (Borderless) */}
-        <div className="purrweb-contact-details-grid">
+        <motion.div
+          className="purrweb-contact-details-grid"
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
           
           {/* Email Item */}
           <div className="contact-detail-item">
@@ -114,57 +127,51 @@ export default function Contact({ onNavigate, onOpenResume }) {
             </div>
           </div>
 
-        </div>
+        </motion.div>
 
-        {/* Social Profiles Row */}
-        <div className="purrweb-socials-row">
-          <a
-            href="https://github.com/chestasolanki"
-            target="_blank"
-            rel="noreferrer"
-            className="social-link"
-          >
-            <GithubIcon size={16} />
-            <span>GitHub</span>
-            <ArrowUpRight size={12} />
-          </a>
+        {/* Social Profiles Row & Clean Minimalist Footer */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="purrweb-socials-row">
+            <a
+              href="https://github.com/chestasolanki"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              <GithubIcon size={16} />
+              <span>GitHub</span>
+              <ArrowUpRight size={12} />
+            </a>
 
-          <a
-            href="https://linkedin.com/in/chestasolanki1/"
-            target="_blank"
-            rel="noreferrer"
-            className="social-link"
-          >
-            <LinkedinIcon size={16} />
-            <span>LinkedIn</span>
-            <ArrowUpRight size={12} />
-          </a>
+            <a
+              href="https://linkedin.com/in/chestasolanki1/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              <LinkedinIcon size={16} />
+              <span>LinkedIn</span>
+              <ArrowUpRight size={12} />
+            </a>
 
-          <a
-            href="https://chestasolanki.tech"
-            target="_blank"
-            rel="noreferrer"
-            className="social-link"
-          >
-            <Sparkles size={14} />
-            <span>chestasolanki.tech</span>
-            <ArrowUpRight size={12} />
-          </a>
-        </div>
-
-        {/* Clean Minimalist Footer */}
-        <div className="purrweb-footer-bottom">
-          <div className="footer-left">
-            <div className="footer-logo">CS</div>
-            <span className="footer-name">Chesta Solanki</span>
-            <span className="footer-sep">•</span>
-            <span className="footer-copy">© {new Date().getFullYear()} All Rights Reserved.</span>
+            <a
+              href="https://chestasolanki.tech"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+            >
+              <Sparkles size={14} />
+              <span>chestasolanki.tech</span>
+              <ArrowUpRight size={12} />
+            </a>
           </div>
 
-          <div className="footer-right">
-            <span>Designed &amp; Engineered with React 19, Vite &amp; Purrweb Aesthetics</span>
-          </div>
-        </div>
+        </motion.div>
 
       </div>
     </footer>

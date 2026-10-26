@@ -94,8 +94,8 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -247,11 +247,12 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(22px, 3.6vh, 34px) clamp(24px, 5.5vw, 76px);
+  padding: clamp(18px, 2.8vh, 26px) clamp(24px, 5.5vw, 76px);
   z-index: 100;
-  background: linear-gradient(180deg, rgba(7, 9, 14, 0.88) 0%, rgba(7, 9, 14, 0.5) 60%, transparent 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(7, 9, 14, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   pointer-events: auto;
 }
 
@@ -2288,47 +2289,39 @@ button {
   }
 }
 /* ==========================================================================
-   FULL-PAGE PRESENTATION DECK & UNIFIED NON-FIXED HEADER NAVIGATION
-   Each page has its own minimal header. Scrolling triggers full-page transitions.
+   CONTINUOUS SMOOTH-SCROLL FLOW & PERSISTENT FIXED NAVIGATION
+   All sections flow continuously with buttery Lenis scrolling and scroll transitions.
    ========================================================================== */
 
-.purrweb-deck-viewport {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+.purrweb-continuous-container {
+  width: 100%;
+  min-height: 100vh;
   position: relative;
   background: #07090e;
+  overflow-x: hidden;
 }
 
-.purrweb-deck-track {
+.purrweb-flow-section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-}
-
-.purrweb-slide-screen {
-  width: 100vw;
-  height: 100vh;
-  flex: 0 0 100vh;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
 }
 
 /* Slide Stage for Skills, Experience, and Contact */
 .purrweb-exact-slide-stage {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
   background: #07090e;
-  padding: clamp(100px, 13vh, 140px) clamp(24px, 5.5vw, 76px) clamp(40px, 6vh, 60px) clamp(24px, 5.5vw, 76px);
+  padding: clamp(110px, 14vh, 150px) clamp(24px, 5.5vw, 76px) clamp(80px, 10vh, 110px) clamp(24px, 5.5vw, 76px);
   color: #ffffff;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 /* Custom Smooth Scrollbar for Slide Stage if content overflows vertically on small screens */

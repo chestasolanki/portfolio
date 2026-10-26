@@ -30,8 +30,8 @@ export default function PageHeader({ activePage, onNavigate }) {
                   layoutId="headerActiveIndicator"
                   className="header-active-bar"
                   transition={{
-                    duration: 1.15,
-                    ease: [0.65, 0, 0.15, 1]
+                    duration: 0.45,
+                    ease: [0.25, 1, 0.5, 1]
                   }}
                 />
               )}
