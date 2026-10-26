@@ -36,11 +36,6 @@ export default function Contact({ isActive = true, onNavigate, onOpenResume }) {
             </span>
           </h2>
 
-          <p className="contact-subtext">
-            Currently open for Full-Stack Developer roles, AI engineer opportunities, and high-impact technical collaborations.
-            Feel free to reach out via email, phone, or LinkedIn.
-          </p>
-
           <div className="contact-actions-row">
             <a
               href="mailto:chestasolanki664@gmail.com"

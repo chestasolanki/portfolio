@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck } from 'lucide-react';
 import CertificateSlideshow from './CertificateSlideshow';
 
 export default function Certificates({ isActive = true, onNavigate }) {
@@ -30,22 +29,14 @@ export default function Certificates({ isActive = true, onNavigate }) {
         {/* Section Header */}
         <motion.div
           className="purrweb-section-header"
-          style={{ textAlign: 'center', marginBottom: 'clamp(8px, 1.6vh, 16px)' }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(14px, 2.4vh, 24px)' }}
           initial={{ opacity: 0, y: 35 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
           transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="purrweb-badge" style={{ margin: '0 auto 8px auto' }}>
-            <Award size={12} style={{ color: 'var(--accent-coral)' }} />
-            <span className="purrweb-badge-text">VERIFIED ACCREDITATIONS</span>
-          </div>
-
-          <h2 className="purrweb-section-title">
+          <h2 className="purrweb-section-title" style={{ margin: 0 }}>
             Industry &amp; <span className="purrweb-serif-accent">Certifications</span>
           </h2>
-          <p className="purrweb-section-subtitle" style={{ maxWidth: '640px', margin: '0 auto' }}>
-            Technical credentials across Cloud Architecture, AI Systems, Full-Stack Development, and Linux.
-          </p>
         </motion.div>
 
         {/* Interactive 3D Certificate CoverFlow Showcase */}

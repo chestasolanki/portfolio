@@ -15,13 +15,9 @@ export default function Experience({ isActive = true, onNavigate }) {
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.75, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          
-          <h2 className="purrweb-section-title">
+          <h2 className="purrweb-section-title" style={{ margin: 0 }}>
             Industry &amp; <span className="purrweb-serif-accent">Production Experience</span>
           </h2>
-          <p className="purrweb-section-subtitle" style={{ maxWidth: '640px', margin: '0 auto' }}>
-            Founding full-stack product engineering, cloud deployment, and live customer-facing systems.
-          </p>
         </motion.div>
 
         {/* Centered Zoomed-in Live Website Browser Showcase */}

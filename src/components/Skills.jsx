@@ -112,18 +112,14 @@ export default function Skills({ isActive = true, onNavigate }) {
         {/* Section Header */}
         <motion.div
           className="purrweb-section-header"
-          style={{ textAlign: 'center', marginBottom: '8px' }}
+          style={{ textAlign: 'center', marginBottom: '14px' }}
           initial={{ opacity: 0, y: 35 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
           transition={{ duration: 0.75, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
         >
-          
-          <h2 className="purrweb-section-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', marginBottom: '6px' }}>
+          <h2 className="purrweb-section-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', margin: 0 }}>
             Technical <span className="purrweb-serif-accent purrweb-gradient-text">Skills Cheatsheet</span>
           </h2>
-          <p className="purrweb-section-subtitle" style={{ maxWidth: '620px', margin: '0 auto', fontSize: '0.92rem' }}>
-            Pinned architectural capabilities, core programming languages, modern frameworks, and generative AI pipelines.
-          </p>
         </motion.div>
 
         {/* 

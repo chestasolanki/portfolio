@@ -25,7 +25,7 @@ export default function App() {
   const wheelAccumulator = useRef(0);
   const wheelTimer = useRef(null);
   const TOTAL_PAGES = 6;
-  const TOTAL_PROJECTS = 5;
+  const TOTAL_PROJECTS = 4;
   const pageNames = ['home', 'about', 'work', 'certificates', 'skills', 'contact'];
 
   // Smooth, slow, luxurious page transition curve
