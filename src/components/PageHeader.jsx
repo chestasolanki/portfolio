@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 export default function PageHeader({ activePage, onNavigate }) {
   const navItems = [
     { id: 'home', label: 'CHESTA SOLANKI', colClass: 'header-brand' },
-    { id: 'work', label: 'WORK', colClass: 'header-nav-link' },
+    { id: 'about', label: 'ABOUT', colClass: 'header-nav-link' },
+    { id: 'work', label: 'MY WORK', colClass: 'header-nav-link' },
     { id: 'skills', label: 'SKILLS', colClass: 'header-nav-link' },
     { id: 'certificates', label: 'CERTIFICATES', colClass: 'header-nav-link' },
-    { id: 'experience', label: 'EXPERIENCE', colClass: 'header-nav-link' },
     { id: 'contact', label: 'CONTACT', colClass: 'header-contact-link' },
   ];
 

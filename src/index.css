@@ -2082,8 +2082,8 @@ button {
   position: relative;
   z-index: 5;
   background: #0c0e14;
-  border-radius: 24px;
-  padding: clamp(20px, 3.2vw, 32px);
+  border-radius: 20px;
+  padding: 16px 20px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
 }
@@ -2092,8 +2092,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
 .category-group {
@@ -2176,13 +2176,14 @@ button {
 .card-illustration-frame.project-photo-frame {
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  border-radius: 14px;
   background: #090d16;
   position: relative;
   overflow: hidden;
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 8.5;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  margin-bottom: 10px;
 }
 
 .project-browser-window {
@@ -2351,17 +2352,17 @@ button {
 
 .info-title {
   font-family: var(--font-sans);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .info-desc {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: rgba(255, 255, 255, 0.65);
-  line-height: 1.5;
-  max-width: 420px;
+  line-height: 1.45;
+  max-width: 440px;
 }
 
 .info-action-btn {
@@ -2579,6 +2580,268 @@ button {
 
 @media (max-width: 768px) {
   .purrweb-edge-pagination {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   ABOUT SLIDE PAGE STYLES
+   Editorial statement + Narrative bio + Quick engineering matrix
+   ========================================================================== */
+
+.about-slide-stage {
+  padding-top: clamp(80px, 10vh, 108px);
+  padding-bottom: clamp(24px, 3.5vh, 44px);
+  justify-content: center;
+}
+
+.about-content-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-statement-wrapper {
+  margin-bottom: clamp(22px, 3.6vh, 40px);
+}
+
+.about-editorial-headline {
+  font-family: var(--font-sans);
+  font-size: clamp(2.3rem, 4.1vw, 4.1rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.about-narrative-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(24px, 4vw, 52px);
+  align-items: flex-start;
+}
+
+.about-bio-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-bio-lead {
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.about-bio-body {
+  font-size: clamp(0.88rem, 1vw, 0.96rem);
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.about-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-cta-btn {
+  padding: 11px 24px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  color: #00e5ff;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.about-cta-btn:hover {
+  background: #00e5ff;
+  color: #07090e;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.about-facts-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-fact-card {
+  background: rgba(14, 18, 28, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 15px 18px;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.about-fact-card:hover {
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(18, 24, 38, 0.8);
+  transform: translateX(4px);
+}
+
+.fact-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.fact-value {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.fact-detail {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   MY WORK SLIDE PAGE STYLES
+   Interactive Project Selector + Fullscreen Stacked Browser Deck
+   ========================================================================== */
+
+.my-work-slide-stage {
+  padding-top: clamp(75px, 9.5vh, 98px);
+  padding-bottom: clamp(16px, 2.5vh, 32px);
+  overflow-y: auto;
+}
+
+.my-work-content-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  z-index: 10;
+  position: relative;
+}
+
+.my-work-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(24px, 3.5vw, 44px);
+  align-items: center;
+}
+
+.my-work-index-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.my-work-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.my-work-nav-item {
+  background: rgba(15, 19, 29, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 13px;
+  padding: 10px 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.my-work-nav-item:hover {
+  background: rgba(22, 28, 42, 0.8);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateX(4px);
+}
+
+.my-work-nav-item.is-active {
+  background: rgba(18, 24, 38, 0.95);
+  border-color: var(--proj-accent, #00e5ff);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 3px 0 0 var(--proj-accent, #00e5ff);
+}
+
+.nav-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.nav-item-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--proj-accent, #00e5ff);
+}
+
+.nav-item-category {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.nav-item-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.nav-item-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.nav-item-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.nav-item-tags {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 992px) {
+  .about-narrative-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .my-work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .my-work-index-col {
     display: none;
   }
 }
