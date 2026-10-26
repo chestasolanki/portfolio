@@ -56,39 +56,25 @@ const certificates = [
   }
 ];
 
-export default function CertificateSlideshow({
-  isActive = true,
-  currentIndex: controlledIndex,
-  onSelectIndex
-}) {
-  const [internalIndex, setInternalIndex] = useState(0);
+export default function CertificateSlideshow({ isActive = true }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const total = certificates.length;
 
-  const currentIndex = controlledIndex !== undefined ? controlledIndex : internalIndex;
-
-  const setIndex = (newIndex) => {
-    if (onSelectIndex) {
-      onSelectIndex(newIndex);
-    } else {
-      setInternalIndex(newIndex);
-    }
-  };
-
   const handleNext = () => {
-    setIndex((currentIndex + 1) % total);
+    setCurrentIndex((prev) => (prev + 1) % total);
   };
 
   const handlePrev = () => {
-    setIndex((currentIndex - 1 + total) % total);
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
   };
 
-  // Auto-advance every 4 seconds with hover-pause (only runs when active section is visible)
+  // Normal autonomous slideshow that automatically changes every 3 seconds
   useEffect(() => {
     if (!isActive || isPaused) return;
     const interval = setInterval(() => {
-      setIndex((currentIndex + 1) % total);
-    }, 4000);
+      setCurrentIndex((prev) => (prev + 1) % total);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isActive, currentIndex, isPaused, total]);
@@ -107,7 +93,7 @@ export default function CertificateSlideshow({
         overflow: 'hidden'
       }}
     >
-      {/* 4-Second Auto-play Progress Bar */}
+      {/* 3-Second Auto-play Progress Bar */}
       <div
         style={{
           width: '100%',
@@ -124,7 +110,7 @@ export default function CertificateSlideshow({
           key={currentIndex}
           initial={{ width: '0%' }}
           animate={{ width: isPaused ? '100%' : '100%' }}
-          transition={{ duration: isPaused ? 0 : 4, ease: 'linear' }}
+          transition={{ duration: isPaused ? 0 : 3, ease: 'linear' }}
           style={{
             height: '100%',
             background: 'var(--gradient-purrweb)',
@@ -216,7 +202,7 @@ export default function CertificateSlideshow({
               }}
               onClick={() => {
                 if (!isCardActive) {
-                  setIndex(index);
+                  setCurrentIndex(index);
                 }
               }}
               style={{
@@ -438,7 +424,7 @@ export default function CertificateSlideshow({
           {certificates.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => setIndex(idx)}
+              onClick={() => setCurrentIndex(idx)}
               aria-label={`Go to certificate ${idx + 1}`}
               style={{
                 width: idx === currentIndex ? '26px' : '8px',
