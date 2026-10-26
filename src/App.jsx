@@ -12,19 +12,21 @@ import PageHeader from './components/PageHeader';
 const getInitialPage = () => {
   if (typeof window === 'undefined') return 0;
   const hash = window.location.hash.toLowerCase().replace('#', '');
-  const map = { home: 0, about: 1, work: 2, skills: 3, certificates: 4, contact: 5 };
+  const map = { home: 0, about: 1, work: 2, certificates: 3, skills: 4, contact: 5 };
   return map[hash] ?? 0;
 };
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(getInitialPage);
+  const [activeProject, setActiveProject] = useState(0);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const isTransitioning = useRef(false);
   const touchStartY = useRef(0);
   const wheelAccumulator = useRef(0);
   const wheelTimer = useRef(null);
   const TOTAL_PAGES = 6;
-  const pageNames = ['home', 'about', 'work', 'skills', 'certificates', 'contact'];
+  const TOTAL_PROJECTS = 5;
+  const pageNames = ['home', 'about', 'work', 'certificates', 'skills', 'contact'];
 
   // Smooth, slow, luxurious page transition curve
   const TRANSITION_DURATION_MS = 1250; // 1.25 seconds for smooth glide
@@ -43,6 +45,7 @@ export default function App() {
     if (pageIndex >= 0 && pageIndex < TOTAL_PAGES && pageIndex !== currentPage) {
       isTransitioning.current = true;
       setCurrentPage(pageIndex);
+      if (pageIndex === 2) setActiveProject(0);
       window.history.replaceState(null, '', '#' + pageNames[pageIndex]);
       setTimeout(() => {
         isTransitioning.current = false;
@@ -54,7 +57,7 @@ export default function App() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.toLowerCase().replace('#', '');
-      const map = { home: 0, about: 1, work: 2, skills: 3, certificates: 4, contact: 5 };
+      const map = { home: 0, about: 1, work: 2, certificates: 3, skills: 4, contact: 5 };
       if (hash in map) {
         goToPage(map[hash]);
       }
@@ -79,24 +82,48 @@ export default function App() {
       const THRESHOLD = 30; // Clean, intentional scroll threshold
 
       if (wheelAccumulator.current > THRESHOLD) {
-        // Scroll Down -> Transition to Next Page
+        // Scroll Down -> On My Work, cycle through projects 0 -> 1 -> 2 -> 3 -> 4
+        if (currentPage === 2 && activeProject < TOTAL_PROJECTS - 1) {
+          isTransitioning.current = true;
+          wheelAccumulator.current = 0;
+          setActiveProject((prev) => prev + 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
+
+        // At end of projects or other slides, transition to next page
         if (currentPage < TOTAL_PAGES - 1) {
           isTransitioning.current = true;
           wheelAccumulator.current = 0;
           const next = currentPage + 1;
           setCurrentPage(next);
+          if (next === 2) setActiveProject(0);
           window.history.replaceState(null, '', '#' + pageNames[next]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
         }
       } else if (wheelAccumulator.current < -THRESHOLD) {
-        // Scroll Up -> Transition to Previous Page
+        // Scroll Up -> On My Work, cycle backward through projects
+        if (currentPage === 2 && activeProject > 0) {
+          isTransitioning.current = true;
+          wheelAccumulator.current = 0;
+          setActiveProject((prev) => prev - 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
+
+        // At start of projects or other slides, transition to previous page
         if (currentPage > 0) {
           isTransitioning.current = true;
           wheelAccumulator.current = 0;
           const prev = currentPage - 1;
           setCurrentPage(prev);
+          if (prev === 2) setActiveProject(TOTAL_PROJECTS - 1);
           window.history.replaceState(null, '', '#' + pageNames[prev]);
           setTimeout(() => {
             isTransitioning.current = false;
@@ -110,7 +137,7 @@ export default function App() {
       window.removeEventListener('wheel', handleWheel);
       clearTimeout(wheelTimer.current);
     };
-  }, [currentPage, isResumeOpen]);
+  }, [currentPage, activeProject, isResumeOpen]);
 
   // Touch Swipe Gesture for Mobile / Tablet
   useEffect(() => {
@@ -128,22 +155,40 @@ export default function App() {
       if (Math.abs(diff) < 45) return;
 
       if (diff > 0) {
-        // Swipe Up -> Next Slide
+        // Swipe Up -> Next Project or Next Slide
+        if (currentPage === 2 && activeProject < TOTAL_PROJECTS - 1) {
+          isTransitioning.current = true;
+          setActiveProject((prev) => prev + 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage < TOTAL_PAGES - 1) {
           isTransitioning.current = true;
           const next = currentPage + 1;
           setCurrentPage(next);
+          if (next === 2) setActiveProject(0);
           window.history.replaceState(null, '', '#' + pageNames[next]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
         }
       } else {
-        // Swipe Down -> Previous Slide
+        // Swipe Down -> Previous Project or Previous Slide
+        if (currentPage === 2 && activeProject > 0) {
+          isTransitioning.current = true;
+          setActiveProject((prev) => prev - 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage > 0) {
           isTransitioning.current = true;
           const prev = currentPage - 1;
           setCurrentPage(prev);
+          if (prev === 2) setActiveProject(TOTAL_PROJECTS - 1);
           window.history.replaceState(null, '', '#' + pageNames[prev]);
           setTimeout(() => {
             isTransitioning.current = false;
@@ -158,7 +203,7 @@ export default function App() {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentPage, isResumeOpen]);
+  }, [currentPage, activeProject, isResumeOpen]);
 
   // Keyboard navigation (ArrowDown, ArrowUp, PageDown, PageUp)
   useEffect(() => {
@@ -167,20 +212,38 @@ export default function App() {
       if (isTransitioning.current) return;
 
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        if (currentPage === 2 && activeProject < TOTAL_PROJECTS - 1) {
+          isTransitioning.current = true;
+          setActiveProject((prev) => prev + 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage < TOTAL_PAGES - 1) {
           isTransitioning.current = true;
           const next = currentPage + 1;
           setCurrentPage(next);
+          if (next === 2) setActiveProject(0);
           window.history.replaceState(null, '', '#' + pageNames[next]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
         }
       } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        if (currentPage === 2 && activeProject > 0) {
+          isTransitioning.current = true;
+          setActiveProject((prev) => prev - 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage > 0) {
           isTransitioning.current = true;
           const prev = currentPage - 1;
           setCurrentPage(prev);
+          if (prev === 2) setActiveProject(TOTAL_PROJECTS - 1);
           window.history.replaceState(null, '', '#' + pageNames[prev]);
           setTimeout(() => {
             isTransitioning.current = false;
@@ -191,7 +254,7 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage, isResumeOpen]);
+  }, [currentPage, activeProject, isResumeOpen]);
 
   return (
     <div className="purrweb-deck-viewport">
@@ -235,25 +298,27 @@ export default function App() {
           />
         </section>
 
-        {/* Slide 2: My Work Page (Stacked Project Deck with Limetta, CodeMesh, etc.) */}
+        {/* Slide 2: My Work Page */}
         <section id="work" className="purrweb-slide-screen">
           <Projects
             isActive={currentPage === 2}
+            activeProject={activeProject}
+            onSelectProject={(idx) => setActiveProject(idx)}
             onNavigate={goToPage}
           />
         </section>
 
-        {/* Slide 3: Skills */}
-        <section id="skills" className="purrweb-slide-screen">
-          <Skills
+        {/* Slide 3: Certificates (Scrolls directly here after last project) */}
+        <section id="certificates" className="purrweb-slide-screen">
+          <Certificates
             isActive={currentPage === 3}
             onNavigate={goToPage}
           />
         </section>
 
-        {/* Slide 4: Certificates (Replacing Experience section) */}
-        <section id="certificates" className="purrweb-slide-screen">
-          <Certificates
+        {/* Slide 4: Skills */}
+        <section id="skills" className="purrweb-slide-screen">
+          <Skills
             isActive={currentPage === 4}
             onNavigate={goToPage}
           />
@@ -273,7 +338,7 @@ export default function App() {
       <div className="purrweb-edge-pagination" aria-label="Page navigation">
         {[0, 1, 2, 3, 4, 5].map((idx) => {
           const isActive = currentPage === idx;
-          const pageLabels = ['Home', 'About', 'My Work', 'Skills', 'Certificates', 'Contact'];
+          const pageLabels = ['Home', 'About', 'My Work', 'Certificates', 'Skills', 'Contact'];
           return (
             <button
               key={idx}

@@ -6,8 +6,8 @@ export default function PageHeader({ activePage, onNavigate }) {
     { id: 'home', label: 'CHESTA SOLANKI', colClass: 'header-brand' },
     { id: 'about', label: 'ABOUT', colClass: 'header-nav-link' },
     { id: 'work', label: 'MY WORK', colClass: 'header-nav-link' },
-    { id: 'skills', label: 'SKILLS', colClass: 'header-nav-link' },
     { id: 'certificates', label: 'CERTIFICATES', colClass: 'header-nav-link' },
+    { id: 'skills', label: 'SKILLS', colClass: 'header-nav-link' },
     { id: 'contact', label: 'CONTACT', colClass: 'header-contact-link' },
   ];
 
