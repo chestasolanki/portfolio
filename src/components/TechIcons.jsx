@@ -223,26 +223,22 @@ export const MysqlIcon = ({ size = 48, className = '' }) => (
   </svg>
 );
 
-// 17. AWS Cloud Logo
+// 17. AWS Cloud Logo (Matching User Reference: Navy tile, lowercase aws, orange smile)
 export const AwsIcon = ({ size = 48, className = '' }) => (
-  <svg width={size} height={size} viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    <rect width="512" height="512" rx="90" fill="#232F3E" />
-    <g transform="translate(86, 150)">
-      <path
-        d="M60 140L100 30H128L168 140H140L130 110H98L88 140H60ZM104 88H124L114 56L104 88Z"
-        fill="#FFFFFF"
-      />
-      <path
-        d="M172 140L202 30H226L246 104L266 30H290L320 140H296L282 86L260 140H234L212 86L198 140H172Z"
-        fill="#FFFFFF"
-      />
-      {/* Curved Smile Arrow */}
-      <path
-        d="M20 160C100 200 240 200 320 160C326 157 334 163 330 169C318 185 270 215 170 215C70 215 22 185 10 169C6 163 14 157 20 160Z"
-        fill="#FF9900"
-      />
-    </g>
-  </svg>
+  <img
+    src="/aws_logo.png"
+    alt="AWS Logo"
+    width={size}
+    height={size}
+    className={className}
+    style={{
+      width: `${size}px`,
+      height: `${size}px`,
+      borderRadius: '8px',
+      objectFit: 'cover',
+      display: 'block'
+    }}
+  />
 );
 
 // 18. Gemini AI Star Logo

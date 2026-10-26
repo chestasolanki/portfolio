@@ -43,7 +43,7 @@ export default function Skills({ onNavigate }) {
     { id: 'tailwind', name: 'TAILWIND', icon: TailwindIcon, category: 'frontend', color: '#38BDF8' },
     { id: 'express', name: 'EXPRESS JS', icon: ExpressIcon, category: 'backend', color: '#00E5FF' },
     { id: 'mysql', name: 'MYSQL', icon: MysqlIcon, category: 'backend', color: '#00758F' },
-    { id: 'aws', name: 'AWS CLOUD', icon: AwsIcon, category: 'devops', color: '#FF9900' },
+    { id: 'aws', name: 'AWS', icon: AwsIcon, category: 'devops', color: '#FF9900' },
     { id: 'gemini', name: 'GEMINI AI', icon: GeminiIcon, category: 'core', color: '#9B72CF' }
   ];
 
@@ -136,9 +136,7 @@ export default function Skills({ onNavigate }) {
               <h3 className="purrweb-section-title" style={{ fontSize: 'clamp(1.8rem, 3.4vw, 2.6rem)', margin: 0 }}>
                 Verified <span className="purrweb-serif-accent">Certificates</span>
               </h3>
-              <span className="purrweb-meta-text">
-                Auto-advancing every 6s • Click to inspect full certificate
-              </span>
+              
             </div>
           </div>
 
