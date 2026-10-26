@@ -35,7 +35,7 @@ export default function Certificates({ isActive = true, onNavigate }) {
           transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="purrweb-section-title" style={{ margin: 0 }}>
-            Industry &amp; <span className="purrweb-serif-accent">Certifications</span>
+            Certifications
           </h2>
         </motion.div>
 
