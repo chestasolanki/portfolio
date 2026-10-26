@@ -19,6 +19,7 @@ const getInitialPage = () => {
 export default function App() {
   const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [activeProject, setActiveProject] = useState(0);
+  const [activeCertificate, setActiveCertificate] = useState(0);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const isTransitioning = useRef(false);
   const touchStartY = useRef(0);
@@ -26,6 +27,7 @@ export default function App() {
   const wheelTimer = useRef(null);
   const TOTAL_PAGES = 6;
   const TOTAL_PROJECTS = 4;
+  const TOTAL_CERTIFICATES = 5;
   const pageNames = ['home', 'about', 'work', 'certificates', 'skills', 'contact'];
 
   // Smooth, slow, luxurious page transition curve
@@ -46,6 +48,7 @@ export default function App() {
       isTransitioning.current = true;
       setCurrentPage(pageIndex);
       if (pageIndex === 2) setActiveProject(0);
+      if (pageIndex === 3) setActiveCertificate(0);
       window.history.replaceState(null, '', '#' + pageNames[pageIndex]);
       setTimeout(() => {
         isTransitioning.current = false;
@@ -72,8 +75,9 @@ export default function App() {
       if (isResumeOpen) return;
       if (isTransitioning.current) return;
 
-      // Accumulate delta to filter out trackpad micro-jitter
-      wheelAccumulator.current += e.deltaY;
+      // Accumulate delta to filter out trackpad micro-jitter (supports vertical and horizontal trackpad swipes)
+      const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      wheelAccumulator.current += delta;
       clearTimeout(wheelTimer.current);
       wheelTimer.current = setTimeout(() => {
         wheelAccumulator.current = 0;
@@ -82,7 +86,7 @@ export default function App() {
       const THRESHOLD = 30; // Clean, intentional scroll threshold
 
       if (wheelAccumulator.current > THRESHOLD) {
-        // Scroll Down -> On My Work, cycle through projects 0 -> 1 -> 2 -> 3 -> 4
+        // Scroll Down -> On My Work, cycle through projects 0 -> 1 -> 2 -> 3
         if (currentPage === 2 && activeProject < TOTAL_PROJECTS - 1) {
           isTransitioning.current = true;
           wheelAccumulator.current = 0;
@@ -93,19 +97,42 @@ export default function App() {
           return;
         }
 
-        // At end of projects or other slides, transition to next page
+        // Scroll Down -> On Certificates, cycle through certificates 0 -> 1 -> 2 -> 3 -> 4
+        if (currentPage === 3 && activeCertificate < TOTAL_CERTIFICATES - 1) {
+          isTransitioning.current = true;
+          wheelAccumulator.current = 0;
+          setActiveCertificate((prev) => prev + 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
+
+        // At end of projects or certificates or other slides, transition to next page
         if (currentPage < TOTAL_PAGES - 1) {
           isTransitioning.current = true;
           wheelAccumulator.current = 0;
           const next = currentPage + 1;
           setCurrentPage(next);
           if (next === 2) setActiveProject(0);
+          if (next === 3) setActiveCertificate(0);
           window.history.replaceState(null, '', '#' + pageNames[next]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
         }
       } else if (wheelAccumulator.current < -THRESHOLD) {
+        // Scroll Up -> On Certificates, cycle backward through certificates
+        if (currentPage === 3 && activeCertificate > 0) {
+          isTransitioning.current = true;
+          wheelAccumulator.current = 0;
+          setActiveCertificate((prev) => prev - 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
+
         // Scroll Up -> On My Work, cycle backward through projects
         if (currentPage === 2 && activeProject > 0) {
           isTransitioning.current = true;
@@ -117,13 +144,14 @@ export default function App() {
           return;
         }
 
-        // At start of projects or other slides, transition to previous page
+        // At start of projects or certificates or other slides, transition to previous page
         if (currentPage > 0) {
           isTransitioning.current = true;
           wheelAccumulator.current = 0;
           const prev = currentPage - 1;
           setCurrentPage(prev);
           if (prev === 2) setActiveProject(TOTAL_PROJECTS - 1);
+          if (prev === 3) setActiveCertificate(TOTAL_CERTIFICATES - 1);
           window.history.replaceState(null, '', '#' + pageNames[prev]);
           setTimeout(() => {
             isTransitioning.current = false;
@@ -137,7 +165,7 @@ export default function App() {
       window.removeEventListener('wheel', handleWheel);
       clearTimeout(wheelTimer.current);
     };
-  }, [currentPage, activeProject, isResumeOpen]);
+  }, [currentPage, activeProject, activeCertificate, isResumeOpen]);
 
   // Touch Swipe Gesture for Mobile / Tablet
   useEffect(() => {
@@ -155,10 +183,18 @@ export default function App() {
       if (Math.abs(diff) < 45) return;
 
       if (diff > 0) {
-        // Swipe Up -> Next Project or Next Slide
+        // Swipe Up -> Next Project or Next Certificate or Next Slide
         if (currentPage === 2 && activeProject < TOTAL_PROJECTS - 1) {
           isTransitioning.current = true;
           setActiveProject((prev) => prev + 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
+        if (currentPage === 3 && activeCertificate < TOTAL_CERTIFICATES - 1) {
+          isTransitioning.current = true;
+          setActiveCertificate((prev) => prev + 1);
           setTimeout(() => {
             isTransitioning.current = false;
           }, 600);
@@ -169,13 +205,22 @@ export default function App() {
           const next = currentPage + 1;
           setCurrentPage(next);
           if (next === 2) setActiveProject(0);
+          if (next === 3) setActiveCertificate(0);
           window.history.replaceState(null, '', '#' + pageNames[next]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
         }
       } else {
-        // Swipe Down -> Previous Project or Previous Slide
+        // Swipe Down -> Previous Certificate or Previous Project or Previous Slide
+        if (currentPage === 3 && activeCertificate > 0) {
+          isTransitioning.current = true;
+          setActiveCertificate((prev) => prev - 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage === 2 && activeProject > 0) {
           isTransitioning.current = true;
           setActiveProject((prev) => prev - 1);
@@ -189,6 +234,7 @@ export default function App() {
           const prev = currentPage - 1;
           setCurrentPage(prev);
           if (prev === 2) setActiveProject(TOTAL_PROJECTS - 1);
+          if (prev === 3) setActiveCertificate(TOTAL_CERTIFICATES - 1);
           window.history.replaceState(null, '', '#' + pageNames[prev]);
           setTimeout(() => {
             isTransitioning.current = false;
@@ -203,9 +249,9 @@ export default function App() {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentPage, activeProject, isResumeOpen]);
+  }, [currentPage, activeProject, activeCertificate, isResumeOpen]);
 
-  // Keyboard navigation (ArrowDown, ArrowUp, PageDown, PageUp)
+  // Keyboard navigation (ArrowDown, ArrowUp, PageDown, PageUp, ArrowLeft, ArrowRight)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (isResumeOpen) return;
@@ -220,17 +266,34 @@ export default function App() {
           }, 600);
           return;
         }
+        if (currentPage === 3 && activeCertificate < TOTAL_CERTIFICATES - 1) {
+          isTransitioning.current = true;
+          setActiveCertificate((prev) => prev + 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage < TOTAL_PAGES - 1) {
           isTransitioning.current = true;
           const next = currentPage + 1;
           setCurrentPage(next);
           if (next === 2) setActiveProject(0);
+          if (next === 3) setActiveCertificate(0);
           window.history.replaceState(null, '', '#' + pageNames[next]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
         }
       } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        if (currentPage === 3 && activeCertificate > 0) {
+          isTransitioning.current = true;
+          setActiveCertificate((prev) => prev - 1);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600);
+          return;
+        }
         if (currentPage === 2 && activeProject > 0) {
           isTransitioning.current = true;
           setActiveProject((prev) => prev - 1);
@@ -244,17 +307,24 @@ export default function App() {
           const prev = currentPage - 1;
           setCurrentPage(prev);
           if (prev === 2) setActiveProject(TOTAL_PROJECTS - 1);
+          if (prev === 3) setActiveCertificate(TOTAL_CERTIFICATES - 1);
           window.history.replaceState(null, '', '#' + pageNames[prev]);
           setTimeout(() => {
             isTransitioning.current = false;
           }, TRANSITION_DURATION_MS);
+        }
+      } else if (currentPage === 3 && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+        if (e.key === 'ArrowRight') {
+          setActiveCertificate((prev) => (prev + 1) % TOTAL_CERTIFICATES);
+        } else {
+          setActiveCertificate((prev) => (prev - 1 + TOTAL_CERTIFICATES) % TOTAL_CERTIFICATES);
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage, activeProject, isResumeOpen]);
+  }, [currentPage, activeProject, activeCertificate, isResumeOpen]);
 
   return (
     <div className="purrweb-deck-viewport">
@@ -312,6 +382,8 @@ export default function App() {
         <section id="certificates" className="purrweb-slide-screen">
           <Certificates
             isActive={currentPage === 3}
+            activeCertificate={activeCertificate}
+            onSelectCertificate={(idx) => setActiveCertificate(idx)}
             onNavigate={goToPage}
           />
         </section>

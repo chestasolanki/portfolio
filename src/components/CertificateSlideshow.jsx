@@ -56,28 +56,42 @@ const certificates = [
   }
 ];
 
-export default function CertificateSlideshow() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function CertificateSlideshow({
+  isActive = true,
+  currentIndex: controlledIndex,
+  onSelectIndex
+}) {
+  const [internalIndex, setInternalIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const total = certificates.length;
 
+  const currentIndex = controlledIndex !== undefined ? controlledIndex : internalIndex;
+
+  const setIndex = (newIndex) => {
+    if (onSelectIndex) {
+      onSelectIndex(newIndex);
+    } else {
+      setInternalIndex(newIndex);
+    }
+  };
+
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % total);
+    setIndex((currentIndex + 1) % total);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + total) % total);
+    setIndex((currentIndex - 1 + total) % total);
   };
 
-  // Auto-advance every 4 seconds with hover-pause
+  // Auto-advance every 4 seconds with hover-pause (only runs when active section is visible)
   useEffect(() => {
-    if (isPaused) return;
+    if (!isActive || isPaused) return;
     const interval = setInterval(() => {
-      handleNext();
+      setIndex((currentIndex + 1) % total);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, isPaused, total]);
+  }, [isActive, currentIndex, isPaused, total]);
 
   const activeCert = certificates[currentIndex];
 
@@ -138,7 +152,7 @@ export default function CertificateSlideshow() {
           if (diff > total / 2) diff -= total;
           if (diff < -total / 2) diff += total;
 
-          const isActive = diff === 0;
+          const isCardActive = diff === 0;
           const isLeft = diff === -1;
           const isRight = diff === 1;
           const isVisible = Math.abs(diff) <= 1;
@@ -151,7 +165,7 @@ export default function CertificateSlideshow() {
           let zIndex = 1;
           let rotateY = 0;
 
-          if (isActive) {
+          if (isCardActive) {
             xOffset = 0;
             scale = 1.05;
             blur = 0;
@@ -201,14 +215,14 @@ export default function CertificateSlideshow() {
                 ease: [0.16, 1, 0.3, 1]
               }}
               onClick={() => {
-                if (!isActive) {
-                  setCurrentIndex(index);
+                if (!isCardActive) {
+                  setIndex(index);
                 }
               }}
               style={{
                 position: 'absolute',
                 width: 'min(86vw, 530px)',
-                cursor: isActive ? 'default' : 'pointer',
+                cursor: isCardActive ? 'default' : 'pointer',
                 filter: `blur(${blur}px)`,
                 transformStyle: 'preserve-3d',
                 willChange: 'transform, filter, opacity',
@@ -222,7 +236,7 @@ export default function CertificateSlideshow() {
                   overflow: 'hidden',
                   background: 'rgba(10, 16, 32, 0.85)',
                   border: 'none',
-                  boxShadow: isActive
+                  boxShadow: isCardActive
                     ? '0 24px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(236, 72, 153, 0.25)'
                     : '0 12px 30px rgba(0, 0, 0, 0.6)',
                   transition: 'box-shadow 0.3s ease'
@@ -424,7 +438,7 @@ export default function CertificateSlideshow() {
           {certificates.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => setCurrentIndex(idx)}
+              onClick={() => setIndex(idx)}
               aria-label={`Go to certificate ${idx + 1}`}
               style={{
                 width: idx === currentIndex ? '26px' : '8px',

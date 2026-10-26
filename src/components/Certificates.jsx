@@ -2,7 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import CertificateSlideshow from './CertificateSlideshow';
 
-export default function Certificates({ isActive = true, onNavigate }) {
+export default function Certificates({
+  isActive = true,
+  activeCertificate = 0,
+  onSelectCertificate,
+  onNavigate
+}) {
   return (
     <section className="purrweb-exact-slide-stage certs-slide-stage">
       {/* Background Vibrant Atmospheric Mesh */}
@@ -46,7 +51,11 @@ export default function Certificates({ isActive = true, onNavigate }) {
           animate={isActive ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.96 }}
           transition={{ duration: 0.85, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
         >
-          <CertificateSlideshow />
+          <CertificateSlideshow
+            isActive={isActive}
+            currentIndex={activeCertificate}
+            onSelectIndex={onSelectCertificate}
+          />
         </motion.div>
       </div>
     </section>
