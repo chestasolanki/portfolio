@@ -115,9 +115,7 @@ export default function Projects({
           <h2 className="purrweb-section-title">
             My <span className="purrweb-serif-accent">Work</span>
           </h2>
-          <p className="purrweb-section-subtitle" style={{ maxWidth: '640px', margin: '0 auto' }}>
-            Production e-commerce platforms, real-time distributed editors, and generative AI systems.
-          </p>
+          
         </motion.div>
 
         {/* Dynamic Project Stage: First project comes up with details and pic, then user scrolls to next */}
