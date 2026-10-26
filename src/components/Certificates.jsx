@@ -6,10 +6,18 @@ import CertificateSlideshow from './CertificateSlideshow';
 export default function Certificates({ isActive = true, onNavigate }) {
   return (
     <section className="purrweb-exact-slide-stage certs-slide-stage">
+      {/* Background Vibrant Atmospheric Mesh */}
+      <div className="work-atmosphere" aria-hidden="true">
+        <div className="work-glow glow-cyan-teal" />
+        <div className="work-glow glow-amber-warm" />
+        <div className="work-glow glow-magenta" />
+        <div className="work-grain" />
+      </div>
+
       <div
         className="container"
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1440px',
           margin: '0 auto',
           width: '100%',
           position: 'relative',

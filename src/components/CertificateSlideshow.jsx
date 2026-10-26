@@ -98,11 +98,11 @@ export default function CertificateSlideshow() {
       <div
         style={{
           width: '100%',
-          maxWidth: '460px',
+          maxWidth: '560px',
           height: '3px',
           background: 'rgba(255, 255, 255, 0.08)',
           borderRadius: '9999px',
-          margin: '0 auto 14px auto',
+          margin: '0 auto 16px auto',
           overflow: 'hidden',
           position: 'relative'
         }}
@@ -125,7 +125,7 @@ export default function CertificateSlideshow() {
         className="slideshow-stage"
         style={{
           position: 'relative',
-          height: 'clamp(270px, 35vh, 320px)',
+          height: 'clamp(310px, 42vh, 415px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -210,7 +210,7 @@ export default function CertificateSlideshow() {
               }}
               style={{
                 position: 'absolute',
-                width: 'min(86vw, 400px)',
+                width: 'min(86vw, 530px)',
                 cursor: isActive ? 'zoom-in' : 'pointer',
                 filter: `blur(${blur}px)`,
                 transformStyle: 'preserve-3d',
@@ -333,12 +333,12 @@ export default function CertificateSlideshow() {
       {/* Active Certificate Info Display & Action Links */}
       <div
         style={{
-          marginTop: '28px',
+          marginTop: '32px',
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '6px',
+          gap: '5px',
           position: 'relative',
           zIndex: 10
         }}
@@ -355,9 +355,9 @@ export default function CertificateSlideshow() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <span
                 style={{
-                  fontSize: '10.5px',
+                  fontSize: '11px',
                   fontFamily: 'var(--font-mono)',
-                  padding: '2px 9px',
+                  padding: '3px 10px',
                   borderRadius: 'var(--radius-pill)',
                   background: 'rgba(236, 72, 153, 0.15)',
                   color: 'var(--accent-pink)',
@@ -367,7 +367,7 @@ export default function CertificateSlideshow() {
               >
                 {activeCert.badge}
               </span>
-              <span style={{ fontSize: '11.5px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ fontSize: '12px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
                 {activeCert.hours}
               </span>
             </div>
@@ -375,7 +375,7 @@ export default function CertificateSlideshow() {
             <h4
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(17px, 2vw, 22px)',
+                fontSize: 'clamp(18px, 2.2vw, 24px)',
                 fontWeight: '600',
                 color: 'var(--text-primary)',
                 margin: 0,
