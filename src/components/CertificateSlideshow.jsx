@@ -356,30 +356,32 @@ export default function CertificateSlideshow() {
               <span
                 style={{
                   fontSize: '11px',
-                  fontFamily: 'var(--font-mono)',
+                  fontFamily: 'var(--font-sans)',
                   padding: '3px 10px',
                   borderRadius: 'var(--radius-pill)',
                   background: 'rgba(236, 72, 153, 0.15)',
                   color: 'var(--accent-pink)',
                   border: 'none',
-                  fontWeight: '600'
+                  fontWeight: '600',
+                  letterSpacing: '0.02em'
                 }}
               >
                 {activeCert.badge}
               </span>
-              <span style={{ fontSize: '12px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+              <span style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.65)', fontFamily: 'var(--font-sans)' }}>
                 {activeCert.hours}
               </span>
             </div>
 
             <h4
               style={{
-                fontFamily: 'var(--font-serif)',
+                fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(18px, 2.2vw, 24px)',
                 fontWeight: '600',
-                color: 'var(--text-primary)',
+                color: '#ffffff',
                 margin: 0,
-                lineHeight: '1.2'
+                lineHeight: '1.25',
+                letterSpacing: '-0.02em'
               }}
             >
               {activeCert.title}
@@ -387,23 +389,25 @@ export default function CertificateSlideshow() {
 
             <div
               style={{
-                fontSize: '12.5px',
-                color: 'var(--text-secondary)',
-                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                color: 'rgba(255, 255, 255, 0.72)',
+                fontFamily: 'var(--font-sans)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
                 flexWrap: 'wrap',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                letterSpacing: '-0.01em',
+                marginTop: '2px'
               }}
             >
-              <span style={{ color: 'var(--text-primary)', fontWeight: '500' }}>{activeCert.issuer}</span>
-              <span>•</span>
-              <span style={{ color: 'var(--text-dim)' }}>{activeCert.date}</span>
+              <span style={{ color: '#ffffff', fontWeight: '500' }}>{activeCert.issuer}</span>
+              <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
+              <span>{activeCert.date}</span>
               {activeCert.code && (
                 <>
-                  <span>•</span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--accent-coral)' }}>
+                  <span style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
+                  <span style={{ color: 'var(--accent-coral)', fontWeight: '500' }}>
                     Code: {activeCert.code}
                   </span>
                 </>
@@ -411,7 +415,7 @@ export default function CertificateSlideshow() {
             </div>
 
             {/* External Credential & Lightbox Links */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
               {activeCert.credentialUrl && (
                 <a
                   href={activeCert.credentialUrl}
@@ -421,18 +425,19 @@ export default function CertificateSlideshow() {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    fontSize: '12px',
-                    fontFamily: 'var(--font-mono)',
+                    fontSize: '12.5px',
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: '500',
                     color: 'var(--accent-pink)',
                     textDecoration: 'none',
-                    padding: '4px 12px',
+                    padding: '5px 14px',
                     borderRadius: 'var(--radius-pill)',
-                    background: 'rgba(236, 72, 153, 0.1)',
-                    border: 'none',
+                    background: 'rgba(236, 72, 153, 0.12)',
+                    border: '1px solid rgba(236, 72, 153, 0.25)',
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  <ExternalLink size={12} />
+                  <ExternalLink size={13} />
                   <span>Verify Credential</span>
                 </a>
               )}
@@ -443,16 +448,19 @@ export default function CertificateSlideshow() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  fontSize: '12px',
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--text-secondary)',
-                  background: 'transparent',
-                  border: 'none',
+                  fontSize: '12.5px',
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: '500',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  borderRadius: 'var(--radius-pill)',
                   cursor: 'pointer',
-                  padding: '4px 10px'
+                  padding: '5px 14px',
+                  transition: 'all 0.2s ease'
                 }}
               >
-                <Maximize2 size={12} />
+                <Maximize2 size={13} />
                 <span>Fullscreen</span>
               </button>
             </div>
@@ -533,7 +541,7 @@ export default function CertificateSlideshow() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Award size={16} style={{ color: 'var(--accent-purple)' }} />
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: '600', color: '#ffffff', letterSpacing: '-0.01em' }}>
                     {selectedImage.title}
                   </span>
                 </div>
