@@ -201,7 +201,7 @@ export default function MagnifyingHero({ isActive = true, onNavigate, onOpenResu
             <div className="meta-line">BASED IN</div>
             <div className="meta-line">GREATER NOIDA, INDIA</div>
             <div className="meta-spacer" />
-            <div className="meta-line">B.TECH IT (8.13 CGPA)</div>
+            <div className="meta-line">B.TECH IT</div>
             <div className="meta-line">GL Bajaj Institute of Technology and Management</div>
           </div>
 

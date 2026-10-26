@@ -236,9 +236,7 @@ export default function Pure3DLaptop() {
               }}
             >
               <div>
-                <div style={{ fontSize: '1rem', fontWeight: '800', color: '#ffffff' }}>
-                  8.13 <span style={{ fontSize: '0.65rem', color: '#38bdf8' }}>CGPA</span>
-                </div>
+                
                 <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>B.Tech IT</div>
               </div>
 
