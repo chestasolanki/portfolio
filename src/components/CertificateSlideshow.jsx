@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ExternalLink, Award, Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
 const certificates = [
   {
@@ -59,7 +59,6 @@ const certificates = [
 export default function CertificateSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
   const total = certificates.length;
 
   const handleNext = () => {
@@ -70,12 +69,12 @@ export default function CertificateSlideshow() {
     setCurrentIndex((prev) => (prev - 1 + total) % total);
   };
 
-  // Auto-advance every 6 seconds with hover-pause
+  // Auto-advance every 4 seconds with hover-pause
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       handleNext();
-    }, 6000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [currentIndex, isPaused, total]);
@@ -94,7 +93,7 @@ export default function CertificateSlideshow() {
         overflow: 'hidden'
       }}
     >
-      {/* 6-Second Auto-play Progress Bar */}
+      {/* 4-Second Auto-play Progress Bar */}
       <div
         style={{
           width: '100%',
@@ -111,7 +110,7 @@ export default function CertificateSlideshow() {
           key={currentIndex}
           initial={{ width: '0%' }}
           animate={{ width: isPaused ? '100%' : '100%' }}
-          transition={{ duration: isPaused ? 0 : 6, ease: 'linear' }}
+          transition={{ duration: isPaused ? 0 : 4, ease: 'linear' }}
           style={{
             height: '100%',
             background: 'var(--gradient-purrweb)',
@@ -202,16 +201,14 @@ export default function CertificateSlideshow() {
                 ease: [0.16, 1, 0.3, 1]
               }}
               onClick={() => {
-                if (isActive) {
-                  setSelectedImage(cert);
-                } else {
+                if (!isActive) {
                   setCurrentIndex(index);
                 }
               }}
               style={{
                 position: 'absolute',
                 width: 'min(86vw, 530px)',
-                cursor: isActive ? 'zoom-in' : 'pointer',
+                cursor: isActive ? 'default' : 'pointer',
                 filter: `blur(${blur}px)`,
                 transformStyle: 'preserve-3d',
                 willChange: 'transform, filter, opacity',
@@ -245,29 +242,6 @@ export default function CertificateSlideshow() {
                     }}
                     loading="lazy"
                   />
-
-                  {/* Active Magnify Hint Overlay */}
-                  {isActive && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '12px',
-                        right: '12px',
-                        background: 'rgba(0, 0, 0, 0.65)',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                        backdropFilter: 'blur(8px)',
-                        borderRadius: '50%',
-                        width: '34px',
-                        height: '34px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#ffffff'
-                      }}
-                    >
-                      <Maximize2 size={16} />
-                    </div>
-                  )}
                 </div>
               </div>
             </motion.div>
@@ -414,9 +388,9 @@ export default function CertificateSlideshow() {
               )}
             </div>
 
-            {/* External Credential & Lightbox Links */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
-              {activeCert.credentialUrl && (
+            {/* External Credential Link */}
+            {activeCert.credentialUrl && (
+              <div style={{ marginTop: '6px' }}>
                 <a
                   href={activeCert.credentialUrl}
                   target="_blank"
@@ -440,30 +414,8 @@ export default function CertificateSlideshow() {
                   <ExternalLink size={13} />
                   <span>Verify Credential</span>
                 </a>
-              )}
-
-              <button
-                onClick={() => setSelectedImage(activeCert)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  fontSize: '12.5px',
-                  fontFamily: 'var(--font-sans)',
-                  fontWeight: '500',
-                  color: 'rgba(255, 255, 255, 0.8)',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: 'var(--radius-pill)',
-                  cursor: 'pointer',
-                  padding: '5px 14px',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <Maximize2 size={13} />
-                <span>Fullscreen</span>
-              </button>
-            </div>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
 
@@ -489,99 +441,6 @@ export default function CertificateSlideshow() {
           ))}
         </div>
       </div>
-
-      {/* Fullscreen Lightbox Modal */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: 'rgba(0, 0, 0, 0.94)',
-              backdropFilter: 'blur(14px)',
-              zIndex: 9999,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '24px'
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                position: 'relative',
-                maxWidth: '920px',
-                width: '100%',
-                maxHeight: '90vh',
-                background: '#0a1020',
-                borderRadius: '16px',
-                border: '1px solid rgba(56, 189, 248, 0.4)',
-                boxShadow: '0 25px 70px rgba(0, 0, 0, 0.95)',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '14px 20px',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                  background: '#060a14'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={16} style={{ color: 'var(--accent-purple)' }} />
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: '600', color: '#ffffff', letterSpacing: '-0.01em' }}>
-                    {selectedImage.title}
-                  </span>
-                </div>
-
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    borderRadius: '50%',
-                    width: '32px',
-                    height: '32px',
-                    color: '#ffffff',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <X size={16} />
-                </button>
-              </div>
-
-              <div style={{ padding: '16px', overflowY: 'auto', background: '#0b1326', display: 'flex', justifyContent: 'center' }}>
-                <img
-                  src={selectedImage.image}
-                  alt={selectedImage.title}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '75vh',
-                    objectFit: 'contain',
-                    borderRadius: '8px',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7)'
-                  }}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

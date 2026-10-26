@@ -106,19 +106,36 @@ export default function Skills({ isActive = true, onNavigate }) {
   ];
 
   return (
-    <section className="purrweb-exact-slide-stage">
+    <section className="purrweb-exact-slide-stage skills-slide-stage">
+      {/* Background Vibrant Atmospheric Mesh */}
+      <div className="work-atmosphere" aria-hidden="true">
+        <div className="work-glow glow-cyan-teal" />
+        <div className="work-glow glow-amber-warm" />
+        <div className="work-glow glow-magenta" />
+        <div className="work-grain" />
+      </div>
+
       <div className="pinned-board-container">
         
-        {/* Section Header */}
+        {/* Section Header: Named exactly "Technical Skills" */}
         <motion.div
           className="purrweb-section-header"
-          style={{ textAlign: 'center', marginBottom: '14px' }}
-          initial={{ opacity: 0, y: 35 }}
-          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
-          transition={{ duration: 0.75, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(14px, 2.4vh, 28px)' }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="purrweb-section-title" style={{ fontSize: 'clamp(2rem, 3.2vw, 2.6rem)', margin: 0 }}>
-            Technical <span className="purrweb-serif-accent purrweb-gradient-text">Skills Cheatsheet</span>
+          <h2
+            className="purrweb-section-title"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(2.2rem, 3.6vw, 3.2rem)',
+              fontWeight: 700,
+              letterSpacing: '-0.02em',
+              margin: 0
+            }}
+          >
+            Technical <span className="purrweb-serif-accent">Skills</span>
           </h2>
         </motion.div>
 
@@ -135,7 +152,7 @@ export default function Skills({ isActive = true, onNavigate }) {
           />
         </svg>
 
-        {/* 6 Pinned Cards Grid (3x2 on desktop, responsive) */}
+        {/* 6 Pinned Cards Grid (3x2 on desktop, zoomed and expanded across the viewport) */}
         <div className="pinned-cards-grid">
           {skillCategories.map((category, idx) => {
             const IconComponent = category.icon;
@@ -173,7 +190,7 @@ export default function Skills({ isActive = true, onNavigate }) {
                 <div className="pinned-card-header">
                   <span className="pinned-card-number">{category.num}</span>
                   <div className="pinned-card-icon-frame">
-                    <IconComponent size={19} style={{ color: category.pinColor }} />
+                    <IconComponent size={22} style={{ color: category.pinColor }} />
                   </div>
                 </div>
 
