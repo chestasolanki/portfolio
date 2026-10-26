@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
 
 import MagnifyingHero from './components/MagnifyingHero';
 import Projects from './components/Projects';
@@ -20,129 +18,36 @@ const getInitialPage = () => {
 export default function App() {
   const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const lenisRef = useRef(null);
-  const isProgrammaticScroll = useRef(false);
+  const isTransitioning = useRef(false);
+  const touchStartY = useRef(0);
+  const wheelAccumulator = useRef(0);
+  const wheelTimer = useRef(null);
+  const TOTAL_PAGES = 5;
   const pageNames = ['home', 'work', 'skills', 'experience', 'contact'];
 
-  // Initialize Lenis butter-smooth momentum scrolling
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.25,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
-    });
-    lenisRef.current = lenis;
+  // Smooth, slow, luxurious page transition curve
+  const TRANSITION_DURATION_MS = 1250; // 1.25 seconds for smooth glide
+  const TRANSITION_EASE = 'cubic-bezier(0.65, 0, 0.15, 1)'; // Silky ease-in-out curve
 
-    let animationFrameId;
-    function raf(time) {
-      lenis.raf(time);
-      animationFrameId = requestAnimationFrame(raf);
-    }
-    animationFrameId = requestAnimationFrame(raf);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      lenis.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
-
-  // Lock scrolling when ResumeModal is open
-  useEffect(() => {
-    if (isResumeOpen) {
-      lenisRef.current?.stop();
-      document.body.style.overflow = 'hidden';
-    } else {
-      lenisRef.current?.start();
-      document.body.style.overflow = '';
-    }
-  }, [isResumeOpen]);
-
-  // Navigate smoothly to target section
+  // Direct navigation to page index
   const goToPage = (pageInput) => {
     let pageIndex;
-    let pageId;
-
     if (typeof pageInput === 'number') {
       pageIndex = pageInput;
-      pageId = pageNames[pageInput];
     } else {
-      pageId = String(pageInput).toLowerCase().replace('#', '');
+      const pageId = String(pageInput).toLowerCase().replace('#', '');
       pageIndex = pageNames.indexOf(pageId);
     }
 
-    if (pageIndex >= 0 && pageIndex < pageNames.length) {
+    if (pageIndex >= 0 && pageIndex < TOTAL_PAGES && pageIndex !== currentPage) {
+      isTransitioning.current = true;
       setCurrentPage(pageIndex);
-      window.history.replaceState(null, '', '#' + pageId);
-
-      const target = document.getElementById(pageId);
-      if (target) {
-        isProgrammaticScroll.current = true;
-        if (lenisRef.current) {
-          lenisRef.current.scrollTo(target, {
-            offset: 0,
-            duration: 1.25,
-            onComplete: () => {
-              setTimeout(() => {
-                isProgrammaticScroll.current = false;
-              }, 50);
-            }
-          });
-        } else {
-          target.scrollIntoView({ behavior: 'smooth' });
-          setTimeout(() => {
-            isProgrammaticScroll.current = false;
-          }, 800);
-        }
-      }
+      window.history.replaceState(null, '', '#' + pageNames[pageIndex]);
+      setTimeout(() => {
+        isTransitioning.current = false;
+      }, TRANSITION_DURATION_MS);
     }
   };
-
-  // Scroll spy to keep activePage state in sync with scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isResumeOpen) return;
-      if (isProgrammaticScroll.current) return;
-
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const fullHeight = document.documentElement.scrollHeight;
-
-      // If user reached near bottom of page, highlight Contact
-      if (scrollY + windowHeight >= fullHeight - 80) {
-        setCurrentPage(4);
-        window.history.replaceState(null, '', '#contact');
-        return;
-      }
-
-      // Check sections from bottom to top
-      const triggerY = scrollY + windowHeight * 0.35;
-      for (let i = pageNames.length - 1; i >= 0; i--) {
-        const el = document.getElementById(pageNames[i]);
-        if (el && triggerY >= el.offsetTop) {
-          setCurrentPage(i);
-          window.history.replaceState(null, '', '#' + pageNames[i]);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    if (lenisRef.current) {
-      lenisRef.current.on('scroll', handleScroll);
-    }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (lenisRef.current) {
-        lenisRef.current.off('scroll', handleScroll);
-      }
-    };
-  }, [isResumeOpen]);
 
   // Sync with initial URL hash and external hash navigation
   useEffect(() => {
@@ -154,26 +59,131 @@ export default function App() {
       }
     };
     window.addEventListener('hashchange', handleHash);
-    if (window.location.hash) {
-      setTimeout(handleHash, 250);
-    }
     return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  }, [currentPage]);
+
+  // Full-page scroll transition on Mouse Wheel / Trackpad Gesture
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (isResumeOpen) return;
+      if (isTransitioning.current) return;
+
+      // Accumulate delta to filter out trackpad micro-jitter
+      wheelAccumulator.current += e.deltaY;
+      clearTimeout(wheelTimer.current);
+      wheelTimer.current = setTimeout(() => {
+        wheelAccumulator.current = 0;
+      }, 180);
+
+      const THRESHOLD = 30; // Clean, intentional scroll threshold
+
+      if (wheelAccumulator.current > THRESHOLD) {
+        // Scroll Down -> Transition to Next Page
+        if (currentPage < TOTAL_PAGES - 1) {
+          isTransitioning.current = true;
+          wheelAccumulator.current = 0;
+          const next = currentPage + 1;
+          setCurrentPage(next);
+          window.history.replaceState(null, '', '#' + pageNames[next]);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, TRANSITION_DURATION_MS);
+        }
+      } else if (wheelAccumulator.current < -THRESHOLD) {
+        // Scroll Up -> Transition to Previous Page
+        if (currentPage > 0) {
+          isTransitioning.current = true;
+          wheelAccumulator.current = 0;
+          const prev = currentPage - 1;
+          setCurrentPage(prev);
+          window.history.replaceState(null, '', '#' + pageNames[prev]);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, TRANSITION_DURATION_MS);
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      clearTimeout(wheelTimer.current);
+    };
+  }, [currentPage, isResumeOpen]);
+
+  // Touch Swipe Gesture for Mobile / Tablet
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      if (isResumeOpen) return;
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (isResumeOpen) return;
+      if (isTransitioning.current) return;
+      const touchEndY = e.changedTouches[0].clientY;
+      const diff = touchStartY.current - touchEndY;
+
+      if (Math.abs(diff) < 45) return;
+
+      if (diff > 0) {
+        // Swipe Up -> Next Slide
+        if (currentPage < TOTAL_PAGES - 1) {
+          isTransitioning.current = true;
+          const next = currentPage + 1;
+          setCurrentPage(next);
+          window.history.replaceState(null, '', '#' + pageNames[next]);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, TRANSITION_DURATION_MS);
+        }
+      } else {
+        // Swipe Down -> Previous Slide
+        if (currentPage > 0) {
+          isTransitioning.current = true;
+          const prev = currentPage - 1;
+          setCurrentPage(prev);
+          window.history.replaceState(null, '', '#' + pageNames[prev]);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, TRANSITION_DURATION_MS);
+        }
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentPage, isResumeOpen]);
 
   // Keyboard navigation (ArrowDown, ArrowUp, PageDown, PageUp)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (isResumeOpen) return;
+      if (isTransitioning.current) return;
 
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-        if (currentPage < pageNames.length - 1) {
-          e.preventDefault();
-          goToPage(currentPage + 1);
+        if (currentPage < TOTAL_PAGES - 1) {
+          isTransitioning.current = true;
+          const next = currentPage + 1;
+          setCurrentPage(next);
+          window.history.replaceState(null, '', '#' + pageNames[next]);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, TRANSITION_DURATION_MS);
         }
       } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
         if (currentPage > 0) {
-          e.preventDefault();
-          goToPage(currentPage - 1);
+          isTransitioning.current = true;
+          const prev = currentPage - 1;
+          setCurrentPage(prev);
+          window.history.replaceState(null, '', '#' + pageNames[prev]);
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, TRANSITION_DURATION_MS);
         }
       }
     };
@@ -183,47 +193,72 @@ export default function App() {
   }, [currentPage, isResumeOpen]);
 
   return (
-    <div className="purrweb-continuous-container">
+    <div className="purrweb-deck-viewport">
       {/* 
-        Fixed Persistent Navbar:
-        Stays firmly anchored at the top across all pages.
-        Active underline indicator smoothly tracks current section.
+        Persistent Fixed Navbar:
+        Floats firmly anchored at the top with no separating line.
+        Active cyan underline indicator glides across tabs.
       */}
       <PageHeader
         activePage={pageNames[currentPage]}
         onNavigate={goToPage}
       />
 
-      {/* Section 0: Home Page (Magnifying Hero) */}
-      <section id="home" className="purrweb-flow-section">
-        <MagnifyingHero
-          onNavigate={goToPage}
-          onOpenResume={() => setIsResumeOpen(true)}
-        />
-      </section>
+      {/* 
+        Full-Page Presentation Slides Track:
+        When scrolling, the entire page glides with luxurious 1.25s cubic-bezier physics.
+        Internal components enter smoothly right as the page arrives.
+      */}
+      <div
+        className="purrweb-deck-track"
+        style={{
+          transform: `translate3d(0, -${currentPage * 100}vh, 0)`,
+          transition: `transform ${TRANSITION_DURATION_MS}ms ${TRANSITION_EASE}`,
+          willChange: 'transform'
+        }}
+      >
+        {/* Slide 0: Home Page (Magnifying Hero) */}
+        <section id="home" className="purrweb-slide-screen">
+          <MagnifyingHero
+            isActive={currentPage === 0}
+            onNavigate={goToPage}
+            onOpenResume={() => setIsResumeOpen(true)}
+          />
+        </section>
 
-      {/* Section 1: Work Page (Stacked Project Deck) */}
-      <section id="work" className="purrweb-flow-section">
-        <Projects onNavigate={goToPage} />
-      </section>
+        {/* Slide 1: Work Page (Stacked Project Deck) */}
+        <section id="work" className="purrweb-slide-screen">
+          <Projects
+            isActive={currentPage === 1}
+            onNavigate={goToPage}
+          />
+        </section>
 
-      {/* Section 2: Skills & Credentials */}
-      <section id="skills" className="purrweb-flow-section">
-        <Skills onNavigate={goToPage} />
-      </section>
+        {/* Slide 2: Skills & Credentials */}
+        <section id="skills" className="purrweb-slide-screen">
+          <Skills
+            isActive={currentPage === 2}
+            onNavigate={goToPage}
+          />
+        </section>
 
-      {/* Section 3: Experience & Academics */}
-      <section id="experience" className="purrweb-flow-section">
-        <Experience onNavigate={goToPage} />
-      </section>
+        {/* Slide 3: Experience & Academics */}
+        <section id="experience" className="purrweb-slide-screen">
+          <Experience
+            isActive={currentPage === 3}
+            onNavigate={goToPage}
+          />
+        </section>
 
-      {/* Section 4: Contact */}
-      <section id="contact" className="purrweb-flow-section">
-        <Contact
-          onNavigate={goToPage}
-          onOpenResume={() => setIsResumeOpen(true)}
-        />
-      </section>
+        {/* Slide 4: Contact */}
+        <section id="contact" className="purrweb-slide-screen">
+          <Contact
+            isActive={currentPage === 4}
+            onNavigate={goToPage}
+            onOpenResume={() => setIsResumeOpen(true)}
+          />
+        </section>
+      </div>
 
       {/* Subtle Right Edge Slide Navigation Dots */}
       <div className="purrweb-edge-pagination" aria-label="Page navigation">

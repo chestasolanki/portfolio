@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Copy, Check, ArrowUpRight, Phone, MapPin, Sparkles, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
-export default function Contact({ onNavigate, onOpenResume }) {
+export default function Contact({ isActive = true, onNavigate, onOpenResume }) {
   const [copiedField, setCopiedField] = useState(null);
 
   const copyToClipboard = (text, field) => {
@@ -22,9 +22,8 @@ export default function Contact({ onNavigate, onOpenResume }) {
         <motion.div
           className="purrweb-contact-cta-box"
           initial={{ opacity: 0, y: 60, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 60, scale: 0.96 }}
+          transition={{ duration: 0.85, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="contact-cta-glow" />
 
@@ -71,9 +70,8 @@ export default function Contact({ onNavigate, onOpenResume }) {
         <motion.div
           className="purrweb-contact-details-grid"
           initial={{ opacity: 0, y: 45 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 45 }}
+          transition={{ duration: 0.8, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
           
           {/* Email Item */}
@@ -132,9 +130,8 @@ export default function Contact({ onNavigate, onOpenResume }) {
         {/* Social Profiles Row & Clean Minimalist Footer */}
         <motion.div
           initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
+          transition={{ duration: 0.75, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="purrweb-socials-row">
             <a

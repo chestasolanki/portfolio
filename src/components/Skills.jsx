@@ -23,7 +23,7 @@ import {
   GeminiIcon
 } from './TechIcons';
 
-export default function Skills({ onNavigate }) {
+export default function Skills({ isActive = true, onNavigate }) {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const allSkills = [
@@ -68,9 +68,8 @@ export default function Skills({ onNavigate }) {
           className="purrweb-section-header"
           style={{ textAlign: 'center', marginBottom: '16px' }}
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.75, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="purrweb-badge" style={{ margin: '0 auto 10px auto' }}>
             <Sparkles size={12} style={{ color: 'var(--accent-violet)' }} />
@@ -88,9 +87,8 @@ export default function Skills({ onNavigate }) {
         <motion.div
           className="skills-category-filters"
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
         >
           {categories.map((cat) => (
             <button
@@ -108,9 +106,8 @@ export default function Skills({ onNavigate }) {
           layout
           className="skills-cards-grid"
           initial={{ opacity: 0, y: 50, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.98 }}
+          transition={{ duration: 0.85, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill, idx) => {
@@ -141,11 +138,10 @@ export default function Skills({ onNavigate }) {
             3D Center-Zoom Coverflow with auto-cycle and image preview
             ========================================================================= */}
         <motion.div
-          style={{ marginTop: '80px' }}
+          style={{ marginTop: 'clamp(28px, 4vh, 48px)' }}
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
-          transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.85, delay: 0.52, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="purrweb-section-header" style={{ marginBottom: '24px', textAlign: 'left' }}>
             <div className="purrweb-badge" style={{ marginBottom: '12px' }}>

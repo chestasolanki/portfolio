@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-export default function MagnifyingHero({ onNavigate, onOpenResume }) {
+export default function MagnifyingHero({ isActive = true, onNavigate, onOpenResume }) {
   const heroRef = useRef(null);
   const lensRef = useRef(null);
   const zoomRedRef = useRef(null);
@@ -148,7 +148,12 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
           "Software" (white sans) + "full-stack" (golden serif italic)
                      "engineer" (white sans)
           ========================================================================= */}
-      <div className="purrweb-center-stage">
+      <motion.div
+        className="purrweb-center-stage"
+        initial={{ opacity: 0, filter: 'blur(6px)' }}
+        animate={isActive ? { opacity: 1, filter: 'blur(0px)' } : { opacity: 0, filter: 'blur(6px)' }}
+        transition={{ duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="exact-hero-typography">
           
           {/* Top Line: "Software" + Golden Serif Italic Accent "full-stack" */}
@@ -163,7 +168,7 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
           </div>
 
         </div>
-      </div>
+      </motion.div>
 
       {/* =========================================================================
           BOTTOM METADATA & SCROLL INDICATOR
@@ -174,9 +179,8 @@ export default function MagnifyingHero({ onNavigate, onOpenResume }) {
       <motion.footer
         className="purrweb-exact-footer"
         initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
-        transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.85, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
         
         {/* Left Metadata Columns */}

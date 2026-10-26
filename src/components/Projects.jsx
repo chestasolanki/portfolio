@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ExternalLink, Code2, Sparkles, Terminal, Lock, Globe } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
-export default function Projects({ onNavigate }) {
+export default function Projects({ isActive = true, onNavigate }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const SLIDE_DURATION = 6500; // 6.5s per slide
@@ -125,10 +125,9 @@ export default function Projects({ onNavigate }) {
         {/* Left Column: Personal Statement & Domain */}
         <motion.div
           className="work-left-editorial"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 60 }}
+          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+          transition={{ duration: 0.85, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="work-editorial-statement">
             I am Chesta Solanki,<br />
@@ -162,10 +161,9 @@ export default function Projects({ onNavigate }) {
         {/* Right Column: Stacked Project Cards Deck */}
         <motion.div
           className="work-right-deck"
-          initial={{ opacity: 0, y: 60, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 70, scale: 0.96 }}
+          animate={isActive ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 70, scale: 0.96 }}
+          transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
           onMouseEnter={() => setIsPlaying(false)}
           onMouseLeave={() => setIsPlaying(true)}
         >
