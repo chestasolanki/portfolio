@@ -133,7 +133,7 @@ export default function Contact({ isActive = true, onNavigate, onOpenResume }) {
             </div>
             <div className="detail-content">
               <span className="detail-label">LOCATION</span>
-              <span className="detail-value">India (Open to Remote &amp; Relocation)</span>
+              <span className="detail-value">Greater Noida, India (Open to Remote &amp; Relocation)</span>
             </div>
           </div>
 

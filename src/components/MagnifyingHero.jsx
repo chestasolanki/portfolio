@@ -198,11 +198,11 @@ export default function MagnifyingHero({ isActive = true, onNavigate, onOpenResu
 
           {/* Column 2: Location & Academic Pedigree */}
           <div className="meta-block">
-            <div className="meta-line">BASED</div>
-            <div className="meta-line">IN INDIA</div>
+            <div className="meta-line">BASED IN</div>
+            <div className="meta-line">GREATER NOIDA, INDIA</div>
             <div className="meta-spacer" />
             <div className="meta-line">B.TECH IT (8.13 CGPA)</div>
-            <div className="meta-line">GL Bajaj Institute of tecnology and management</div>
+            <div className="meta-line">GL Bajaj Institute of Technology and Management</div>
           </div>
 
         </div>

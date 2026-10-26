@@ -11,8 +11,8 @@ export const ALL_PROJECTS = [
     title: 'Limetta',
     tagline: 'Luxury Interior Home Decor & E-Commerce Web Platform',
     description:
-      'Spearheaded the technical architecture and end-to-end development of Limetta’s flagship luxury interior decor e-commerce platform, scaling it from concept to live production. Engineered Razorpay payment checkout, Delhivery logistics automation, Resend transactional notification workflows, and real-time order lifecycle tracking.',
-    stack: ['React 19', 'Node.js', 'Express.js', 'MongoDB', 'Razorpay', 'Delhivery Logistics', 'Resend API', 'ImageKit CDN'],
+      'Engineered and deployed a full-stack luxury e-commerce platform with automated Razorpay payments, Delhivery logistics, Resend transactional notifications, and ImageKit media management. Includes comprehensive admin inventory management, real-time order tracking, and AWS ECS/Fargate containerization.',
+    stack: ['React 19', 'Node.js', 'Express.js', 'MongoDB', 'AWS ECS', 'Razorpay', 'Delhivery', 'Resend', 'ImageKit'],
     live: 'https://www.limetta.in',
     displayUrl: 'limetta.in',
     image: '/limetta_experience.png',
@@ -21,12 +21,12 @@ export const ALL_PROJECTS = [
   {
     id: 'careerpilot',
     num: '02',
-    category: 'AI DOCUMENT PIPELINE',
+    category: 'AI MULTI-AGENT WORKFLOW',
     title: 'CareerPilot',
-    tagline: 'AI Interview Preparation & Skill Gap Platform',
+    tagline: 'AI-Powered Interview Preparation Platform',
     description:
-      'Engineered an AI platform that parses candidate resumes (PDF), calculates job description match scores, detects skill deficits, and generates personalized multi-day preparation plans with Gemini API.',
-    stack: ['React 19', 'Node.js', 'Express', 'MongoDB', 'Gemini API', 'PDF-Parse', 'JWT'],
+      'Architected an AI-powered interview preparation platform using a multi-agent workflow to analyze resumes and job descriptions, identify skill gaps, and generate personalized multi-day preparation plans with five specialized agents powered by LangChain and Groq (Llama 3.3 70B).',
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'LangChain', 'Groq (Llama 3.3 70B)', 'Zod', 'JWT', 'Puppeteer'],
     github: 'https://github.com/chestasolanki/CareerPilot',
     live: 'https://careerrpilot.vercel.app/',
     displayUrl: 'careerrpilot.vercel.app',
@@ -40,8 +40,8 @@ export const ALL_PROJECTS = [
     title: 'CodeMesh',
     tagline: 'Real-Time Collaborative Code Editor & Compiler',
     description:
-      'Built a real-time collaborative coding platform using React, Monaco Editor, and Socket.io with conflict-free document sync via Yjs CRDTs, live avatar presence, in-room chat, and a sandboxed C++ (g++) execution engine containerized with Docker for AWS ECR/ECS.',
-    stack: ['React.js', 'Node.js', 'Express 5', 'Monaco Editor', 'Yjs (CRDTs)', 'Socket.io', 'C++ (g++)', 'Docker', 'AWS ECS'],
+      'Built a real-time collaborative coding platform using React, Monaco Editor, and Socket.io with conflict-free document sync via Yjs CRDTs (y-monaco), live avatar presence, in-room chat, and a sandboxed C++ (g++) execution engine containerized with a Multi-Stage Dockerfile for AWS ECR/ECS.',
+    stack: ['React.js', 'Node.js', 'Express 5', 'Monaco Editor', 'Yjs (CRDTs)', 'Socket.io', 'Tailwind CSS', 'C++ (g++)', 'Docker', 'AWS ECR/ECS'],
     github: 'https://github.com/chestasolanki/CodeMesh',
     live: 'https://codemesh-rwl8.onrender.com/',
     displayUrl: 'codemesh-rwl8.onrender.com',
