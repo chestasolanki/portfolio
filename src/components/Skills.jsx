@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import {
   Code2,
   Layout,
@@ -7,12 +7,8 @@ import {
   Brain,
   Database,
   Wrench,
-  Sparkles,
-  Award,
-  ArrowUpRight,
-  X
+  Sparkles
 } from 'lucide-react';
-import CertificateSlideshow from './CertificateSlideshow';
 
 // 3D Metallic/Glossy Pushpin Vector
 function PushPin({ color = '#00e5ff' }) {
@@ -39,8 +35,6 @@ function PushPin({ color = '#00e5ff' }) {
 }
 
 export default function Skills({ isActive = true, onNavigate }) {
-  const [showCertificates, setShowCertificates] = useState(false);
-
   // Exact 6 categories and skills specified by the user
   const skillCategories = [
     {
@@ -205,65 +199,7 @@ export default function Skills({ isActive = true, onNavigate }) {
             );
           })}
         </div>
-
-        {/* Bottom Action: Verified Credentials Drawer Trigger */}
-        <motion.div
-          className="pinned-certs-trigger-row"
-          initial={{ opacity: 0, y: 25 }}
-          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
-          transition={{ duration: 0.75, delay: 0.78, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <button
-            onClick={() => setShowCertificates(true)}
-            className="pinned-certs-btn"
-            title="Inspect AWS, OpenAI, Simplilearn & Red Hat Verified Certificates"
-          >
-            <Award size={15} style={{ color: 'var(--accent-coral)' }} />
-            <span>View Verified Industry Certificates (5)</span>
-            <ArrowUpRight size={13} />
-          </button>
-        </motion.div>
-
       </div>
-
-      {/* Verified Credentials & Certificates Modal Drawer */}
-      <AnimatePresence>
-        {showCertificates && (
-          <motion.div
-            className="pinned-certs-modal-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowCertificates(false)}
-          >
-            <motion.div
-              className="pinned-certs-modal-dialog"
-              initial={{ opacity: 0, y: 40, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 40, scale: 0.96 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="pinned-certs-modal-header">
-                <div className="modal-title-left">
-                  <Award size={19} style={{ color: 'var(--accent-coral)' }} />
-                  <h4>Verified Industry Credentials &amp; Certifications</h4>
-                </div>
-                <button
-                  onClick={() => setShowCertificates(false)}
-                  className="modal-close-btn"
-                  aria-label="Close credentials modal"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <div className="pinned-certs-modal-body">
-                <CertificateSlideshow />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

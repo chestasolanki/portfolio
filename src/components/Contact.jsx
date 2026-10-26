@@ -27,10 +27,7 @@ export default function Contact({ isActive = true, onNavigate, onOpenResume }) {
         >
           <div className="contact-cta-glow" />
 
-          <div className="purrweb-badge" style={{ margin: '0 auto 20px auto' }}>
-            <Sparkles size={12} style={{ color: 'var(--accent-coral)' }} />
-            <span className="purrweb-badge-text">GET IN TOUCH</span>
-          </div>
+          
 
           <h2 className="contact-main-headline">
             Let's talk about your <br />

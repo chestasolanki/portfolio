@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import MagnifyingHero from './components/MagnifyingHero';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import Certificates from './components/Certificates';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import ResumeModal from './components/ResumeModal';
@@ -11,7 +12,7 @@ import PageHeader from './components/PageHeader';
 const getInitialPage = () => {
   if (typeof window === 'undefined') return 0;
   const hash = window.location.hash.toLowerCase().replace('#', '');
-  const map = { home: 0, work: 1, skills: 2, experience: 3, contact: 4 };
+  const map = { home: 0, work: 1, skills: 2, certificates: 3, experience: 4, contact: 5 };
   return map[hash] ?? 0;
 };
 
@@ -22,8 +23,8 @@ export default function App() {
   const touchStartY = useRef(0);
   const wheelAccumulator = useRef(0);
   const wheelTimer = useRef(null);
-  const TOTAL_PAGES = 5;
-  const pageNames = ['home', 'work', 'skills', 'experience', 'contact'];
+  const TOTAL_PAGES = 6;
+  const pageNames = ['home', 'work', 'skills', 'certificates', 'experience', 'contact'];
 
   // Smooth, slow, luxurious page transition curve
   const TRANSITION_DURATION_MS = 1250; // 1.25 seconds for smooth glide
@@ -53,7 +54,7 @@ export default function App() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.toLowerCase().replace('#', '');
-      const map = { home: 0, work: 1, skills: 2, experience: 3, contact: 4 };
+      const map = { home: 0, work: 1, skills: 2, certificates: 3, experience: 4, contact: 5 };
       if (hash in map) {
         goToPage(map[hash]);
       }
@@ -234,7 +235,7 @@ export default function App() {
           />
         </section>
 
-        {/* Slide 2: Skills & Credentials */}
+        {/* Slide 2: Skills */}
         <section id="skills" className="purrweb-slide-screen">
           <Skills
             isActive={currentPage === 2}
@@ -242,18 +243,26 @@ export default function App() {
           />
         </section>
 
-        {/* Slide 3: Experience & Academics */}
-        <section id="experience" className="purrweb-slide-screen">
-          <Experience
+        {/* Slide 3: Certificates */}
+        <section id="certificates" className="purrweb-slide-screen">
+          <Certificates
             isActive={currentPage === 3}
             onNavigate={goToPage}
           />
         </section>
 
-        {/* Slide 4: Contact */}
+        {/* Slide 4: Experience & Academics */}
+        <section id="experience" className="purrweb-slide-screen">
+          <Experience
+            isActive={currentPage === 4}
+            onNavigate={goToPage}
+          />
+        </section>
+
+        {/* Slide 5: Contact */}
         <section id="contact" className="purrweb-slide-screen">
           <Contact
-            isActive={currentPage === 4}
+            isActive={currentPage === 5}
             onNavigate={goToPage}
             onOpenResume={() => setIsResumeOpen(true)}
           />
@@ -262,9 +271,9 @@ export default function App() {
 
       {/* Subtle Right Edge Slide Navigation Dots */}
       <div className="purrweb-edge-pagination" aria-label="Page navigation">
-        {[0, 1, 2, 3, 4].map((idx) => {
+        {[0, 1, 2, 3, 4, 5].map((idx) => {
           const isActive = currentPage === idx;
-          const pageLabels = ['Home', 'Work', 'Skills', 'Experience', 'Contact'];
+          const pageLabels = ['Home', 'Work', 'Skills', 'Certificates', 'Experience', 'Contact'];
           return (
             <button
               key={idx}

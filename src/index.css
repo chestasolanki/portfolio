@@ -2487,6 +2487,12 @@ button {
   flex-direction: column;
 }
 
+.certs-slide-stage {
+  padding-top: clamp(68px, 8vh, 85px);
+  padding-bottom: clamp(14px, 2vh, 28px);
+  justify-content: center;
+}
+
 /* Custom Smooth Scrollbar for Slide Stage if content overflows vertically on small screens */
 .purrweb-exact-slide-stage::-webkit-scrollbar {
   width: 3px;
