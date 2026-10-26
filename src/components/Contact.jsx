@@ -14,7 +14,27 @@ export default function Contact({ isActive = true, onNavigate, onOpenResume }) {
 
   return (
     <footer className="purrweb-exact-slide-stage purrweb-contact-section">
-      <div className="container" style={{ maxWidth: '1320px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+      {/* Background Vibrant Atmospheric Mesh */}
+      <div className="work-atmosphere" aria-hidden="true">
+        <div className="work-glow glow-cyan-teal" />
+        <div className="work-glow glow-amber-warm" />
+        <div className="work-glow glow-magenta" />
+        <div className="work-grain" />
+      </div>
+
+      <div
+        className="container contact-centered-container"
+        style={{
+          maxWidth: '1380px',
+          margin: '0 auto',
+          width: '100%',
+          position: 'relative',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        }}
+      >
         
         {/* =========================================================================
             GET IN TOUCH HERO CARD (The one allowed bordered/styled container)
