@@ -86,7 +86,7 @@ export default function Skills({ isActive = true, onNavigate }) {
       num: '05',
       title: 'Databases',
       badge: 'RELATIONAL & DOCUMENT DB',
-      skills: ['MySQL', 'MongoDB'],
+      skills: ['MySQL', 'MongoDB', 'PostgreSQL', 'Redis'],
       icon: Database,
       pinColor: '#eab308', // Amber gold pin
       glowColor: 'rgba(234, 179, 8, 0.35)',
